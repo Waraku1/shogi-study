@@ -1,0 +1,2 @@
+# Preserve the upstream GPL notice byte-for-byte, including its CRLF endings.
+docs/licenses/Fairy-Stockfish-GPL-3.0.txt -text whitespace=cr-at-eol

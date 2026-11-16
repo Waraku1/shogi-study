@@ -1,0 +1,8 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+public/engine/
+public/THIRD_PARTY_NOTICES.txt
+work/
+*.local
