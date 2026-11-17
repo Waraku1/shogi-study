@@ -30,7 +30,7 @@ Learning tests cover real browser IndexedDB reload, completed preference/review 
 
 Observed failures were corrected rather than weakening regressions: the controlled study checkbox now updates immediately while showing an asynchronous save indicator; reload tests wait for actual transaction completion; long online SFEN/invite text now wraps at 390px. The existing reset regression exposed a reproducible WASM startup-disposal race (one failure in three focused pre-fix repeats). The minimal adapter/host fix lets the disposal handshake clean up nested pthreads before host termination and tracks startup children in the project bridge. Three focused repeats and the full nine-test browser suite then passed. Upstream engine assets and their hashes remain unchanged.
 
-CI preserves the existing base triggers and adds `feat/phase-2-auth-online`. Existing unit/browser/online commands automatically include the new learning tests. Exact implementation/test revision and observed CI run are recorded below after the commit is created; subsequent documentation-only edits do not change the implementation tested here.
+CI preserves the existing base triggers and adds `feat/phase-2-auth-online`. Existing unit/browser/online commands automatically include the new learning tests. Exact implementation/test revision: **5b27183a7b4244aa8bfdb4470c3870a56704ede2**. GitHub Actions [run 44001184955](https://github.com/Waraku1/shogi-study/actions/runs/44001184955), job 133765363256, **PASS**: locked install, typecheck, all unit/release tests, build, all browser tests and both online integration tests. This results-recording follow-up changes documentation only; the implementation tested is unchanged.
 
 ## Limits and next action
 
