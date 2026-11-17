@@ -37,16 +37,16 @@ A single earlier bounded implementation run before removing the duplicate state 
 | --- | --- |
 | `pnpm install --frozen-lockfile` | PASS, no dependency/lockfile changes |
 | `pnpm typecheck` | PASS, browser and Worker; server-focused tests checked with Worker types |
-| `pnpm test` | **81/81 PASS**, original 71 unchanged plus 10 targeted tests; 2.08 s |
+| `pnpm test` | **81/81 PASS**, original 71 unchanged plus 10 targeted tests; final run 2.60 s |
 | `pnpm build` | PASS, JS 340.51 kB / CSS 11.37 kB; unchanged pinned WASM separately prepared |
-| `pnpm test:browser` | **14/14 PASS**, original 13 unchanged plus explicit guest-only offline/API-boundary test |
+| `pnpm test:browser` | **14/14 PASS**, original 13 unchanged plus explicit guest-only offline/API-boundary test; 42.4 s |
 | `pnpm test:online` | **5/5 PASS**, original 3 unchanged plus 2 gate tests; 44.3 s |
 | `node scripts/profile-local.mjs` | PASS, actual local CPU/latency/counters above; real callback excluded |
 | `git diff --check` | PASS |
 
 New tests cover remote active play + new authenticated context with unavailable/invalid status and no lease, recovery after finish, genuine guest 401 + legal WASM candidates, guest-only loaded-page offline navigation, origin rejection, public-only/no-store status, fixture expiry, membership limit/recovery, unknown room responses and stale auth races. Existing online regressions retain two-context authoritative moves, timers/alarms, privacy, session revocation/WS rejection, retries/reconnect, learning and archives. Fixture expiry/revocation is not a real Google session claim. COOP/COEP, upstream engine bytes and all 124 cards remain unchanged.
 
-CI adds the `feat/phase-4-mvp-integration` base trigger while retaining all previous bases; actual stacked PR outcomes will be reported after its run. Local test passes do not assert remote success.
+CI adds the `feat/phase-4-mvp-integration` base trigger while retaining all previous bases. [PR #9](https://github.com/Waraku1/shogi-study/pull/9) GitHub Actions [run 44053277819](https://github.com/Waraku1/shogi-study/actions/runs/44053277819), job 133936125878, **PASS** at `f6b5a28f8e300676df73e16f3209fe105b7293a7`: locked install, browser/Worker typecheck, all unit/release tests, build, browser and online suites. This follow-up records CI evidence only; the tested implementation is unchanged.
 
 ## Gates and exact owner actions
 
