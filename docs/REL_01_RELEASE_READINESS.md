@@ -20,7 +20,7 @@ pnpm test:browser
 pnpm release:prepare --commit "$(git rev-parse HEAD)"
 ```
 
-The last command rebuilds locally, independently checks installed AND built engine file sizes/SHA-256 against `docs/engine-provenance.json`, verifies notices against `docs/release-inputs.json` and upstream source text, downloads pinned source archives if absent, and verifies their size/hash and required source/license members. A missing, corrupt, mismatching, dirty or incomplete input aborts preparation. A changed upstream archive encoding also fails closed; review a new hash instead of silently accepting it.
+The last command rebuilds locally, independently checks installed AND built engine file sizes/SHA-256 against `docs/engine-provenance.json`, verifies notices against `docs/release-inputs.json` and upstream source text, downloads pinned source archives if absent, and verifies their size/hash and required source/license members. Node's `--use-env-proxy` honors configured HTTP(S)/NO_PROXY settings without disabling TLS validation. A missing, corrupt, mismatching, dirty or incomplete input aborts preparation. A changed upstream archive encoding also fails closed; review a new hash instead of silently accepting it.
 
 Output: gitignored `work/release-candidates/<full-commit>.tar.gz` and `.sha256`. The packet contains:
 

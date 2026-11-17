@@ -21,6 +21,8 @@ Engine source SHA-256: `5c10e40812e1045cb13677ff84b3cdd3fca5c381df76245cd4d8eb53
 
 New tests verify identical repeated candidate bytes and exact project/source hashes, independent tampering of installed or built engine files, omitted manifest assets, missing engine license, wrong package version, missing/corrupt source, missing source members, mismatched source commit, missing toolchain notice, stale notices/worker bridge, dirty/non-HEAD source, symlinks, attempted replacement of a differing packet, and retained draft/source/LLVM-exception attribution. Their test fixtures use small synthetic inputs; actual application packaging is checked separately after committing the source.
 
+The first actual preparation refused source retrieval (`fetch failed`) because Node's default fetch ignored this environment's configured proxy; no packet was produced. A real pinned-source fetch with Node 24 `--use-env-proxy` returned HTTP 200 / 383,237 bytes. The preparation command now enables that flag, retaining TLS verification and inherited proxy settings.
+
 ## Licensing and remaining gates
 
 Root LICENSE is **a review draft, not an effective project grant**. Package metadata remains private, points to that draft, proposes GPL-3.0-only and explicitly blocks public distribution. Engine GPLv3-or-later permits selection of v3; reviewed MIT/NCSA/Apache-2.0-with-LLVM-exception components have no identified license-level conflict with GPLv3, subject to retained conditions and owner/legal review. Emscripten/musl/LLVM runtime/dlmalloc notices are retained and checked against the bundled toolchain source. No NNUE weights are introduced.
