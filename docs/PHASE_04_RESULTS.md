@@ -32,7 +32,7 @@ Original test files are unchanged. New coverage includes illegal/drop/promotion 
 
 Defects found and fixed: hidden duplicate practice-board DOM interfered with unchanged online selectors; invisible practice now retains React state without rendering a second board. Delayed autosaves now notify the Review list. A full archive no longer reports success for an immediately evicted older import. The unchanged reset regression exposed another upstream pthread disposal race: the adapter drains/stops active search and the bridge terminates all tracked children without calling allocator cleanup after killing their owners. Five focused reset repetitions and the full browser suite pass; upstream engine bytes/hashes remain unchanged. Room timeout settlement now broadcasts even when triggered by a status lookup.
 
-CI retains all earlier PR base triggers and adds `feat/phase-3-learning`. It runs the locked install, both typechecks, unit/release tests, build, browser and online suites. GitHub CI results will be reported in the stacked PR after its actual run; local passes above do not assert a remote pass.
+CI retains all earlier PR base triggers and adds `feat/phase-3-learning`. GitHub Actions [run 44036052557](https://github.com/Waraku1/shogi-study/actions/runs/44036052557), job 133879065642, **PASS** at `6ada9ec246125582d4f127f58bccfbd5b5afc539`: locked install, both typechecks, all unit/release tests, build, browser and online suites. [Stacked PR #7](https://github.com/Waraku1/shogi-study/pull/7) targets `feat/phase-3-learning`. This CI-results follow-up changes documentation only; implementation is unchanged.
 
 ## Manual QA and remaining gates
 
