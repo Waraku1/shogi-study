@@ -1,2 +1,4 @@
 # Preserve the upstream GPL notice byte-for-byte, including its CRLF endings.
 docs/licenses/Fairy-Stockfish-GPL-3.0.txt -text whitespace=cr-at-eol
+# Retain third-party notice whitespace exactly as in the pinned source archive.
+docs/licenses/emscripten/** -text whitespace=-blank-at-eol,-blank-at-eof

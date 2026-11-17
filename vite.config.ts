@@ -10,5 +10,5 @@ export default defineConfig({
   plugins: [react()],
   server: { headers },
   preview: { headers },
-  test: { include: ['tests/**/*.test.ts'] },
+  test: { include: ['tests/**/*.test.{ts,mjs}'] },
 });

@@ -1,0 +1,28 @@
+Shogi Study — REL-01 distribution candidate; owner review required
+
+Proposed application license: GPL-3.0-only. Root LICENSE is a DRAFT, not an
+effective project license grant. Public distribution remains blocked pending
+copyright-owner approval and review of corresponding-source completeness.
+
+Fairy-Stockfish / Stockfish developers (see retained AUTHORS), Fabian Fichter:
+fairy-stockfish-nnue.wasm 1.1.12, npm GPL-3.0; source permits GPLv3 or later.
+Source commit: b2e693ef1e111233ce3fb40685921708b3276ed6
+https://github.com/fairy-stockfish/fairy-stockfish.wasm/tree/b2e693ef1e111233ce3fb40685921708b3276ed6
+Unmodified engine files. Classical evaluation; no NNUE weights supplied.
+
+tsshogi 2.3.4 — Copyright (c) 2023 Kubo, Ryosuke, MIT.
+React / React DOM 19.3.1, scheduler 0.28.0 — Meta Platforms, Inc. and affiliates,
+MIT. Full license texts are retained in docs/licenses/ and runtime notices.
+
+Emscripten 2.0.26 (5af6a110ee58ca4a6885fbcad830c92207fefea2):
+MIT / University of Illinois-NCSA; includes Node.js MIT portions. Linked-runtime
+scope includes musl libc, pthread/JS glue, allocator, compiler-rt and C++ runtime.
+musl: MIT and per-file notices; LLVM runtime: Apache-2.0 WITH LLVM-exception
+and retained legacy notices; dlmalloc: public-domain/CC0 notice. Full retained
+texts and credits: docs/licenses/emscripten/. These are a conservative inventory,
+not a verified symbol-level link map or legal compatibility sign-off.
+
+The local release-preparation command packages exact engine and Emscripten
+source archives with hashes, project source at the candidate commit, these
+notices and build instructions. It does not publish anything. See
+docs/REL_01_RELEASE_READINESS.md and docs/LICENSE_INVENTORY.md for limitations.

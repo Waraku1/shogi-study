@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "license": "UNLICENSED",
+  "license": "SEE LICENSE IN LICENSE",
   "packageManager": "pnpm@11.25.0",
   "scripts": {
     "engine:prepare": "node scripts/prepare-engine.mjs",
@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:browser": "playwright test",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "release:prepare": "pnpm build && node scripts/prepare-release.mjs"
   },
   "dependencies": {
     "react": "19.3.1",
@@ -29,5 +30,10 @@
     "typescript": "7.0.2",
     "vite": "8.3.8",
     "vitest": "5.1.0"
+  },
+  "releaseReadiness": {
+    "proposedLicense": "GPL-3.0-only",
+    "ownerApproval": "pending",
+    "publicDistribution": "blocked"
   }
 }

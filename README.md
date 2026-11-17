@@ -32,4 +32,6 @@ Cross-Origin-Embedder-Policy: require-corp
 
 Without those capabilities or when assets fail, the app displays an engine error and keeps local two-player play usable. Reset/undo/mode changes dispose stale engine work. Stop drains a search and preserves the adapter for reuse.
 
-See [actual results](docs/SPIKE_01_RESULTS.md), [measurement evidence](docs/SPIKE_01_EVIDENCE.json), and [licenses/provenance](docs/LICENSE_INVENTORY.md). The repository license decision is deferred. Engine binaries and local `dist/` are **not committed or published**; the local build is not cleared for redistribution. Read the inventory before any release.
+See [actual results](docs/SPIKE_01_RESULTS.md), [measurement evidence](docs/SPIKE_01_EVIDENCE.json), and [licenses/provenance](docs/LICENSE_INVENTORY.md). REL-01 proposes GPL-3.0-only in a **draft** root LICENSE; owner approval is pending. Engine binaries and local `dist/` are **not committed or published**; the local build is not cleared for redistribution.
+
+From a clean committed checkout, `pnpm release:prepare --commit "$(git rev-parse HEAD)"` builds a deterministic, gitignored review packet with exact engine/toolchain source archives, project source at that commit, notices and a hash manifest. It never publishes or approves a release. See the [release/hosting guide and Safari/device smoke steps](docs/REL_01_RELEASE_READINESS.md) for inputs, inspection, limitations and remaining approval gates.

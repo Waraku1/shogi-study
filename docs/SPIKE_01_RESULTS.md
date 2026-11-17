@@ -2,6 +2,8 @@
 
 Date: **2026-11-17 (Asia/Tokyo)**. Recommendation: **CONDITIONAL GO**.
 
+REL-01 follow-up: [release-readiness results](REL_01_RESULTS.md) and [candidate/hosting guide](REL_01_RELEASE_READINESS.md). The measurements below remain the original SPIKE-01 evidence. REL-01 adds a draft GPL-3.0-only proposal (owner approval pending), verified local source packaging, retained toolchain notices and PR CI; it does not publish a release.
+
 The local prototype meets the technical spike acceptance tests on desktop Chromium: legal board, actual WASM AI replies, real MultiPV and independently validated full variations, cancellation, and repeat searches. Redistribution remains gated by the application’s GPL integration/license decision and corresponding-source packaging. No production deployment, infrastructure change, binary release, or merge was performed.
 
 ## Implementation and test environment

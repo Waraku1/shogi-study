@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { createNotices } from './notices.mjs';
 
 const root = new URL('../', import.meta.url);
 const provenance = JSON.parse(await readFile(new URL('docs/engine-provenance.json', root), 'utf8'));
@@ -15,13 +17,7 @@ for (const [filename, expected] of Object.entries(provenance.files)) {
   }
   await writeFile(new URL(filename, target), bytes);
 }
-let notices = `Shogi Study: local technical prototype; repository license decision pending.\n\n` +
-  `${provenance.package}@${pkg.version}: GPLv3 (upstream source: v3 or later).\n` +
-  `Source: ${provenance.sourceUrl}\nSource archive: ${provenance.sourceArchive}\n` +
-  `Unmodified npm binaries. License: /engine/Copying.txt; credits: /engine/AUTHORS.\n` +
-  `Distribution review is still required; see docs/LICENSE_INVENTORY.md in the repository.\n`;
-for (const filename of ['tsshogi-MIT.txt', 'React-MIT.txt', 'React-DOM-MIT.txt', 'Scheduler-MIT.txt']) {
-  notices += `\n\n=== ${filename} ===\n${await readFile(new URL(`docs/licenses/${filename}`, root), 'utf8')}`;
-}
+const inputs = JSON.parse(await readFile(new URL('docs/release-inputs.json', root), 'utf8'));
+const notices = await createNotices(fileURLToPath(root), provenance, inputs);
 await writeFile(new URL('public/THIRD_PARTY_NOTICES.txt', root), notices);
 console.log(`Prepared unmodified ${provenance.package}@${pkg.version} for local testing (GPLv3; see docs/LICENSE_INVENTORY.md).`);

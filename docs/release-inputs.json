@@ -1,0 +1,92 @@
+{
+  "format": 1,
+  "sources": [
+    {
+      "name": "engine",
+      "commit": "b2e693ef1e111233ce3fb40685921708b3276ed6",
+      "url": "https://codeload.github.com/fairy-stockfish/fairy-stockfish.wasm/tar.gz/b2e693ef1e111233ce3fb40685921708b3276ed6",
+      "sha256": "5c10e40812e1045cb13677ff84b3cdd3fca5c381df76245cd4d8eb5312a61bea",
+      "bytes": 383237,
+      "requiredMembers": [
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/Copying.txt",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/AUTHORS",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/Makefile",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/Makefile",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/docker-compose.yml",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/.github/workflows/ci.yml",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/preamble.js"
+      ]
+    },
+    {
+      "name": "emscripten",
+      "commit": "5af6a110ee58ca4a6885fbcad830c92207fefea2",
+      "url": "https://codeload.github.com/emscripten-core/emscripten/tar.gz/5af6a110ee58ca4a6885fbcad830c92207fefea2",
+      "sha256": "732e07b20a642b3b52ca678a525eb148115f6c1b220911515a82f0b4254d5aac",
+      "bytes": 27693189,
+      "requiredMembers": [
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/LICENSE",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/AUTHORS",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libc/musl/COPYRIGHT",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/compiler-rt/LICENSE.TXT",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libcxx/LICENSE.TXT",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libcxxabi/LICENSE.TXT",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libunwind/LICENSE.TXT",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/dlmalloc.c",
+        "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/src/library_pthread.js"
+      ]
+    }
+  ],
+  "notices": {
+    "docs/licenses/Fairy-Stockfish-AUTHORS.txt": {
+      "sha256": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00"
+    },
+    "docs/licenses/Fairy-Stockfish-GPL-3.0.txt": {
+      "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b"
+    },
+    "docs/licenses/React-DOM-MIT.txt": {
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "docs/licenses/React-MIT.txt": {
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "docs/licenses/Scheduler-MIT.txt": {
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "docs/licenses/emscripten/Emscripten-AUTHORS.txt": {
+      "sha256": "433f95f60fc7b4b4beb7099ca8517f05ae436608577a15d3ffc4b4b3902897a8",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/AUTHORS"
+    },
+    "docs/licenses/emscripten/Emscripten-LICENSE.txt": {
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/LICENSE"
+    },
+    "docs/licenses/emscripten/compiler-rt-LICENSE.TXT.txt": {
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/compiler-rt/LICENSE.TXT"
+    },
+    "docs/licenses/emscripten/dlmalloc-header.txt": {
+      "sha256": "224fe0a5e350c4a1d0529646e25168dd65612d1eeb39f79f91ec19a6f6fa1bc3",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/dlmalloc.c",
+      "excerpt": "Public-domain/CC0 dedication excerpt from first upstream comment; complete source in bundled toolchain archive."
+    },
+    "docs/licenses/emscripten/libcxx-LICENSE.TXT.txt": {
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libcxx/LICENSE.TXT"
+    },
+    "docs/licenses/emscripten/libcxxabi-LICENSE.TXT.txt": {
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libcxxabi/LICENSE.TXT"
+    },
+    "docs/licenses/emscripten/libunwind-LICENSE.TXT.txt": {
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libunwind/LICENSE.TXT"
+    },
+    "docs/licenses/emscripten/musl-COPYRIGHT.txt": {
+      "sha256": "70ca142d257e2690a1f8eda8a296e64a6d1b16d8aee6784f8ddcf67f3163635d",
+      "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libc/musl/COPYRIGHT"
+    },
+    "docs/licenses/tsshogi-MIT.txt": {
+      "sha256": "c0ca95de4fb3a389348aa3b19a0a24c3fe154fca7d37a33081e47babb6a7d9e5"
+    }
+  }
+}
