@@ -26,6 +26,7 @@ export class WasmEngineAdapter implements EngineAdapter {
   private stopRequested = false;
   private idle: Promise<void> | null = null;
   private shutdownTimer: ReturnType<typeof setTimeout> | null = null;
+  private shutdownSent = false;
 
   init(): Promise<void> {
     if (this.disposed) return Promise.reject(new Error('Engine disposed'));
@@ -44,6 +45,16 @@ export class WasmEngineAdapter implements EngineAdapter {
         if (this.shutdownTimer) clearTimeout(this.shutdownTimer);
         this.worker?.terminate();
         this.worker = null;
+      } else if (this.disposed) {
+        // Drain a running search (or factory startup) before terminating its
+        // pthread owners. Callers have already been rejected by dispose().
+        if (data.type === 'loaded' || data.type === 'error' ||
+            (data.type === 'line' && String(data.line).startsWith('bestmove '))) this.shutdown();
+        else if (data.type === 'line' && String(data.line).startsWith('info ')) {
+          // The upstream go handler may reset its stop flag while starting a
+          // search. Reassert stop on search output, after that reset has run.
+          this.worker?.postMessage({ type: 'command', command: 'stop' });
+        }
       } else if (data.type === 'error') this.fail(new Error(data.error));
       else if (data.type === 'loaded') {
         this.diagnostics = { name: '', startupMs: 0, wasmMemoryBytes: data.wasmMemoryBytes, multiPvMax: 1, options: [] };
@@ -119,12 +130,20 @@ export class WasmEngineAdapter implements EngineAdapter {
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
+    const searching = !!this.active;
     this.rejectPending(new Error('Engine disposed'));
     const worker = this.worker;
     if (worker) {
-      worker.postMessage({ type: 'dispose' });
-      this.shutdownTimer = setTimeout(() => { worker.terminate(); if (this.worker === worker) this.worker = null; }, 200);
+      this.shutdownTimer = setTimeout(() => { worker.terminate(); if (this.worker === worker) this.worker = null; }, 2000);
+      if (searching) worker.postMessage({ type: 'command', command: 'stop' });
+      else this.shutdown();
     }
+  }
+
+  private shutdown(): void {
+    if (this.shutdownSent) return;
+    this.shutdownSent = true;
+    this.worker?.postMessage({ type: 'dispose' });
   }
 
   private send(command: string): void {

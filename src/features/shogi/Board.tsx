@@ -64,3 +64,9 @@ export function Board({ position, selected, disabled, onSelect, onHand }: Props)
     <p className="board-help">Select a piece, then a highlighted square. Select a captured piece to drop it. Arrow keys move focus; Enter selects.</p>
   </>;
 }
+
+export function focusBoardSquare(usi: string) {
+  for (const node of document.querySelectorAll<HTMLElement>(`[data-square="${usi}"]`)) {
+    if (!node.closest('[hidden]')) { node.focus(); return; }
+  }
+}

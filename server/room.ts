@@ -75,6 +75,7 @@ export class GameRoom extends DurableObject<Env> {
       s.since = null;
       s.seq++;
       this.save(s);
+      this.broadcast(s);
     }
   }
   private snapshot(s: State) {

@@ -790,7 +790,7 @@ const concepts: readonly [
   ],
   [
     "opportunity-cost",
-    "History and philosophy",
+    "Economics",
     "High school",
     "Opportunity cost",
     "What is the opportunity cost of a choice?",

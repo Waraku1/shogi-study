@@ -6,6 +6,7 @@ export const subjects = [
   "Chemistry",
   "Computer science",
   "History and philosophy",
+  "Economics",
 ] as const;
 export type Subject = (typeof subjects)[number];
 export type Difficulty = "High school" | "University";
