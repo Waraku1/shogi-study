@@ -1,3 +1,5 @@
+import { QuickLearn } from '../features/learning/QuickLearn';
+import { guestNamespace } from '../features/learning/types';
 import { Online } from '../features/shogi/Online';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Color, Square } from 'tsshogi';
@@ -14,11 +16,14 @@ type Status = 'idle' | 'loading' | 'ready' | 'searching' | 'error';
 
 export function App() {
   const [online, setOnline] = useState(new URLSearchParams(location.search).has('room'));
+  const [learn, setLearn] = useState(new URLSearchParams(location.search).has('learn'));
+  if (learn) return <main className="learn-page"><button onClick={() => { history.replaceState(null, '', '/'); setLearn(false); }}>Back to practice</button><h1>Learn</h1><p>Original cards, short quizzes, and a simple review queue. No login needed.</p><QuickLearn key={guestNamespace} namespace={guestNamespace} standalone /></main>;
   return online ? <Online back={() => {
     history.replaceState(null, '', '/');
     setOnline(false);
   }} /> : <>
     <button onClick={() => setOnline(true)}>Online rooms</button>
+    <button onClick={() => { history.replaceState(null, '', '?learn=1'); setLearn(true); }}>Learn</button>
     <LocalApp />
   </>;
 }

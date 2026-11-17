@@ -1,3 +1,5 @@
+import { QuickLearn } from '../learning/QuickLearn';
+import { accountNamespace } from '../learning/types';
 import { useEffect, useState } from "react";
 import { Square } from "tsshogi";
 import type { Move } from "tsshogi";
@@ -126,7 +128,7 @@ export function Online({ back }: { back: () => void }) {
   };
   const pos = state ? positionFromSFEN(state.sfen) : null;
   return (
-    <main>
+    <main className="online-room">
       <button disabled={state?.status === "active"} onClick={back}>
         Local practice
       </button>
@@ -228,7 +230,7 @@ export function Online({ back }: { back: () => void }) {
               })
               .join(" · ")}
           </p>
-          <Board
+          <div className="online-learning-layout"><div><Board
             position={pos}
             selected={selected}
             disabled={
@@ -258,6 +260,7 @@ export function Online({ back }: { back: () => void }) {
               else setSelected(null);
             }}
           />
+          </div>{me && <QuickLearn key={me.id} namespace={accountNamespace(me.id)} available={connection === 'Connected' && (state.status === 'waiting' || (state.status === 'active' && state.players[state.ply % 2]?.id !== me.id))} contextKey={`${state.id}:${state.status}:${state.ply}:${connection}`} />}</div>
           {promote && (
             <div role="dialog" aria-label="Choose promotion">
               {promote.map((m) => (
