@@ -142,7 +142,7 @@ export function Online({ back }: { back: () => void }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   provider: "google",
-                  callbackURL: location.origin + "/",
+                  callbackURL: location.href,
                 }),
               });
               const b = await r.json();
