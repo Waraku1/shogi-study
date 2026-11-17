@@ -1,12 +1,16 @@
 /* Local, classic-worker bridge for the upstream Emscripten factory and pthread packaging.
  * The unmodified upstream files are prepared locally, never committed here. */
 let engine;
+let disposing = false;
 // The factory can create pthread workers before its ready promise resolves.
 // Keep those handles so disposal during startup also terminates every child.
 const children = new Set();
 const NativeWorker = self.Worker;
 self.Worker = class extends NativeWorker {
-  constructor(...args) { super(...args); children.add(this); }
+  constructor(...args) {
+    if (disposing) throw new Error('Engine host disposed');
+    super(...args); children.add(this);
+  }
   terminate() { children.delete(this); super.terminate(); }
 };
 self.onmessage = async ({ data }) => {
@@ -24,7 +28,11 @@ self.onmessage = async ({ data }) => {
       if (!engine) throw new Error('Engine has not loaded');
       engine.postMessage(data.command);
     } else if (data.type === 'dispose') {
-      engine?.terminate();
+      disposing = true;
+      // Discard the complete runtime. The upstream terminate() also frees WASM
+      // allocations after killing pthreads, which can wait on a lock held by a
+      // killed search thread. No allocator cleanup is needed when all owners of
+      // this shared heap are being terminated together.
       for (const child of children) child.terminate();
       self.postMessage({ type: 'disposed' });
       self.close();

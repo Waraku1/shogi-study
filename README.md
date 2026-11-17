@@ -1,6 +1,6 @@
-# Shogi Study — SPIKE-01
+# Shogi Study — local MVP
 
-Local English-language Shogi prototype: legal 9×9 board, two-player or human-vs-WASM play, and real MultiPV analysis with independent variation previews. No accounts, backend, deployment, or online play.
+English-language Shogi prototype: legal 9×9 board, two-player or human-vs-WASM play, authenticated online rooms, learning cards, and saved-game replay with real MultiPV analysis. Run the browser and optional Workers API locally; this project is not cleared for public distribution.
 
 Tested with Node **24.22.1** and pnpm **11.25.0**.
 
@@ -36,6 +36,15 @@ See [actual results](docs/SPIKE_01_RESULTS.md), [measurement evidence](docs/SPIK
 
 From a clean committed checkout, `pnpm release:prepare --commit "$(git rev-parse HEAD)"` builds a deterministic, gitignored review packet with exact engine/toolchain source archives, project source at that commit, notices and a hash manifest. It never publishes or approves a release. See the [release/hosting guide and Safari/device smoke steps](docs/REL_01_RELEASE_READINESS.md) for inputs, inspection, limitations and remaining approval gates.
 
-PHASE-02 adds an online-room view and a local Workers/D1/SQLite Durable Object API. Run `pnpm exec wrangler d1 execute shogi-local --local --file migrations/0001_auth.sql`, then `pnpm dev:api` alongside `pnpm dev`; open **http://localhost:5173**. Google sign-in intentionally blocks without configuration. `pnpm test:online` starts the isolated test-identity harness and runs real two-context integration; it never impersonates a real Google login. See [PHASE-02 results and configuration](docs/PHASE_02_RESULTS.md).
+PHASE-02 adds an online-room view and a local Workers/D1/SQLite Durable Object API. Apply both local migrations, then run `pnpm dev:api` alongside `pnpm dev`; open **http://localhost:5173**:
+
+```sh
+pnpm exec wrangler d1 execute shogi-local --local --file migrations/0001_auth.sql
+pnpm exec wrangler d1 execute shogi-local --local --file migrations/0002_player_rooms.sql
+```
+
+Google sign-in intentionally blocks without configuration. `pnpm test:online` applies both migrations in the isolated test-identity harness and runs real two-context integration; it never impersonates a real Google login. See [PHASE-02 results and configuration](docs/PHASE_02_RESULTS.md).
 
 PHASE-03: choose **Learn** (no login) for 124 original cards and mini-quizzes. **Quick Learn** in online rooms is off by default; enabling it only shows cards while waiting or while the opponent moves, and collapses them when play returns to you. Preferences and review status stay in this browser's IndexedDB, separately for each account and guest-local study. Wait for the saving indicator to clear before reloading. Reset requires confirmation and affects only the current profile. If storage is unavailable, an explicit warning labels the memory-only fallback. See [PHASE-03 results](docs/PHASE_03_RESULTS.md).
+
+PHASE-04: **Play / Learn / Review** share one navigation. Practice games autosave as you play; finished online games save for the participant's account on this device. **Review** lists the newest 50 games for the current profile, with replay/jump, WASM candidates and independent future variations. Export or import standard-start Shogi Study JSON v1 (64 KiB / 512 plies); unsupported formats and illegal moves are rejected. Export important records before browser storage is cleared. Wait for saving to complete before reload. Unavailable storage is explicitly labeled memory only. Review and engine assistance are blocked during active online matches, including fresh views. The web manifest and icon are metadata only: there is no service worker or full-offline claim. See [PHASE-04 results and manual checks](docs/PHASE_04_RESULTS.md).

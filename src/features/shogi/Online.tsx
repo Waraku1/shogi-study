@@ -1,9 +1,11 @@
+import { observeOnline, refreshAccess } from '../review/access';
+import { saveGame } from '../review/store';
 import { QuickLearn } from '../learning/QuickLearn';
 import { accountNamespace } from '../learning/types';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Square } from "tsshogi";
 import type { Move } from "tsshogi";
-import { Board } from "./Board";
+import { Board, focusBoardSquare } from "./Board";
 import { positionFromSFEN, legalMoves } from "./game";
 import type { MoveSource } from "./game";
 type Snapshot = {
@@ -45,6 +47,13 @@ export function Online({ back }: { back: () => void }) {
     [tick, setTick] = useState(Date.now()),
     [received, setReceived] = useState(Date.now()),
     [retry, setRetry] = useState(0);
+  const promotionTarget=useRef<string|null>(null);
+  useEffect(()=>{if(!promote&&promotionTarget.current){focusBoardSquare(promotionTarget.current);promotionTarget.current=null;}},[promote]);
+  const [archiveNotice,setArchiveNotice]=useState('');
+  useEffect(()=>{if(!me||!state)return;observeOnline(me.id,state.status,state.id);if(state.status==='finished'){
+    setArchiveNotice('Saving finished game…');
+    void saveGame(accountNamespace(me.id),{source:'shogi-study',version:1,id:state.id,mode:'online',moves:[...state.moves],result:{status:'finished',text:state.result??'Finished online game'},savedAt:Date.now(),publicNames:state.players.map(p=>p.displayName)}).then(setArchiveNotice,e=>setArchiveNotice(`Game could not be saved: ${String(e)}`));
+  }},[me?.id,state?.status,state?.id]);
   useEffect(() => {
     api("/me")
       .then((b) => setMe(b.user))
@@ -167,6 +176,7 @@ export function Online({ back }: { back: () => void }) {
                 setMe(null);
                 setState(null);
                 socket?.close();
+                void refreshAccess();
               } catch (e) {
                 setError(String(e));
               }
@@ -205,7 +215,7 @@ export function Online({ back }: { back: () => void }) {
               {location.origin}/?room={state.id}
             </a>
           </p>
-          <h2>
+          <h2 aria-live="polite">
             {state.result ??
               (state.status === "waiting"
                 ? "Waiting for opponent"
@@ -251,7 +261,7 @@ export function Online({ back }: { back: () => void }) {
                   return;
                 }
                 if (options.length > 1) {
-                  setPromote(options);
+                  promotionTarget.current=sq.usi;setPromote(options);
                   return;
                 }
                 setError("Illegal move");
@@ -276,6 +286,7 @@ export function Online({ back }: { back: () => void }) {
           >
             Resign online game
           </button>
+          {archiveNotice&&<p role="status">{archiveNotice}</p>}
           <ol data-testid="online-record">
             {state.moves.map((m, i) => (
               <li key={i}>{m}</li>

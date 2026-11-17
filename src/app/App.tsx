@@ -1,10 +1,14 @@
+import { Review } from '../features/review/Review';
+import { useAccess, refreshAccess, assertAnalysisAllowed } from '../features/review/access';
+import { saveGame } from '../features/review/store';
+import '../features/review/review.css';
 import { QuickLearn } from '../features/learning/QuickLearn';
 import { guestNamespace } from '../features/learning/types';
 import { Online } from '../features/shogi/Online';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Color, Square } from 'tsshogi';
 import type { Move, Position } from 'tsshogi';
-import { Board } from '../features/shogi/Board';
+import { Board, focusBoardSquare } from '../features/shogi/Board';
 import { LocalGame, isLegalUSI, legalMoves, sideName, validatePV } from '../features/shogi/game';
 import type { MoveSource } from '../features/shogi/game';
 import { WasmEngineAdapter } from '../features/engine/adapter';
@@ -15,26 +19,40 @@ type Analysis = { result: SearchResult; base: Position; ply: number };
 type Status = 'idle' | 'loading' | 'ready' | 'searching' | 'error';
 
 export function App() {
-  const [online, setOnline] = useState(new URLSearchParams(location.search).has('room'));
-  const [learn, setLearn] = useState(new URLSearchParams(location.search).has('learn'));
-  if (learn) return <main className="learn-page"><button onClick={() => { history.replaceState(null, '', '/'); setLearn(false); }}>Back to practice</button><h1>Learn</h1><p>Original cards, short quizzes, and a simple review queue. No login needed.</p><QuickLearn key={guestNamespace} namespace={guestNamespace} standalone /></main>;
-  return online ? <Online back={() => {
-    history.replaceState(null, '', '/');
-    setOnline(false);
-  }} /> : <>
-    <button onClick={() => setOnline(true)}>Online rooms</button>
-    <button onClick={() => { history.replaceState(null, '', '?learn=1'); setLearn(true); }}>Learn</button>
-    <LocalApp />
+  const query = new URLSearchParams(location.search);
+  const [view, setView] = useState<'play'|'learn'|'review'>(query.has('learn')?'learn':query.has('review')?'review':'play');
+  const [onlineOpen,setOnlineOpen]=useState(query.has('room'));
+  const [onlineShown,setOnlineShown]=useState(query.has('room'));
+  const [onlineKey,setOnlineKey]=useState(query.get('room')??'new');
+  const access=useAccess();
+  function navigate(next:'play'|'learn'|'review') { setView(next);history.replaceState(null,'',next==='play'?(onlineShown?`?room=${onlineKey}`:'/'):next==='learn'?'?learn=1':'?review=1');void refreshAccess(); }
+  function online(id?:string){history.replaceState(null,'',id?`?room=${id}`:'?room=');setOnlineKey(id??onlineKey);setOnlineOpen(true);setOnlineShown(true);setView('play');void refreshAccess();}
+  useEffect(()=>{if(access.blocked)setOnlineShown(true);},[access.blocked]);
+  return <>
+    <nav className="app-nav" aria-label="Main navigation">
+      <button aria-current={view==='play'?'page':undefined} onClick={()=>navigate('play')}>Play</button>
+      <button aria-current={view==='learn'?'page':undefined} onClick={()=>navigate('learn')}>Learn</button>
+      <button aria-current={view==='review'?'page':undefined} disabled={access.blocked||access.checking} onClick={()=>navigate('review')}>Review</button>
+      <button onClick={()=>online()}>Online rooms</button>
+    </nav>
+    {access.reason&&<div className="access-notice" role="status">{access.reason}{access.activeRooms.map(id=><button key={id} onClick={()=>online(id)}>Resume online room</button>)}</div>}
+    {access.checking&&<p role="status">Checking play status…</p>}
+    <div hidden={view!=='play'||onlineShown||access.blocked||access.checking}>{access.namespace&&<LocalApp key={access.namespace} namespace={access.namespace} analysisBlocked={access.blocked} visible={view==='play'&&!onlineShown&&!access.blocked&&!access.checking}/>}</div>
+    {onlineOpen&&<div hidden={view!=='play'||!onlineShown}><Online key={onlineKey} back={()=>{setOnlineShown(false);history.replaceState(null,'','/');void refreshAccess();}}/></div>}
+    {view==='learn'&&<main className="learn-page"><button onClick={()=>navigate('play')}>Back to practice</button><h1>Learn</h1><p>Original cards, short quizzes, and a simple review queue. No login needed.</p><QuickLearn key={guestNamespace} namespace={guestNamespace} standalone/></main>}
+    {view==='review'&&(access.checking||access.blocked||!access.namespace?<main><h1>Review paused</h1><p role="status">Finish or reconnect to your online match before using Review.</p></main>:<Review key={access.namespace} namespace={access.namespace} blocked={access.blocked}/>)}
   </>;
 }
 
-function LocalApp() {
+function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysisBlocked:boolean;visible:boolean}) {
   const [game, setGame] = useState(() => new LocalGame());
   const [revision, setRevision] = useState(0);
   const [mode, setMode] = useState<'local' | 'ai'>('local');
   const [budget, setBudget] = useState(500);
   const [selected, setSelected] = useState<MoveSource | null>(null);
   const [promotion, setPromotion] = useState<Move[] | null>(null);
+  const promotionTarget=useRef<string|null>(null);
+  useEffect(()=>{if(!promotion&&visible&&promotionTarget.current){focusBoardSquare(promotionTarget.current);promotionTarget.current=null;}},[promotion,visible]);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('Black moves first.');
@@ -44,6 +62,9 @@ function LocalApp() {
   const [previewPly, setPreviewPly] = useState(0);
   const engine = useRef<WasmEngineAdapter | null>(null);
   const generation = useRef(0);
+  const archiveId=useRef(crypto.randomUUID());
+  const archived=useRef(false);
+  const [archiveNotice,setArchiveNotice]=useState('Games are saved on this device as you play.');
   const running = useRef(false);
   const outcome = useMemo(() => game.outcome, [game, revision]);
   const position = game.position;
@@ -60,6 +81,14 @@ function LocalApp() {
   }, [analysis, candidate, previewPly]);
 
   useEffect(() => () => { generation.current++; engine.current?.dispose(); }, []);
+  useEffect(()=>{if(analysisBlocked)cancelWork();},[analysisBlocked]);
+  function saveCurrent(){
+    if(analysisBlocked)return;
+    archived.current=true;setArchiveNotice('Saving game…');
+    void saveGame(namespace,{source:'shogi-study',version:1,id:archiveId.current,mode,moves:[...game.moves],result:{status:outcome?'finished':'unfinished',text:outcome?`${outcome.winner??'Draw'}: ${outcome.reason}`:'Unfinished practice'},savedAt:Date.now()}).then(setArchiveNotice,e=>setArchiveNotice(`Game could not be saved: ${String(e)}`));
+  }
+  useEffect(()=>{if(game.moves.length||outcome||archived.current)saveCurrent();},[game,revision,mode,namespace]);
+
   useEffect(() => {
     if (mode === 'ai' && game.position.color === Color.WHITE && !game.outcome) void runSearch(true);
     // The position revision triggers one reply; stopping leaves the turn paused.
@@ -80,6 +109,7 @@ function LocalApp() {
     clearAnalysis();
   }
   function reset(nextMode = mode) {
+    archiveId.current=crypto.randomUUID();archived.current=false;
     cancelWork(); setMode(nextMode); setGame(new LocalGame()); setRevision(0); setNotice('New game. Black moves first.');
   }
   function play(usi: string) {
@@ -91,7 +121,7 @@ function LocalApp() {
     if (selected) {
       const options = [...legalMoves(position, selected)].filter(move => move.to.equals(square));
       if (options.length === 1) { play(options[0].usi); return; }
-      if (options.length > 1) { setPromotion(options); return; }
+      if (options.length > 1) { promotionTarget.current=square.usi;setPromotion(options); return; }
       setNotice('That move is not legal. Choose a highlighted destination.');
     }
     const piece = position.board.at(square);
@@ -107,11 +137,15 @@ function LocalApp() {
     setError(''); setSelected(null); setPromotion(null); clearAnalysis();
     try {
       setStatus('loading');
+      await assertAnalysisAllowed();
+      if(token!==generation.current)return;
       await adapter.init();
       if (token !== generation.current) return;
       setDiagnostics(adapter.diagnostics);
       setStatus('searching');
       const result = await adapter.search({ kind: 'startpos', moves: game.moves }, { maxTimeMs: budget, multiPv: 3 });
+      if (token !== generation.current) return;
+      await assertAnalysisAllowed();
       if (token !== generation.current) return;
       if (result.bestMoveUSI && !isLegalUSI(base, result.bestMoveUSI)) throw new Error(`Engine returned an illegal best move: ${result.bestMoveUSI}`);
       if (result.candidates.some(line => !validatePV(base, line.pvUSI))) throw new Error('Engine returned an illegal candidate variation; result rejected.');
@@ -141,6 +175,7 @@ function LocalApp() {
     finally { if (token === generation.current) running.current = false; }
   }
 
+  if (!visible) return null;
   return <div className="app-shell">
     <header className="site-header">
       <a className="wordmark" href="/" aria-label="Shogi Study home"><span className="brand-mark">歩</span>SHOGI <b>STUDY</b></a>
@@ -152,7 +187,7 @@ function LocalApp() {
       <div className="workspace">
         <section className="play-panel" aria-label="Local Shogi game">
           <div className="panel-top"><div><p className="eyebrow">{preview ? 'VARIATION PREVIEW' : mode === 'ai' ? 'HUMAN VS WASM AI' : 'TWO PLAYERS · ONE BOARD'}</p>
-            <h2>{preview ? `Variation · ply ${previewPly}` : outcome ? `${outcome.winner ? `${sideName(outcome.winner)} wins` : 'Draw'}` : `${sideName(position.color)} to move`}</h2>
+            <h2 aria-live="polite">{preview ? `Variation · ply ${previewPly}` : outcome ? `${outcome.winner ? `${sideName(outcome.winner)} wins` : 'Draw'}` : `${sideName(position.color)} to move`}</h2>
           </div><span className={`turn-token ${position.color}`}>{preview ? 'PREVIEW' : outcome ? 'FINISHED' : position.checked ? 'CHECK' : `MOVE ${game.moves.length + 1}`}</span></div>
           {outcome && <p className="outcome" role="status">{outcome.reason}. {outcome.winner ? `${sideName(outcome.winner)} wins.` : 'The game is drawn.'}</p>}
           {preview && <button className="return-button" onClick={() => setPreviewPly(0)}>← Return to game</button>}
@@ -176,7 +211,7 @@ function LocalApp() {
               cancelWork(); game.resign(); setRevision(value => value + 1);
             }}>Resign</button>
           </div>
-          <p className="live-notice" aria-live="polite">{notice}</p>
+          <p className="live-notice" aria-live="polite">{notice}</p><button disabled={analysisBlocked} onClick={saveCurrent}>Save game</button><p role="status">{archiveNotice}</p>
         </section>
         <aside className="sidebar">
           <section className="card settings"><p className="eyebrow">MAKE IT YOUR GAME</p><h2>Practice room</h2>

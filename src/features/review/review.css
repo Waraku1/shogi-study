@@ -1,0 +1,81 @@
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #fafaf6;
+  border-bottom: 1px solid #dce4d5;
+}
+.app-nav button[aria-current="page"] {
+  background: #284f3e;
+  color: white;
+}
+.review-page section {
+  background: white;
+  border: 1px solid #dce4d5;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 18px 0;
+  min-width: 0;
+}
+.review-page ul {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow: auto;
+}
+.review-page li,
+.review-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+.review-page textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  font: 12px/1.5 monospace;
+}
+.review-page label {
+  display: block;
+  margin: 10px 0;
+}
+.review-page code {
+  display: block;
+  overflow-wrap: anywhere;
+  margin: 16px 0;
+}
+.review-page .board {
+  max-width: 650px;
+}
+.review-candidates {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.review-page p,
+.review-page button {
+  overflow-wrap: anywhere;
+}
+[hidden] {
+  display: none !important;
+}
+.access-notice {
+  padding: 12px 24px;
+  background: #fff3dd;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 500px) {
+  .app-nav {
+    padding: 10px;
+  }
+  .review-page section {
+    padding: 12px;
+  }
+  .review-page button {
+    max-width: 100%;
+  }
+}

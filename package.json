@@ -15,7 +15,7 @@
     "preview": "vite preview --host 0.0.0.0",
     "release:prepare": "pnpm build && node --use-env-proxy scripts/prepare-release.mjs",
     "dev:api": "wrangler dev --local --port 8787",
-    "test:online": "wrangler d1 execute shogi-local --local --config wrangler.test.json --file migrations/0001_auth.sql && playwright test --config playwright.online.config.ts"
+    "test:online": "wrangler d1 execute shogi-local --local --config wrangler.test.json --file migrations/0001_auth.sql && wrangler d1 execute shogi-local --local --config wrangler.test.json --file migrations/0002_player_rooms.sql && playwright test --config playwright.online.config.ts"
   },
   "dependencies": {
     "better-auth": "1.7.25",
