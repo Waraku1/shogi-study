@@ -9,18 +9,23 @@
     "engine:prepare": "node scripts/prepare-engine.mjs",
     "dev": "node scripts/prepare-engine.mjs && vite --host 0.0.0.0",
     "build": "node scripts/prepare-engine.mjs && tsc --noEmit && vite build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json",
     "test": "vitest run",
     "test:browser": "playwright test",
     "preview": "vite preview --host 0.0.0.0",
-    "release:prepare": "pnpm build && node --use-env-proxy scripts/prepare-release.mjs"
+    "release:prepare": "pnpm build && node --use-env-proxy scripts/prepare-release.mjs",
+    "dev:api": "wrangler dev --local --port 8787",
+    "test:online": "wrangler d1 execute shogi-local --local --config wrangler.test.json --file migrations/0001_auth.sql && playwright test --config playwright.online.config.ts"
   },
   "dependencies": {
+    "better-auth": "1.7.25",
+    "drizzle-orm": "0.45.4",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "tsshogi": "2.3.4"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "5.20261115.1",
     "@playwright/test": "1.65.1",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
@@ -29,7 +34,8 @@
     "fairy-stockfish-nnue.wasm": "1.1.12",
     "typescript": "7.0.2",
     "vite": "8.3.8",
-    "vitest": "5.1.0"
+    "vitest": "5.1.0",
+    "wrangler": "4.162.0"
   },
   "releaseReadiness": {
     "proposedLicense": "GPL-3.0-only",

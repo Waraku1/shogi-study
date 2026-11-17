@@ -6,3 +6,5 @@ public/engine/
 public/THIRD_PARTY_NOTICES.txt
 work/
 *.local
+.wrangler/
+.dev.vars*

@@ -1,3 +1,4 @@
+import { Online } from '../features/shogi/Online';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Color, Square } from 'tsshogi';
 import type { Move, Position } from 'tsshogi';
@@ -12,6 +13,17 @@ type Analysis = { result: SearchResult; base: Position; ply: number };
 type Status = 'idle' | 'loading' | 'ready' | 'searching' | 'error';
 
 export function App() {
+  const [online, setOnline] = useState(new URLSearchParams(location.search).has('room'));
+  return online ? <Online back={() => {
+    history.replaceState(null, '', '/');
+    setOnline(false);
+  }} /> : <>
+    <button onClick={() => setOnline(true)}>Online rooms</button>
+    <LocalApp />
+  </>;
+}
+
+function LocalApp() {
   const [game, setGame] = useState(() => new LocalGame());
   const [revision, setRevision] = useState(0);
   const [mode, setMode] = useState<'local' | 'ai'>('local');
