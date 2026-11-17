@@ -14,6 +14,12 @@ tsshogi 2.3.4 — Copyright (c) 2023 Kubo, Ryosuke, MIT.
 React / React DOM 19.3.1, scheduler 0.28.0 — Meta Platforms, Inc. and affiliates,
 MIT. Full license texts are retained in docs/licenses/ and runtime notices.
 
+Vite 8.3.8 module-preload helper — VoidZero Inc. and Vite contributors, MIT.
+Rolldown 1.2.19 generated runtime — VoidZero Inc. & Contributors, MIT;
+upstream Rollup/esbuild MIT attributions are retained alongside it.
+These generated helpers are in the browser bundle; the build tools themselves
+are not distributed as executable dependencies of this browser candidate.
+
 Emscripten 2.0.26 (5af6a110ee58ca4a6885fbcad830c92207fefea2):
 MIT / University of Illinois-NCSA; includes Node.js MIT portions. Linked-runtime
 scope includes musl libc, pthread/JS glue, allocator, compiler-rt and C++ runtime.
@@ -26,3 +32,7 @@ The local release-preparation command packages exact engine and Emscripten
 source archives with hashes, project source at the candidate commit, these
 notices and build instructions. It does not publish anything. See
 docs/REL_01_RELEASE_READINESS.md and docs/LICENSE_INVENTORY.md for limitations.
+REL-02 additionally includes pinned preferred React/React DOM, Scheduler,
+tsshogi and generated-helper source archives. No Worker/backend executable
+is included. Byte-identical engine rebuilding is optional assurance, not an
+automatic GPL requirement; owner approval and source-delivery review remain open.

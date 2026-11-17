@@ -14,7 +14,11 @@
         "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/Makefile",
         "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/docker-compose.yml",
         "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/.github/workflows/ci.yml",
-        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/preamble.js"
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/preamble.js",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/emscripten/worker-postamble.js",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/variant.cpp",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/position.cpp",
+        "fairy-stockfish.wasm-b2e693ef1e111233ce3fb40685921708b3276ed6/src/uci.cpp"
       ]
     },
     {
@@ -34,6 +38,74 @@
         "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/dlmalloc.c",
         "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/src/library_pthread.js"
       ]
+    },
+    {
+      "name": "react",
+      "commit": "61aa00df822d0eb76d0362eb8b6fdd3527693efe",
+      "url": "https://codeload.github.com/react/react/tar.gz/61aa00df822d0eb76d0362eb8b6fdd3527693efe",
+      "sha256": "df6b860384f0be8bf6e3ca6ce970226c6be70be2f2cf1cb5ed0c7567b8e4dede",
+      "bytes": 10260909,
+      "requiredMembers": [
+        "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/LICENSE",
+        "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/ReactVersions.js",
+        "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/packages/react/src/ReactClient.js",
+        "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/packages/react-dom/src/client/ReactDOMClient.js",
+        "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/scripts/rollup/build.js",
+        "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/package.json"
+      ]
+    },
+    {
+      "name": "scheduler",
+      "commit": "1d34f91dfde6bba84d08b683aaba164c7194dacb",
+      "url": "https://codeload.github.com/react/react/tar.gz/1d34f91dfde6bba84d08b683aaba164c7194dacb",
+      "sha256": "ef34c2ad2fe4af769cdc8a067d827fbba8fde677d83f5befaa8a8cc5c3a8c6be",
+      "bytes": 10252630,
+      "requiredMembers": [
+        "react-1d34f91dfde6bba84d08b683aaba164c7194dacb/LICENSE",
+        "react-1d34f91dfde6bba84d08b683aaba164c7194dacb/packages/scheduler/src/forks/Scheduler.js",
+        "react-1d34f91dfde6bba84d08b683aaba164c7194dacb/scripts/rollup/build.js",
+        "react-1d34f91dfde6bba84d08b683aaba164c7194dacb/package.json"
+      ]
+    },
+    {
+      "name": "tsshogi",
+      "commit": "bec83166c011eb662ee963f04ddb3fe2eb584c99",
+      "url": "https://codeload.github.com/sunfish-shogi/tsshogi/tar.gz/bec83166c011eb662ee963f04ddb3fe2eb584c99",
+      "sha256": "339c3b19a58a820737adb7b4f4699b7ece019c76d31416cf5890c5d2f424e10f",
+      "bytes": 243910,
+      "requiredMembers": [
+        "tsshogi-bec83166c011eb662ee963f04ddb3fe2eb584c99/LICENSE",
+        "tsshogi-bec83166c011eb662ee963f04ddb3fe2eb584c99/src/index.ts",
+        "tsshogi-bec83166c011eb662ee963f04ddb3fe2eb584c99/src/position.ts",
+        "tsshogi-bec83166c011eb662ee963f04ddb3fe2eb584c99/vite.config.ts",
+        "tsshogi-bec83166c011eb662ee963f04ddb3fe2eb584c99/package.json"
+      ]
+    },
+    {
+      "name": "vite",
+      "commit": "b39e6e63dcbfc3cf4be871acf3554efbd6d0e268",
+      "url": "https://codeload.github.com/vitejs/vite/tar.gz/b39e6e63dcbfc3cf4be871acf3554efbd6d0e268",
+      "sha256": "05b7fc7a712f0dc159ac2c30b022d9f37e718e888b8d029b91e8c65864cb4e30",
+      "bytes": 13002838,
+      "requiredMembers": [
+        "vite-b39e6e63dcbfc3cf4be871acf3554efbd6d0e268/LICENSE",
+        "vite-b39e6e63dcbfc3cf4be871acf3554efbd6d0e268/packages/vite/src/node/plugins/modulePreloadPolyfill.ts",
+        "vite-b39e6e63dcbfc3cf4be871acf3554efbd6d0e268/package.json"
+      ]
+    },
+    {
+      "name": "rolldown",
+      "commit": "b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab",
+      "url": "https://codeload.github.com/rolldown/rolldown/tar.gz/b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab",
+      "sha256": "43b03063f86d0010194ac9d77d40e39c5c819839b5066758f1ee5f37fc38b549",
+      "bytes": 6556492,
+      "requiredMembers": [
+        "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/LICENSE",
+        "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/crates/rolldown/src/runtime/runtime-base.js",
+        "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/packages/rolldown/package.json",
+        "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/package.json",
+        "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/THIRD-PARTY-LICENSE"
+      ]
     }
   ],
   "notices": {
@@ -44,13 +116,19 @@
       "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b"
     },
     "docs/licenses/React-DOM-MIT.txt": {
-      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "upstreamSource": "react",
+      "upstreamPath": "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/LICENSE"
     },
     "docs/licenses/React-MIT.txt": {
-      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "upstreamSource": "react",
+      "upstreamPath": "react-61aa00df822d0eb76d0362eb8b6fdd3527693efe/LICENSE"
     },
     "docs/licenses/Scheduler-MIT.txt": {
-      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "upstreamSource": "scheduler",
+      "upstreamPath": "react-1d34f91dfde6bba84d08b683aaba164c7194dacb/LICENSE"
     },
     "docs/licenses/emscripten/Emscripten-AUTHORS.txt": {
       "sha256": "433f95f60fc7b4b4beb7099ca8517f05ae436608577a15d3ffc4b4b3902897a8",
@@ -86,7 +164,74 @@
       "upstreamPath": "emscripten-5af6a110ee58ca4a6885fbcad830c92207fefea2/system/lib/libc/musl/COPYRIGHT"
     },
     "docs/licenses/tsshogi-MIT.txt": {
-      "sha256": "c0ca95de4fb3a389348aa3b19a0a24c3fe154fca7d37a33081e47babb6a7d9e5"
+      "sha256": "c0ca95de4fb3a389348aa3b19a0a24c3fe154fca7d37a33081e47babb6a7d9e5",
+      "upstreamSource": "tsshogi",
+      "upstreamPath": "tsshogi-bec83166c011eb662ee963f04ddb3fe2eb584c99/LICENSE"
+    },
+    "docs/licenses/vite-MIT.txt": {
+      "sha256": "692057af3d664cbb79ac38293eb50aa3c4987f8182e2a440136e59e08f1b4a54",
+      "upstreamSource": "vite",
+      "upstreamPath": "vite-b39e6e63dcbfc3cf4be871acf3554efbd6d0e268/LICENSE"
+    },
+    "docs/licenses/rolldown-MIT.txt": {
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "upstreamSource": "rolldown",
+      "upstreamPath": "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/LICENSE"
+    },
+    "docs/licenses/rolldown-THIRD-PARTY-LICENSE.txt": {
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "upstreamSource": "rolldown",
+      "upstreamPath": "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/THIRD-PARTY-LICENSE"
+    }
+  },
+  "browserRuntime": {
+    "react": {
+      "version": "19.3.1",
+      "license": "MIT",
+      "source": "react",
+      "notice": "docs/licenses/React-MIT.txt",
+      "packageLicense": "LICENSE",
+      "packageLicenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "react-dom": {
+      "version": "19.3.1",
+      "license": "MIT",
+      "source": "react",
+      "notice": "docs/licenses/React-DOM-MIT.txt",
+      "packageLicense": "LICENSE",
+      "packageLicenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "scheduler": {
+      "version": "0.28.0",
+      "license": "MIT",
+      "source": "scheduler",
+      "notice": "docs/licenses/Scheduler-MIT.txt",
+      "packageLicense": "LICENSE",
+      "packageLicenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "tsshogi": {
+      "version": "2.3.4",
+      "license": "MIT",
+      "source": "tsshogi",
+      "notice": "docs/licenses/tsshogi-MIT.txt",
+      "packageLicense": "LICENSE",
+      "packageLicenseSha256": "c0ca95de4fb3a389348aa3b19a0a24c3fe154fca7d37a33081e47babb6a7d9e5"
+    },
+    "vite": {
+      "version": "8.3.8",
+      "license": "MIT",
+      "source": "vite",
+      "notice": "docs/licenses/vite-MIT.txt",
+      "packageLicense": "LICENSE.md",
+      "packageLicenseSha256": "a22152baa1aef74402443008e767e7c689a524c0909d19b0431d97f5ab066a13"
+    },
+    "rolldown": {
+      "version": "1.2.19",
+      "license": "MIT",
+      "source": "rolldown",
+      "notice": "docs/licenses/rolldown-MIT.txt",
+      "packageLicense": "LICENSE",
+      "packageLicenseSha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734"
     }
   }
 }
