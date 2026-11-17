@@ -45,6 +45,9 @@ importers:
       fairy-stockfish-nnue.wasm:
         specifier: 1.1.12
         version: 1.1.12
+      fake-indexeddb:
+        specifier: 6.2.8
+        version: 6.2.8
       typescript:
         specifier: 7.0.2
         version: 7.0.2
@@ -1056,6 +1059,10 @@ packages:
   fairy-stockfish-nnue.wasm@1.1.12:
     resolution: {integrity: sha512-E0z5fvgZgIK0NoLmI6krWt5g362G4mZguANy8obTXL7EFPzyOyQn9A8OmBcjRe/s4see2s9okfULTGVnCu+1XQ==}
 
+  fake-indexeddb@6.2.8:
+    resolution: {integrity: sha512-mpVW/HLUqwKXJ6F/s0hMgdK1eQfM4ncTHDioNGHWL0WKV3VcZCoZq1NKgboBbAge07aRCO7L48yziKssL59XEQ==}
+    engines: {node: '>=18'}
+
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
@@ -2001,6 +2008,8 @@ snapshots:
   expect-type@1.4.0: {}
 
   fairy-stockfish-nnue.wasm@1.1.12: {}
+
+  fake-indexeddb@6.2.8: {}
 
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:

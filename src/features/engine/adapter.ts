@@ -72,7 +72,9 @@ export class WasmEngineAdapter implements EngineAdapter {
       this.diagnostics!.multiPvMax = this.findOption('USI_MultiPV', 'MultiPV')?.max ?? 1;
       this.diagnostics!.options = this.options.map(option => option.line);
     } catch (error) {
-      this.fail(error instanceof Error ? error : new Error(String(error)));
+      // dispose already rejected callers; let its worker shutdown handshake clean
+      // up pending pthreads instead of terminating their host mid-initialization.
+      if (!this.disposed) this.fail(error instanceof Error ? error : new Error(String(error)));
       throw error;
     }
   }
