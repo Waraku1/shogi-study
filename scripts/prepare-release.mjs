@@ -5,10 +5,11 @@ import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { createNotices } from './notices.mjs';
+import { verifyBrowserBuild } from './browser-source.mjs';
 
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = async path => JSON.parse(await readFile(path, 'utf8'));
-const run = (root, command, args) => execFileSync(command, args, { cwd: root, maxBuffer: 64 * 1024 * 1024 });
+const run = (root, command, args) => execFileSync(command, args, { cwd: root, maxBuffer: 256 * 1024 * 1024 });
 const git = (root, ...args) => run(root, 'git', args).toString().trim();
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 
@@ -90,13 +91,15 @@ export async function prepareCandidate({ root, commit = 'HEAD', offline = false 
   check(await readFile(join(root, 'dist/THIRD_PARTY_NOTICES.txt'), 'utf8') === runtimeNotices, 'Built notices are stale or incomplete');
   check((await readFile(join(root, 'dist/index.html'), 'utf8')).includes('/assets/'), 'Missing built app entry');
   check(sha256(await readFile(join(root, 'dist/engine-host.js'))) === sha256(await readFile(join(root, 'public/engine-host.js'))), 'Built engine bridge is stale');
+  const browser = inputs.browserRuntime ? await verifyBrowserBuild(root, inputs, revision) : null;
   const sources = [];
   for (const spec of inputs.sources) sources.push({ spec, path: await sourceInput(root, spec, offline) });
   // Verify copied toolchain notices actually match their archived upstream text.
-  const toolchain = sources.find(s => s.spec.name === 'emscripten');
   for (const [path, spec] of Object.entries(inputs.notices)) {
     if (!spec.upstreamPath) continue;
-    const upstream = run(root, 'tar', ['-xOzf', toolchain.path, spec.upstreamPath]);
+    const origin = sources.find(s => s.spec.name === (spec.upstreamSource ?? 'emscripten'));
+    check(origin, `Missing notice source: ${path}`);
+    const upstream = run(root, 'tar', ['-xOzf', origin.path, spec.upstreamPath]);
     const copy = await readFile(join(root, path));
     check(spec.excerpt ? upstream.includes(copy.subarray(0, -1)) : upstream.equals(copy), `Notice does not match toolchain source: ${path}`);
   }
@@ -108,7 +111,7 @@ export async function prepareCandidate({ root, commit = 'HEAD', offline = false 
     await writeFile(join(staging, 'sources/project.tar'), run(root, 'git', ['archive', '--format=tar', revision]));
     for (const { spec, path } of sources) await cp(path, join(staging, `sources/${spec.name}.tar.gz`));
     await cp(join(root, 'dist'), join(staging, 'app'), { recursive: true });
-    for (const path of ['LICENSE', 'NOTICE', 'docs/REL_01_RELEASE_READINESS.md']) {
+    for (const path of ['LICENSE', 'NOTICE', 'docs/REL_01_RELEASE_READINESS.md', ...(browser ? ['docs/REL_02_RESULTS.md'] : [])]) {
       await cp(join(root, path), join(staging, path.split('/').at(-1)));
     }
     await cp(join(root, 'docs/licenses'), join(staging, 'licenses'), { recursive: true });
@@ -119,7 +122,8 @@ export async function prepareCandidate({ root, commit = 'HEAD', offline = false 
       hashes[path] = { bytes: bytes.length, sha256: sha256(bytes) };
     }
     const manifest = { format: 1, releaseCommit: revision, publicDistribution: 'blocked', ownerApproval: 'pending', proposedLicense: 'GPL-3.0-only',
-      engine: provenance, sources: inputs.sources, files: hashes };
+      distributionScope: 'browser-only; project source includes unbundled backend; no Worker artifact',
+      browser, engine: provenance, sources: inputs.sources, files: hashes };
     await writeFile(join(staging, 'MANIFEST.json'), JSON.stringify(manifest, null, 2) + '\n');
     const tar = run(staging, 'tar', ['--sort=name', '--mtime=@0', '--owner=0', '--group=0', '--numeric-owner', '--mode=u=rwX,go=rX', '--format=ustar', '-cf', '-', '.']);
     const bytes = gzipSync(tar, { level: 9 });
