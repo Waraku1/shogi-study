@@ -1,0 +1,20 @@
+{
+  "package": "fairy-stockfish-nnue.wasm",
+  "version": "1.1.12",
+  "license": "GPL-3.0",
+  "sourceCommit": "b2e693ef1e111233ce3fb40685921708b3276ed6",
+  "sourceUrl": "https://github.com/fairy-stockfish/fairy-stockfish.wasm/tree/b2e693ef1e111233ce3fb40685921708b3276ed6",
+  "sourceArchive": "https://github.com/fairy-stockfish/fairy-stockfish.wasm/archive/b2e693ef1e111233ce3fb40685921708b3276ed6.tar.gz",
+  "registryTarball": "https://registry.npmjs.org/fairy-stockfish-nnue.wasm/-/fairy-stockfish-nnue.wasm-1.1.12.tgz",
+  "registryIntegrity": "sha512-E0z5fvgZgIK0NoLmI6krWt5g362G4mZguANy8obTXL7EFPzyOyQn9A8OmBcjRe/s4see2s9okfULTGVnCu+1XQ==",
+  "runtimeId": "Fairy-Stockfish [commit: b2e693ef, upstream: , emscripten: 2.0.26] LB",
+  "upstreamChanges": "None. Unmodified npm files; separate project-owned classic worker bridge.",
+  "distribution": "Local testing only; generated engine files and dist are gitignored. No deployment or binary release authorized.",
+  "files": {
+    "stockfish.js": { "bytes": 64273, "sha256": "9080a62e3133e50da0c47b88b186d9c29ed37cc5129401bdeed8bffb5b9a4ca9" },
+    "stockfish.wasm": { "bytes": 1636293, "sha256": "7cea742b8ca1a324fbc500f89112f168134cf68eb49475df23be6c42336255c6" },
+    "stockfish.worker.js": { "bytes": 3321, "sha256": "067be484ac62f728b0dad28496997e5862f3c61f9091f59bb35d9d1b1ed14573" },
+    "Copying.txt": { "bytes": 35821, "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b" },
+    "AUTHORS": { "bytes": 4950, "sha256": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00" }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "shogi-study",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "engine:prepare": "node scripts/prepare-engine.mjs",
+    "dev": "node scripts/prepare-engine.mjs && vite --host 0.0.0.0",
+    "build": "node scripts/prepare-engine.mjs && tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "preview": "vite preview --host 0.0.0.0",
+    "release:prepare": "pnpm build && node --use-env-proxy scripts/prepare-release.mjs"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tsshogi": "2.3.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "fairy-stockfish-nnue.wasm": "1.1.12",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  },
+  "releaseReadiness": {
+    "proposedLicense": "GPL-3.0-only",
+    "ownerApproval": "pending",
+    "publicDistribution": "blocked"
+  }
+}

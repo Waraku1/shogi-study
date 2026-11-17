@@ -1,0 +1,1098 @@
+{
+  "date": "2026-11-17",
+  "baseCommit": "887cd9f27ce874b298b0050c1949f3baf0610e9b",
+  "environment": {
+    "os": "Debian GNU/Linux 13 x86_64",
+    "cpu": "AMD EPYC 9V45 96-Core Processor; 3 vCPUs exposed",
+    "node": "24.22.1",
+    "pnpm": "11.25.0",
+    "systemBrowser": "Chromium 156.0.8078.79"
+  },
+  "diagnostics": {
+    "name": "Fairy-Stockfish [commit: b2e693ef, upstream: , emscripten: 2.0.26] LB",
+    "startupMs": 692.5049999998882,
+    "wasmMemoryBytes": 161087488,
+    "multiPvMax": 500,
+    "options": [
+      "option name Debug_Log_File type string default ",
+      "option name Threads type spin default 1 min 1 max 512",
+      "option name USI_Hash type spin default 16 min 1 max 33554432",
+      "option name Clear_Hash type button",
+      "option name USI_Ponder type check default false",
+      "option name USI_MultiPV type spin default 1 min 1 max 500",
+      "option name Skill_Level type spin default 20 min -20 max 20",
+      "option name Move_Overhead type spin default 10 min 0 max 5000",
+      "option name Slow_Mover type spin default 100 min 10 max 1000",
+      "option name nodestime type spin default 0 min 0 max 10000",
+      "option name USI_Chess960 type check default false",
+      "option name USI_Variant type combo default shogi var 3check var 5check var ai-wok var almost var amazon var amazons var antichess var armageddon var asean var ataxx var atomar var atomic var berolina var breakthrough var bughouse var cambodian var capablanca var capahouse var caparandom var centaur var chancellor var chaturanga var checkshogi var chess var chessgi var chigorin var clobber var clobber10 var codrus var coregal var courier var crazyhouse var dobutsu var dragon var duck var embassy var euroshogi var extinction var fairy var fischerandom var flipello var flipello10 var flipersi var fox-and-hounds var gardner var georgian var giveaway var gorogoro var gothic var grand var grasshopper var gustav3 var hoppelpoppel var horde var isolation var isolation7x7 var janggi var janggicasual var janggimodern var janggitraditional var janus var jesonmor var joust var judkins var karouk var kinglet var kingofthehill var knightmate var koedem var kyotoshogi var legan var loop var losalamos var losers var makpong var makruk var manchu var micro var mini var minishogi var minixiangqi var misere var modern var newzealand var nightrider var nocastle var nocheckatomic var normal var okisakishogi var omicron var opulent var paradigm var pawnback var pawnsideways var perfect var petrified var placement var pocketknight var raazuvaa var racingkings var seirawan var shako var shatar var shatranj var shogi var shoshogi var shouse var sittuyin var snailtrail var sortofalmost var spartan var suicide var supply var tencubed var threekings var torishogi var torpedo var troitzky var wolf var xiangqi var yarishogi",
+      "option name USI_AnalyseMode type check default false",
+      "option name USI_LimitStrength type check default false",
+      "option name USI_Elo type spin default 1350 min 500 max 2850",
+      "option name USI_ShowWDL type check default false",
+      "option name SyzygyPath type string default <empty>",
+      "option name SyzygyProbeDepth type spin default 1 min 1 max 100",
+      "option name Syzygy50MoveRule type check default true",
+      "option name SyzygyProbeLimit type spin default 7 min 0 max 7",
+      "option name Use_NNUE type check default true",
+      "option name EvalFile type string default <empty>",
+      "option name TsumeMode type check default false",
+      "option name VariantPath type string default <empty>",
+      "option name usemillisec type check default true"
+    ]
+  },
+  "initialWasmMemoryBytes": 134217728,
+  "searches": [
+    {
+      "index": 0,
+      "sfen": "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1",
+      "moves": [],
+      "bestMoveUSI": "7g7f",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "7g7f",
+          "pvUSI": [
+            "7g7f",
+            "8b5b"
+          ],
+          "depth": 10,
+          "score": {
+            "kind": "cp",
+            "value": 43,
+            "perspective": "side-to-move",
+            "bound": "upperbound"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "6i6h",
+          "pvUSI": [
+            "6i6h",
+            "1c1d",
+            "7g7f",
+            "2b1c",
+            "3g3f",
+            "5c5d",
+            "2i3g",
+            "1c2d",
+            "8h7g"
+          ],
+          "depth": 10,
+          "score": {
+            "kind": "cp",
+            "value": 30,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "2h6h",
+          "pvUSI": [
+            "2h6h",
+            "3c3d",
+            "7g7f",
+            "2b8h",
+            "7i8h",
+            "B*6e",
+            "B*4e",
+            "8b6b"
+          ],
+          "depth": 9,
+          "score": {
+            "kind": "cp",
+            "value": 38,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 206.40500000002794,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 1,
+      "sfen": "lnsgkgsnl/1r5b1/ppppppppp/9/9/2P6/PP1PPPPPP/1B5R1/LNSGKGSNL w - 2",
+      "moves": [
+        "7g7f"
+      ],
+      "bestMoveUSI": "8b5b",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "8b5b",
+          "pvUSI": [
+            "8b5b",
+            "5g5f",
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "B*6e",
+            "B*4d",
+            "6e4c+",
+            "4d9i+",
+            "7i7h",
+            "9i3c",
+            "4c2a"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": -30,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "8b6b",
+          "pvUSI": [
+            "8b6b",
+            "3i4h"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": -54,
+            "perspective": "side-to-move",
+            "bound": "upperbound"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "1c1d",
+          "pvUSI": [
+            "1c1d",
+            "7i7h",
+            "2b1c",
+            "3i4h",
+            "3a4b",
+            "3g3f",
+            "6a5b",
+            "4i5h",
+            "5c5d",
+            "4h3g",
+            "5a6a",
+            "3g4f"
+          ],
+          "depth": 10,
+          "score": {
+            "kind": "cp",
+            "value": -61,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 200.43999999994412,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 2,
+      "sfen": "lnsgkgsnl/4r2b1/ppppppppp/9/9/2P6/PP1PPPPPP/1B5R1/LNSGKGSNL b - 3",
+      "moves": [
+        "7g7f",
+        "8b5b"
+      ],
+      "bestMoveUSI": "7i7h",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "7i7h",
+          "pvUSI": [
+            "7i7h",
+            "5c5d"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 60,
+            "perspective": "side-to-move",
+            "bound": "upperbound"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "6i6h",
+          "pvUSI": [
+            "6i6h",
+            "5c5d",
+            "9g9f",
+            "5d5e",
+            "5i6i",
+            "3c3d",
+            "6i7h",
+            "2b3c",
+            "4g4f",
+            "3c4d"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 38,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "6i5h",
+          "pvUSI": [
+            "6i5h",
+            "5c5d"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 28,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 210.89000000013039,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 3,
+      "sfen": "lnsgkgsnl/4r2b1/ppppppppp/9/9/2P6/PP1PPPPPP/1BS4R1/LN1GKGSNL w - 4",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h"
+      ],
+      "bestMoveUSI": "7a7b",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "7a7b",
+          "pvUSI": [
+            "7a7b",
+            "6i6h",
+            "5c5d",
+            "5i6i",
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "6i7i",
+            "B*6e",
+            "B*5f",
+            "6e5f",
+            "5g5f",
+            "2b3c"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -38,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "3c3d",
+          "pvUSI": [
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "B*4e",
+            "B*5d",
+            "4e3d",
+            "5d7f",
+            "8i7g",
+            "7a7b",
+            "2h4h",
+            "P*3c",
+            "3d5f"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -46,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "5b4b",
+          "pvUSI": [
+            "5b4b",
+            "2h6h",
+            "4a3b",
+            "4g4f",
+            "5c5d",
+            "4f4e",
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "B*5c",
+            "B*4g",
+            "5c4b",
+            "3b4b"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -69,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 200.17499999981374,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 4,
+      "sfen": "ln1gkgsnl/2s1r2b1/ppppppppp/9/9/2P6/PP1PPPPPP/1BS4R1/LN1GKGSNL b - 5",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h",
+        "7a7b"
+      ],
+      "bestMoveUSI": "3i4h",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "3i4h",
+          "pvUSI": [
+            "3i4h",
+            "5c5d",
+            "6i6h",
+            "4a4b",
+            "5i6i",
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "B*7g",
+            "B*3c",
+            "6i7i",
+            "6a7a",
+            "7g3c"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 53,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "6i6h",
+          "pvUSI": [
+            "6i6h",
+            "3c3d",
+            "8h7g",
+            "4a4b",
+            "2h4h",
+            "5c5d",
+            "5i6i",
+            "7c7d",
+            "6i7i",
+            "7b7c",
+            "4h2h"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 38,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "8h7g",
+          "pvUSI": [
+            "8h7g",
+            "3c3d",
+            "6i6h",
+            "4a4b",
+            "2h4h",
+            "2b3c",
+            "5i6i",
+            "3c2b",
+            "6i7i",
+            "2b7g",
+            "7h7g"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": 46,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 209.05000000004657,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 5,
+      "sfen": "ln1gkgsnl/2s1r2b1/ppppppppp/9/9/2P6/PP1PPPPPP/1BS2S1R1/LN1GKG1NL w - 6",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h",
+        "7a7b",
+        "3i4h"
+      ],
+      "bestMoveUSI": "3c3d",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "3c3d",
+          "pvUSI": [
+            "3c3d",
+            "8h2b+"
+          ],
+          "depth": 13,
+          "score": {
+            "kind": "cp",
+            "value": -54,
+            "perspective": "side-to-move",
+            "bound": "upperbound"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "4a4b",
+          "pvUSI": [
+            "4a4b",
+            "6i6h",
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "7h7g",
+            "6a7a",
+            "4g4f",
+            "B*6e",
+            "B*5f",
+            "6e5f",
+            "5g5f"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -38,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "5c5d",
+          "pvUSI": [
+            "5c5d",
+            "6i6h",
+            "3c3d",
+            "8h2b",
+            "3a2b",
+            "B*8b",
+            "B*8h",
+            "9i9h",
+            "5d5e",
+            "8b9a+",
+            "8h9i+",
+            "L*4f"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -44,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 203.65500000002794,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 6,
+      "sfen": "ln1gkgsnl/2s1r2b1/pppppp1pp/6p2/9/2P6/PP1PPPPPP/1BS2S1R1/LN1GKG1NL b - 7",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h",
+        "7a7b",
+        "3i4h",
+        "3c3d"
+      ],
+      "bestMoveUSI": "6i7i",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "6i7i",
+          "pvUSI": [
+            "6i7i",
+            "4c4d",
+            "4i5h",
+            "4a4b",
+            "7i6h",
+            "5c5d",
+            "5i6i",
+            "4d4e",
+            "8h7g",
+            "6c6d",
+            "6i7i",
+            "2b7g",
+            "7h7g",
+            "B*3c"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 69,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "8h2b+",
+          "pvUSI": [
+            "8h2b+",
+            "3a2b",
+            "7h7g",
+            "6a7a",
+            "5g5f",
+            "2b3c",
+            "4h5g",
+            "5c5d",
+            "B*2f",
+            "4c4d",
+            "7g6f",
+            "B*6d"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 53,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "8h2b",
+          "pvUSI": [
+            "8h2b",
+            "3a2b"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": 76,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 202.32499999995343,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 7,
+      "sfen": "ln1gkgsnl/2s1r2b1/pppppp1pp/6p2/9/2P6/PP1PPPPPP/1BS2S1R1/LNG1KG1NL w - 8",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h",
+        "7a7b",
+        "3i4h",
+        "3c3d",
+        "6i7i"
+      ],
+      "bestMoveUSI": "2b8h",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "2b8h",
+          "pvUSI": [
+            "2b8h",
+            "7i8h",
+            "B*4d",
+            "8h7g",
+            "6a7a",
+            "4g4f",
+            "3a3b",
+            "4h4g",
+            "3b3c",
+            "4f4e",
+            "4d7g",
+            "8i7g"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -30,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "9c9d",
+          "pvUSI": [
+            "9c9d",
+            "8h2b+"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -62,
+            "perspective": "side-to-move",
+            "bound": "upperbound"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "2b8h+",
+          "pvUSI": [
+            "2b8h+",
+            "7i8h",
+            "6a7a",
+            "B*5f",
+            "B*4d",
+            "8h7g",
+            "4a4b",
+            "5f3d",
+            "4b3c",
+            "3d5f",
+            "5c5d"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": -46,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 202.99500000011176,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 8,
+      "sfen": "ln1gkgsnl/2s1r4/pppppp1pp/6p2/9/2P6/PP1PPPPPP/1bS2S1R1/LNG1KG1NL b b 9",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h",
+        "7a7b",
+        "3i4h",
+        "3c3d",
+        "6i7i",
+        "2b8h"
+      ],
+      "bestMoveUSI": "7i8h",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "7i8h",
+          "pvUSI": [
+            "7i8h",
+            "6a7a",
+            "5i6i",
+            "B*5d",
+            "B*7g",
+            "3a2b",
+            "4g4f",
+            "2b3c",
+            "4h4g",
+            "5d6e"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": 76,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "7i6h",
+          "pvUSI": [
+            "7i6h",
+            "8h9i+"
+          ],
+          "depth": 12,
+          "score": {
+            "kind": "cp",
+            "value": -903,
+            "perspective": "side-to-move",
+            "bound": "upperbound"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "5i6h",
+          "pvUSI": [
+            "5i6h",
+            "8h9i+",
+            "7h7g",
+            "B*4d",
+            "4g4f",
+            "9i9h",
+            "4f4e"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": -899,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 203.05500000016764,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    },
+    {
+      "index": 9,
+      "sfen": "ln1gkgsnl/2s1r4/pppppp1pp/6p2/9/2P6/PP1PPPPPP/1GS2S1R1/LN2KG1NL w Bb 10",
+      "moves": [
+        "7g7f",
+        "8b5b",
+        "7i7h",
+        "7a7b",
+        "3i4h",
+        "3c3d",
+        "6i7i",
+        "2b8h",
+        "7i8h"
+      ],
+      "bestMoveUSI": "6a7a",
+      "terminal": null,
+      "candidates": [
+        {
+          "multiPv": 1,
+          "firstMoveUSI": "6a7a",
+          "pvUSI": [
+            "6a7a",
+            "5i6i"
+          ],
+          "depth": 11,
+          "score": {
+            "kind": "cp",
+            "value": -56,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 2,
+          "firstMoveUSI": "B*4d",
+          "pvUSI": [
+            "B*4d",
+            "B*7g",
+            "4d7g",
+            "8i7g",
+            "6a7a",
+            "4g4f",
+            "4a4b",
+            "B*4g",
+            "4b3c",
+            "5i6i",
+            "B*4d"
+          ],
+          "depth": 10,
+          "score": {
+            "kind": "cp",
+            "value": -61,
+            "perspective": "side-to-move"
+          }
+        },
+        {
+          "multiPv": 3,
+          "firstMoveUSI": "B*3c",
+          "pvUSI": [
+            "B*3c",
+            "8h7g",
+            "4a4b",
+            "B*5f",
+            "3c4d",
+            "4g4f",
+            "5c5d",
+            "5f3d",
+            "4b3c"
+          ],
+          "depth": 10,
+          "score": {
+            "kind": "cp",
+            "value": -84,
+            "perspective": "side-to-move"
+          }
+        }
+      ],
+      "elapsedMs": 201.0100000000093,
+      "wasmMemoryBytes": 161087488,
+      "bestMoveLegal": true,
+      "allPVsLegal": true
+    }
+  ],
+  "midgameResult": {
+    "bestMoveUSI": "7i8h",
+    "terminal": null,
+    "candidates": [
+      {
+        "multiPv": 1,
+        "firstMoveUSI": "7i8h",
+        "pvUSI": [
+          "7i8h",
+          "2b3c",
+          "B*6f",
+          "3c4d",
+          "4e5f",
+          "7b8b",
+          "6h7i",
+          "7a7b",
+          "4g4f",
+          "5c5d",
+          "3h4g"
+        ],
+        "depth": 13,
+        "score": {
+          "kind": "cp",
+          "value": 592,
+          "perspective": "side-to-move"
+        }
+      },
+      {
+        "multiPv": 2,
+        "firstMoveUSI": "4e6c+",
+        "pvUSI": [
+          "4e6c+",
+          "7b6c"
+        ],
+        "depth": 13,
+        "score": {
+          "kind": "cp",
+          "value": 71,
+          "perspective": "side-to-move"
+        }
+      },
+      {
+        "multiPv": 3,
+        "firstMoveUSI": "4e6c",
+        "pvUSI": [
+          "4e6c",
+          "7b6c",
+          "7i8h",
+          "6c7b",
+          "B*4e",
+          "B*5d",
+          "4e5d",
+          "5c5d",
+          "B*6e",
+          "3b5b",
+          "8h7g",
+          "7b8b",
+          "4g4f",
+          "B*8d",
+          "3h4g",
+          "5b6b"
+        ],
+        "depth": 12,
+        "score": {
+          "kind": "cp",
+          "value": 84,
+          "perspective": "side-to-move"
+        }
+      }
+    ],
+    "elapsedMs": 502.38999999989755,
+    "sfen": "lnsg1g1nl/2k3rs1/pppppp1pp/6p2/5B3/2P4P1/PP1PPPP1P/1b1K2SR1/LNSG1G1NL b - 13",
+    "bestMoveLegal": true,
+    "allPVsLegal": true
+  },
+  "stopMs": 0.4899999999906868,
+  "stopped": {
+    "bestMoveUSI": "7g7f",
+    "terminal": null,
+    "candidates": [
+      {
+        "multiPv": 1,
+        "firstMoveUSI": "7g7f",
+        "pvUSI": [
+          "7g7f",
+          "4a4b",
+          "7i6h",
+          "5c5d",
+          "2h4h",
+          "7a6b",
+          "4g4f",
+          "6b5c",
+          "4f4e",
+          "3c3d",
+          "8h2b"
+        ],
+        "depth": 11,
+        "score": {
+          "kind": "cp",
+          "value": 53,
+          "perspective": "side-to-move"
+        }
+      },
+      {
+        "multiPv": 2,
+        "firstMoveUSI": "6i6h",
+        "pvUSI": [
+          "6i6h",
+          "5c5d"
+        ],
+        "depth": 11,
+        "score": {
+          "kind": "cp",
+          "value": 20,
+          "perspective": "side-to-move"
+        }
+      },
+      {
+        "multiPv": 3,
+        "firstMoveUSI": "6i7h",
+        "pvUSI": [
+          "6i7h",
+          "8c8d",
+          "7g7f",
+          "3c3d",
+          "8h2b",
+          "3a2b",
+          "B*5f",
+          "B*4d"
+        ],
+        "depth": 10,
+        "score": {
+          "kind": "cp",
+          "value": 0,
+          "perspective": "side-to-move"
+        }
+      }
+    ],
+    "elapsedMs": 83.12999999988824
+  },
+  "afterStop": {
+    "bestMoveUSI": "7g7f",
+    "terminal": null,
+    "candidates": [
+      {
+        "multiPv": 1,
+        "firstMoveUSI": "7g7f",
+        "pvUSI": [
+          "7g7f",
+          "4a4b",
+          "7i6h",
+          "5c5d",
+          "3i4h",
+          "7a6b",
+          "6i7h",
+          "6b5c",
+          "5i6i",
+          "5c4d",
+          "6i7i",
+          "4b5c",
+          "4h5i"
+        ],
+        "depth": 13,
+        "score": {
+          "kind": "cp",
+          "value": 30,
+          "perspective": "side-to-move"
+        }
+      },
+      {
+        "multiPv": 2,
+        "firstMoveUSI": "6i6h",
+        "pvUSI": [
+          "6i6h",
+          "4a4b",
+          "7g7f",
+          "3c3d",
+          "8h2b",
+          "3a2b",
+          "B*4e",
+          "B*4d",
+          "6h7g",
+          "7a6b",
+          "4e3d",
+          "4d3c",
+          "3d5f"
+        ],
+        "depth": 13,
+        "score": {
+          "kind": "cp",
+          "value": 23,
+          "perspective": "side-to-move"
+        }
+      }
+    ],
+    "elapsedMs": 100.05000000004657
+  },
+  "terminal": {
+    "bestMoveUSI": null,
+    "terminal": "resign",
+    "candidates": [],
+    "elapsedMs": 0.4649999998509884
+  },
+  "deterministicMate": {
+    "reason": "Checkmate",
+    "winner": "black"
+  },
+  "disposedRejects": true,
+  "heartbeatMaxGapMs": 30.919999999925494,
+  "heartbeatTicks": 269,
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "crossOriginIsolated": true,
+  "hardwareConcurrency": 3,
+  "jsHeap": {
+    "usedJSHeapSize": 12707768,
+    "totalJSHeapSize": 17397080
+  },
+  "handshake": [
+    "> usi",
+    "id name Fairy-Stockfish [commit: b2e693ef, upstream: , emscripten: 2.0.26] LB",
+    "usiok",
+    "> setoption name USI_Variant value shogi",
+    "> setoption name Threads value 1",
+    "> setoption name USI_Hash value 16",
+    "> setoption name Use_NNUE value false",
+    "> isready",
+    "readyok",
+    "> usinewgame",
+    "> setoption name USI_MultiPV value 3",
+    "> isready",
+    "readyok",
+    "info string classical evaluation enabled",
+    "> setoption name USI_MultiPV value 3",
+    "> isready",
+    "readyok",
+    "info string classical evaluation enabled",
+    "> setoption name USI_MultiPV value 3",
+    "> isready",
+    "readyok"
+  ],
+  "preview": {
+    "test": "Built Vite app and real AI reply",
+    "pass": true,
+    "engine": "Engine detailsFairy-Stockfish [commit: b2e693ef, upstream: , emscripten: 2.0.26] LBStartup 943 ms · WASM memory 154 MiB · 1 search thread · 16 MiB hashShared memory requires COOP/COEP headers. Memory shown excludes browser and worker overhead.",
+    "moves": "1.7g7f2.3c3d",
+    "candidates": "013c3d-7 cpDepth 13024a4b-30 cpDepth 13038b4b-38 cpDepth 13",
+    "errors": [],
+    "noticesStatus": 200
+  }
+}
