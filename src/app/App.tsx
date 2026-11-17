@@ -1,5 +1,5 @@
 import { Review } from '../features/review/Review';
-import { useAccess, refreshAccess, assertAnalysisAllowed } from '../features/review/access';
+import { useAccess, refreshAccess, assertAnalysisAllowed, guestOnly } from '../features/review/access';
 import { saveGame } from '../features/review/store';
 import '../features/review/review.css';
 import { QuickLearn } from '../features/learning/QuickLearn';
@@ -21,8 +21,8 @@ type Status = 'idle' | 'loading' | 'ready' | 'searching' | 'error';
 export function App() {
   const query = new URLSearchParams(location.search);
   const [view, setView] = useState<'play'|'learn'|'review'>(query.has('learn')?'learn':query.has('review')?'review':'play');
-  const [onlineOpen,setOnlineOpen]=useState(query.has('room'));
-  const [onlineShown,setOnlineShown]=useState(query.has('room'));
+  const [onlineOpen,setOnlineOpen]=useState(!guestOnly&&query.has('room'));
+  const [onlineShown,setOnlineShown]=useState(!guestOnly&&query.has('room'));
   const [onlineKey,setOnlineKey]=useState(query.get('room')??'new');
   const access=useAccess();
   function navigate(next:'play'|'learn'|'review') { setView(next);history.replaceState(null,'',next==='play'?(onlineShown?`?room=${onlineKey}`:'/'):next==='learn'?'?learn=1':'?review=1');void refreshAccess(); }
@@ -33,10 +33,11 @@ export function App() {
       <button aria-current={view==='play'?'page':undefined} onClick={()=>navigate('play')}>Play</button>
       <button aria-current={view==='learn'?'page':undefined} onClick={()=>navigate('learn')}>Learn</button>
       <button aria-current={view==='review'?'page':undefined} disabled={access.blocked||access.checking} onClick={()=>navigate('review')}>Review</button>
-      <button onClick={()=>online()}>Online rooms</button>
+      {!guestOnly&&<button onClick={()=>online()}>Online rooms</button>}
     </nav>
     {access.reason&&<div className="access-notice" role="status">{access.reason}{access.activeRooms.map(id=><button key={id} onClick={()=>online(id)}>Resume online room</button>)}</div>}
     {access.checking&&<p role="status">Checking play status…</p>}
+    {access.blocked&&<p className="access-notice">No Review or engine assistance while match status is active or unknown. This restriction cannot prevent use of external engines. <button onClick={()=>void refreshAccess()}>Retry online status</button></p>}
     <div hidden={view!=='play'||onlineShown||access.blocked||access.checking}>{access.namespace&&<LocalApp key={access.namespace} namespace={access.namespace} analysisBlocked={access.blocked} visible={view==='play'&&!onlineShown&&!access.blocked&&!access.checking}/>}</div>
     {onlineOpen&&<div hidden={view!=='play'||!onlineShown}><Online key={onlineKey} back={()=>{setOnlineShown(false);history.replaceState(null,'','/');void refreshAccess();}}/></div>}
     {view==='learn'&&<main className="learn-page"><button onClick={()=>navigate('play')}>Back to practice</button><h1>Learn</h1><p>Original cards, short quizzes, and a simple review queue. No login needed.</p><QuickLearn key={guestNamespace} namespace={guestNamespace} standalone/></main>}

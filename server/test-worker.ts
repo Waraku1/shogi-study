@@ -65,12 +65,14 @@ export default {
         },
       });
     }
-    if (new URL(r.url).pathname === "/api/test/logout" && r.method === "POST") {
+    if (["/api/test/logout", "/api/test/expire"].includes(new URL(r.url).pathname) && r.method === "POST") {
       if (r.headers.get("Origin") !== e.APP_ORIGIN) return reply({}, 403);
       const token = /fixture=([a-f0-9-]+)/.exec(
         r.headers.get("Cookie") ?? "",
       )?.[1];
-      await e.DB.prepare("DELETE FROM fixture_sessions WHERE token=?")
+      await e.DB.prepare(new URL(r.url).pathname.endsWith("/expire")
+        ? "UPDATE fixture_sessions SET expiresAt=0 WHERE token=?"
+        : "DELETE FROM fixture_sessions WHERE token=?")
         .bind(token ?? "")
         .run();
       return reply({ ok: true });

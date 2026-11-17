@@ -74,3 +74,15 @@ Also test failure deliberately using developer tools to block `stockfish.wasm`: 
 ## Release gate
 
 **CONDITIONAL GO as a review candidate only.** Owner approval of the license proposal, complete corresponding-source/dependency/toolchain review and independent engine rebuild remain open. Safari/real-device checks and suitable eventual host headers remain unverified. No public distribution decision is made by the script, tests or this document. [GPL source delivery guidance](https://www.gnu.org/licenses/gpl-faq.en.html#SourceAndBinaryOnDifferentSites) and [GPLv3 §6](https://www.gnu.org/licenses/gpl-3.0.html#section6) govern a future release; simply having a public repository or passing hashes is insufficient.
+
+## GATE-01 follow-up source gaps
+
+REL-01 packets/measurements predate accounts, Workers, learning and archives. They do not clear the current MVP. Use the **exact reviewed final GATE-01 SHA recorded in its PR**, not `fc0ce62` or an older candidate; a future candidate must start from a clean checkout of that revision. No GATE-01 packet is generated or approved.
+
+Bounded outstanding items (not a new full audit):
+
+- Owner: approve/reject the draft GPL-3.0-only whole-app proposal, confirm rights to original learning/UI/icon/server code and resolve integration scope. Root LICENSE/private/blocked-distribution flags remain unchanged.
+- Backend additions: installed metadata reports Better Auth **1.7.25 MIT**, Drizzle ORM **0.45.4 Apache-2.0**, Wrangler **4.162.0 MIT OR Apache-2.0**; fake-indexeddb **6.2.8 Apache-2.0** is test-only. Retain applicable notices/Apache conditions and match exact preferred upstream/transitive sources and license evidence to `pnpm-lock.yaml`; metadata labels alone are not corresponding-source proof. The REL-01 dependency snapshot predates these additions and must not be represented as current/full coverage.
+- The project source archive recipe includes tracked server/auth/schema/migrations, learning content/storage, archive/review and build/test/profile sources at the chosen SHA. The existing **app/** packet is a browser build, not a complete Worker/backend distribution. Before distributing a backend artifact, supply its exact build recipe/configuration, migration/schema sources and corresponding dependency sources; secrets/local data are never source-delivery inputs. No backend artifact was built for distribution here.
+- Original engine/Emscripten pinned sources and notices still apply. Independent pinned-SDK rebuild/byte comparison and the unresolved compiler/linked-runtime source/provenance scope remain open. New code does not resolve those facts. Do not add NNUE weights or assert a hash check proves reproducibility.
+- Determine/retain the actual current corresponding-source delivery set and applicable dependency/build-tool notices alongside any authorized binary or hosted delivery. The recipe's engine/Emscripten archives plus public Git/npm links are not proof of complete preferred-source delivery for all current components. No source archive upload, binary publication, host or legal approval is authorized by GATE-01.
