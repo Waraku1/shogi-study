@@ -1,0 +1,249 @@
+{
+  "baselineNote": "Bounded four-concurrent/32-cap implementation before eliminating the duplicate room state SQL read; not the original PHASE-04 implementation. One local run per variant; not a statistical performance guarantee.",
+  "baseline": {
+    "method": "Warm sequential HTTP batches; aggregate Linux workerd user+system CPU ticks measured without profiler, separate 100us V8 non-idle sample estimates. Includes local DO/D1/proxy overhead. Not Workers billed CPU or per-request CPU percentiles.",
+    "node": "v24.22.1",
+    "cpuTickMs": 10,
+    "realOAuthCallback": "NOT TESTED",
+    "workersFreeCompliance": "UNVERIFIED",
+    "results": [
+      {
+        "label": "me-unauthenticated",
+        "repetitions": 40,
+        "httpStatus": 401,
+        "wallP50Ms": 3.553,
+        "wallP95Ms": 6.213,
+        "aggregateLocalWorkerdCpuMs": 120,
+        "aggregateCpuMeanMs": 3,
+        "sampledNonIdleMeanMs": 3.412,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 0
+      },
+      {
+        "label": "me-fixture-session",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 4.37,
+        "wallP95Ms": 5.831,
+        "aggregateLocalWorkerdCpuMs": 160,
+        "aggregateCpuMeanMs": 4,
+        "sampledNonIdleMeanMs": 4.126,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 1
+      },
+      {
+        "label": "status-0-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 4.695,
+        "wallP95Ms": 9.841,
+        "aggregateLocalWorkerdCpuMs": 180,
+        "aggregateCpuMeanMs": 4.5,
+        "sampledNonIdleMeanMs": 5.257,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "status-1-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 6.518,
+        "wallP95Ms": 12.224,
+        "aggregateLocalWorkerdCpuMs": 250,
+        "aggregateCpuMeanMs": 6.25,
+        "sampledNonIdleMeanMs": 6.862,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "status-10-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 14.24,
+        "wallP95Ms": 19.917,
+        "aggregateLocalWorkerdCpuMs": 520,
+        "aggregateCpuMeanMs": 13,
+        "sampledNonIdleMeanMs": 14.722,
+        "maxRoomRequests": 10,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "status-32-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 30.388,
+        "wallP95Ms": 39.175,
+        "aggregateLocalWorkerdCpuMs": 1100,
+        "aggregateCpuMeanMs": 27.5,
+        "sampledNonIdleMeanMs": 24.077,
+        "maxRoomRequests": 32,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "join-existing-participant",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 8.344,
+        "wallP95Ms": 20.873,
+        "aggregateLocalWorkerdCpuMs": 330,
+        "aggregateCpuMeanMs": 8.25,
+        "sampledNonIdleMeanMs": 7.537,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 4
+      },
+      {
+        "label": "websocket-upgrade",
+        "repetitions": 20,
+        "httpStatus": 101,
+        "wallP50Ms": 7.916,
+        "wallP95Ms": 13.671,
+        "aggregateLocalWorkerdCpuMs": 160,
+        "aggregateCpuMeanMs": 8,
+        "sampledNonIdleMeanMs": 7.236,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 4
+      },
+      {
+        "label": "status-128-legacy-rejected",
+        "repetitions": 40,
+        "httpStatus": 400,
+        "wallP50Ms": 4.202,
+        "wallP95Ms": 7.4,
+        "aggregateLocalWorkerdCpuMs": 150,
+        "aggregateCpuMeanMs": 3.75,
+        "sampledNonIdleMeanMs": 5.678,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 2
+      }
+    ]
+  },
+  "optimized": {
+    "method": "Warm sequential HTTP batches; aggregate Linux workerd user+system CPU ticks measured without profiler, separate 100us V8 non-idle sample estimates. Includes local DO/D1/proxy overhead. Not Workers billed CPU or per-request CPU percentiles.",
+    "node": "v24.22.1",
+    "cpuTickMs": 10,
+    "realOAuthCallback": "NOT TESTED",
+    "workersFreeCompliance": "UNVERIFIED",
+    "results": [
+      {
+        "label": "me-unauthenticated",
+        "repetitions": 40,
+        "httpStatus": 401,
+        "wallP50Ms": 3.599,
+        "wallP95Ms": 6.035,
+        "aggregateLocalWorkerdCpuMs": 110,
+        "aggregateCpuMeanMs": 2.75,
+        "sampledNonIdleMeanMs": 2.172,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 0
+      },
+      {
+        "label": "me-fixture-session",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 4.148,
+        "wallP95Ms": 6.734,
+        "aggregateLocalWorkerdCpuMs": 140,
+        "aggregateCpuMeanMs": 3.5,
+        "sampledNonIdleMeanMs": 4.37,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 1
+      },
+      {
+        "label": "status-0-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 4.984,
+        "wallP95Ms": 8.644,
+        "aggregateLocalWorkerdCpuMs": 190,
+        "aggregateCpuMeanMs": 4.75,
+        "sampledNonIdleMeanMs": 5.168,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "status-1-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 5.999,
+        "wallP95Ms": 15.048,
+        "aggregateLocalWorkerdCpuMs": 230,
+        "aggregateCpuMeanMs": 5.75,
+        "sampledNonIdleMeanMs": 6.564,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "status-10-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 11.279,
+        "wallP95Ms": 22.296,
+        "aggregateLocalWorkerdCpuMs": 460,
+        "aggregateCpuMeanMs": 11.5,
+        "sampledNonIdleMeanMs": 11.287,
+        "maxRoomRequests": 10,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "status-32-waiting",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 25.908,
+        "wallP95Ms": 35.88,
+        "aggregateLocalWorkerdCpuMs": 960,
+        "aggregateCpuMeanMs": 24,
+        "sampledNonIdleMeanMs": 22.405,
+        "maxRoomRequests": 32,
+        "maxD1Statements": 2
+      },
+      {
+        "label": "join-existing-participant",
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 8.751,
+        "wallP95Ms": 19.7,
+        "aggregateLocalWorkerdCpuMs": 330,
+        "aggregateCpuMeanMs": 8.25,
+        "sampledNonIdleMeanMs": 11.148,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 4
+      },
+      {
+        "label": "websocket-upgrade",
+        "repetitions": 20,
+        "httpStatus": 101,
+        "wallP50Ms": 8.175,
+        "wallP95Ms": 11.444,
+        "aggregateLocalWorkerdCpuMs": 170,
+        "aggregateCpuMeanMs": 8.5,
+        "sampledNonIdleMeanMs": 9.841,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 4
+      },
+      {
+        "label": "signin-initiation-fake",
+        "repetitions": 20,
+        "httpStatus": 200,
+        "wallP50Ms": 6.996,
+        "wallP95Ms": 13.017,
+        "aggregateLocalWorkerdCpuMs": 140,
+        "aggregateCpuMeanMs": 7,
+        "sampledNonIdleMeanMs": 7.008,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 1
+      },
+      {
+        "label": "status-128-legacy-rejected",
+        "repetitions": 40,
+        "httpStatus": 400,
+        "wallP50Ms": 4.122,
+        "wallP95Ms": 9.223,
+        "aggregateLocalWorkerdCpuMs": 160,
+        "aggregateCpuMeanMs": 4,
+        "sampledNonIdleMeanMs": 4.575,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 2
+      }
+    ]
+  }
+}

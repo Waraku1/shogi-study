@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { accountNamespace, guestNamespace } from "../learning/types";
+// Set by the dedicated Vite guest mode, whose server rejects all /api routes.
+// Never infer guest status from a failed request or a URL/localStorage toggle.
+declare const __SHOGI_GUEST_ONLY__: boolean;
+export const guestOnly =
+  typeof __SHOGI_GUEST_ONLY__ !== "undefined" && __SHOGI_GUEST_ONLY__;
 export type Access = {
   checking: boolean;
   blocked: boolean;
@@ -54,13 +59,21 @@ export function observeOnline(id: string, status: string, room: string) {
   }
 }
 export function refreshAccess(): Promise<Access> {
+  if (guestOnly) {
+    value = { checking: false, blocked: false, namespace: guestNamespace,
+      activeRooms: [], reason: "Guest-local only. Online accounts and rooms are unavailable in this mode." };
+    emit();
+    return Promise.resolve(value);
+  }
   if (pending) return pending;
   const generation = epoch;
   pending = (async () => {
     try {
       const r = await fetch("/api/play-status", {
         signal: AbortSignal.timeout(5000),
+        cache: "no-store",
       });
+      if (generation !== epoch) return value;
       if (r.status === 401) {
         value = {
           checking: false,
@@ -78,7 +91,9 @@ export function refreshAccess(): Promise<Access> {
         } catch {
           throw new Error("Offline");
         }
-        if (!r.ok || !b.user || !Array.isArray(b.activeRooms)) {
+        if (!r.ok || typeof b?.user?.id !== "string" || !b.user.id ||
+            !Array.isArray(b.activeRooms) || b.activeRooms.length > 32 ||
+            b.activeRooms.some((id: unknown) => typeof id !== "string" || !id)) {
           value = {
             ...value,
             checking: false,
@@ -104,12 +119,10 @@ export function refreshAccess(): Promise<Access> {
       if (generation === epoch)
         value = {
           checking: false,
-          blocked: locked(),
-          namespace: guestNamespace,
+          blocked: true,
+          namespace: null,
           activeRooms: value.activeRooms,
-          reason: locked()
-            ? "Cannot confirm the active match; engine assistance and Review remain blocked."
-            : "Online status unavailable; using guest-local archives.",
+          reason: "Cannot confirm online status. Reconnect before using Review or engine assistance.",
         };
     }
     emit();

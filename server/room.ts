@@ -33,17 +33,10 @@ export class GameRoom extends DurableObject<Env> {
     return 600000;
   }
   private load(): State | null {
-    return (
-      (this.ctx.storage.sql
-        .exec<{ state: string }>("SELECT state FROM game WHERE id=1")
-        .toArray()[0]?.state &&
-        JSON.parse(
-          this.ctx.storage.sql
-            .exec<{ state: string }>("SELECT state FROM game WHERE id=1")
-            .one().state,
-        )) ||
-      null
-    );
+    const row = this.ctx.storage.sql
+      .exec<{ state: string }>("SELECT state FROM game WHERE id=1")
+      .toArray()[0];
+    return row ? JSON.parse(row.state) : null;
   }
   private save(s: State) {
     this.ctx.storage.sql.exec(
@@ -136,6 +129,8 @@ export class GameRoom extends DurableObject<Env> {
     }
     if (!s.players.some((p) => p.id === me.id))
       return reply({ error: "Players only" }, 403);
+    // Internal participant-only fair-play probe: no history replay or private data.
+    if (path === "/status" && r.method === "GET") return reply({ status: s.status });
     if (path === "/resign" && r.method === "POST" && s.status === "active") {
       s.result =
         (s.players[0].id === me.id ? "White" : "Black") +
