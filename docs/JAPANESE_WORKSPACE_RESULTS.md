@@ -58,14 +58,16 @@ Local commands ran serially against Node 24.22.1 / pnpm 11.25.0 and Chromium. `p
 | `pnpm typecheck` | PASS; browser and Worker TypeScript |
 | `pnpm test` | **120/120 PASS**, 13 files; 3.88 s |
 | `pnpm build` | PASS; JS 378.40 kB / CSS 14.44 kB; separate unchanged pinned WASM and 30,016-byte font |
-| `pnpm test:browser` | **19/19 PASS**, 54.1 s |
+| `pnpm test:browser` | **19/19 PASS**, 57.8 s after final stylesheet-order correction |
 | `pnpm test:online` | **6/6 PASS**, 45.5 s |
 | Focused unchanged active-search/reset regression | **5/5 repeated PASS**, 39.6 s, after worker-disposal fix |
 | Git whitespace check | PASS |
 
+The full PR CI check passed on implementation commit `a533afc514e4593055c073ecba93996d81b2d147` in [run 44320264416](https://github.com/Waraku1/shogi-study/actions/runs/44320264416): locked install, both typechecks, unit/release, build, browser and online integration. The subsequent stylesheet-order correction passed the full local browser suite above; the PR reports final-head CI separately.
+
 All 91 existing unit/release tests remain, plus 29 focused tests. The original 14 browser and 5 online tests remain; five browser and one online workspace tests were added. Four obsolete alphabetic/USI **presentation expectations** in the existing browser suite were updated to exact kanji/Japanese strings; no legal-move, lifecycle or fair-play assertion was weakened.
 
-The unchanged reset/dispose regression initially exposed an orphan pthread during an early stop/start race; the adapter correction above fixes it. A duplicate React key discovered in browser output was fixed with separate practice/review keys. Visual inspection also corrected stretched replay file labels and selected-navigation hover contrast; a geometry assertion now checks header/board alignment. Font loading/failure, matching piece colors, full White rotation, red promotion, keyboard/promotion focus, 390 px overflow, collapsible learning, real KIF/CSA downloads and browser reimports are covered.
+The unchanged reset/dispose regression initially exposed an orphan pthread during an early stop/start race; the adapter correction above fixes it. A duplicate React key discovered in browser output was fixed with separate practice/review keys. Visual inspection also corrected stretched replay file labels and selected-navigation hover contrast; a geometry assertion now checks header/board alignment. The workspace stylesheet loads after base styles so intended mobile sizing/contrast apply; computed board-help color is asserted. Font loading/failure, matching piece colors, full White rotation, red promotion, keyboard/promotion focus, 390 px overflow, collapsible learning, real KIF/CSA downloads and browser reimports are covered.
 
 Raw local logs and regenerated screenshots are in gitignored `work/japanese/`. Durable visual evidence from the Chromium tests: [desktop](images/japanese-desktop.png), [390 px mobile](images/japanese-mobile.png), [historical study with real WASM candidates](images/japanese-study.png). These are actual captures, not design mockups. Run `pnpm test:browser` to regenerate them locally. Safari/macOS, VoiceOver, physical mobile and real assistive-technology checks are **NOT TESTED** here; Chromium viewport/keyboard checks do not substitute for them.
 

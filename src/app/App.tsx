@@ -4,7 +4,6 @@ import { Review } from '../features/review/Review';
 import { useAccess, refreshAccess, assertAnalysisAllowed, guestOnly } from '../features/review/access';
 import { saveGame } from '../features/review/store';
 import '../features/review/review.css';
-import './workspace.css';
 import { QuickLearn } from '../features/learning/QuickLearn';
 import { guestNamespace } from '../features/learning/types';
 import { Online } from '../features/shogi/Online';

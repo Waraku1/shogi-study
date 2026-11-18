@@ -70,6 +70,11 @@ test('kanji pieces share wood and ink; White rotates physically; promotions and 
   expect(styles.b.transform).toBe('matrix(-1, 0, 0, -1, 0, 0)');
   expect(styles.whiteLetter).toBe('none');
   await expect(page.getByRole('gridcell')).toHaveCount(81);
+  expect(
+    await page
+      .locator('.board-help')
+      .evaluate((e) => getComputedStyle(e).color),
+  ).toBe('rgb(82, 97, 75)');
   await page.locator('[data-square="7g"]').focus();
   await page.keyboard.press('Enter');
   await page.keyboard.press('ArrowUp');
