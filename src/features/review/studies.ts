@@ -6,6 +6,7 @@ import {
   validateArchive,
 } from './archive';
 import type { GameArchive } from './archive';
+import { deleteStoredRecord } from './delete-record';
 
 export type StudyVariation = {
   source: 'shogi-study-variation';
@@ -257,19 +258,25 @@ export class StudyStore {
     }
   }
   async remove(id: string) {
-    this.mem().delete(id);
-    if (memoryOnly.has(this.namespace)) return;
+    if (memoryOnly.has(this.namespace)) {
+      this.mem().delete(id);
+      return 'memory' as const;
+    }
     try {
       const db = await this.open();
-      await new Promise<void>((resolve, reject) => {
-        const t = db.transaction('variations', 'readwrite');
-        t.objectStore('variations').delete([this.namespace, id]);
-        t.oncomplete = () => resolve();
-        t.onerror = t.onabort = () => reject(t.error);
-      });
-    } catch {
-      this.fallback();
+      await deleteStoredRecord(db, 'variations', [this.namespace, id]);
+    } catch (cause) {
+      // Keep the cached row and storage mode. A failed durable delete is not a
+      // successful memory-only operation. Reopen on retry (the DB may be closed).
+      this.close();
+      this.connection = null;
+      throw new Error(
+        'Study variation could not be deleted from device storage. Retry deletion or reload to check the saved record.',
+        { cause },
+      );
     }
+    this.mem().delete(id);
+    return 'indexeddb' as const;
   }
   close() {
     void this.connection?.then(

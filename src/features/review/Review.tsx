@@ -54,6 +54,12 @@ export function Review({
   const [future, setFuture] = useState(0);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [deletingStudy, setDeletingStudy] = useState<string | null>(null);
+  const [deletionBusy, setDeletionBusy] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
+  const [studyDeleteError, setStudyDeleteError] = useState('');
+  const deletionPending = useRef(false);
+  const currentRecord = useRef(record);
+  currentRecord.current = record;
   const [studies, setStudies] = useState<StudyVariation[]>([]);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [studyActive, setStudyActive] = useState(false);
@@ -156,6 +162,63 @@ export function Review({
     if (store.current === s) {
       setRows(rows);
       setNotice(s.warning || 'Saved on this device.');
+    }
+  }
+  async function deleteSavedGame() {
+    const s = store.current,
+      id = deleting;
+    if (!s || !id || deletionPending.current) return;
+    deletionPending.current = true;
+    setDeletionBusy(true);
+    setDeleteError('');
+    setNotice('');
+    try {
+      const mode = await s.remove(id);
+      if (store.current !== s) return;
+      setRows((rows) => rows.filter((r) => r.id !== id));
+      if (currentRecord.current?.id === id) {
+        stop();
+        setRecord(null);
+        setDraft(null);
+      }
+      setDeleting(null);
+      setNotice(
+        mode === 'memory'
+          ? 'Saved game removed from this session only. Device storage was not changed; earlier saved copies may reappear after reload.'
+          : 'Saved game deleted from this device.',
+      );
+    } catch (e) {
+      if (store.current === s)
+        setDeleteError(e instanceof Error ? e.message : String(e));
+    } finally {
+      deletionPending.current = false;
+      setDeletionBusy(false);
+    }
+  }
+  async function deleteSavedStudy() {
+    const s = studyStore.current,
+      id = deletingStudy;
+    if (!s || !id || deletionPending.current) return;
+    deletionPending.current = true;
+    setDeletionBusy(true);
+    setStudyDeleteError('');
+    setStudyNotice('');
+    try {
+      const mode = await s.remove(id);
+      if (studyStore.current !== s) return;
+      setStudies((rows) => rows.filter((r) => r.id !== id));
+      setDeletingStudy(null);
+      setStudyNotice(
+        mode === 'memory'
+          ? 'Study variation removed from this session only. Device storage was not changed; earlier saved copies may reappear after reload.'
+          : 'Study variation deleted.',
+      );
+    } catch (e) {
+      if (studyStore.current === s)
+        setStudyDeleteError(e instanceof Error ? e.message : String(e));
+    } finally {
+      deletionPending.current = false;
+      setDeletionBusy(false);
     }
   }
   async function importText(text: string, kind = format) {
@@ -386,8 +449,11 @@ export function Review({
               </button>
               <button
                 aria-label={'Delete saved game ' + r.id}
+                disabled={deletionBusy}
                 onClick={(e) => {
                   deleteFocus.current = e.currentTarget;
+                  setDeleteError('');
+                  setDeletingStudy(null);
                   setDeleting(r.id);
                 }}
               >
@@ -405,10 +471,18 @@ export function Review({
         >
           <p>
             Delete this saved game from this profile on this device? Saved
-            studies retain their original snapshot.
+            studies retain their original snapshot. In memory-only mode, removal
+            affects this session only.
           </p>
+          {deleteError && <p role="alert">{deleteError}</p>}
+          {deletionBusy && (
+            <p role="status">
+              Deleting saved game… Waiting for device storage.
+            </p>
+          )}
           <button
             autoFocus
+            disabled={deletionBusy}
             onClick={() => {
               setDeleting(null);
               deleteFocus.current?.focus();
@@ -417,18 +491,10 @@ export function Review({
             Cancel deletion
           </button>
           <button
-            onClick={async () => {
-              await store.current!.remove(deleting);
-              if (record?.id === deleting) {
-                stop();
-                setRecord(null);
-                setDraft(null);
-              }
-              setDeleting(null);
-              await load();
-            }}
+            disabled={deletionBusy}
+            onClick={() => void deleteSavedGame()}
           >
-            Confirm deletion
+            {deleteError ? 'Retry deletion' : 'Confirm deletion'}
           </button>
         </section>
       )}
@@ -448,8 +514,11 @@ export function Review({
               </button>
               <button
                 aria-label={'Delete study variation ' + s.id}
+                disabled={deletionBusy}
                 onClick={(e) => {
                   studyDeleteFocus.current = e.currentTarget;
+                  setStudyDeleteError('');
+                  setDeleting(null);
                   setDeletingStudy(s.id);
                 }}
               >
@@ -464,9 +533,19 @@ export function Review({
             aria-modal="false"
             aria-label="Delete study variation"
           >
-            <p>Delete this saved study variation? The original game is kept.</p>
+            <p>
+              Delete this saved study variation? The original game is kept. In
+              memory-only mode, removal affects this session only.
+            </p>
+            {studyDeleteError && <p role="alert">{studyDeleteError}</p>}
+            {deletionBusy && (
+              <p role="status">
+                Deleting study variation… Waiting for device storage.
+              </p>
+            )}
             <button
               autoFocus
+              disabled={deletionBusy}
               onClick={() => {
                 setDeletingStudy(null);
                 studyDeleteFocus.current?.focus();
@@ -475,16 +554,12 @@ export function Review({
               Cancel study deletion
             </button>
             <button
-              onClick={async () => {
-                const t = studyStore.current;
-                if (!t) return;
-                await t.remove(deletingStudy);
-                setStudies(await t.list());
-                setDeletingStudy(null);
-                setStudyNotice(t.warning || 'Study variation deleted.');
-              }}
+              disabled={deletionBusy}
+              onClick={() => void deleteSavedStudy()}
             >
-              Confirm study deletion
+              {studyDeleteError
+                ? 'Retry study deletion'
+                : 'Confirm study deletion'}
             </button>
           </div>
         )}
