@@ -1,0 +1,16 @@
+{
+  "family": "Shogi Study Mincho",
+  "upstreamFamily": "Noto Serif JP",
+  "license": "OFL-1.1",
+  "upstreamCommit": "7af0d90b4d532ffa4b041937b560c6df4e7b1e95",
+  "sourceUrl": "https://raw.githubusercontent.com/google/fonts/7af0d90b4d532ffa4b041937b560c6df4e7b1e95/ofl/notoserifjp/NotoSerifJP%5Bwght%5D.ttf",
+  "sourceSha256": "2fd527ba12b6a44ec30d796d633360da0aeba6c5d4af1304ce12bb4dc15a7dfc",
+  "licenseUrl": "https://raw.githubusercontent.com/google/fonts/7af0d90b4d532ffa4b041937b560c6df4e7b1e95/ofl/notoserifjp/OFL.txt",
+  "assets": {
+    "public/fonts/shogi-study-mincho.ttf": "72d82de9729dc62ddbcb6f4a3360a9b85cbddf254e3bfdc0a361e1a81efad668",
+    "public/fonts/OFL.txt": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+  },
+  "modification": "FontTools 4.61.1: static weight 600, Japanese shogi glyph subset, renamed primary family. Copyright and OFL retained. Full OFL text embedded in font name ID 13.",
+  "rebuild": "python3 scripts/subset-board-font.py work/japanese/NotoSerifJP.ttf",
+  "embeddedOriginalCopyright": "(c) 2017-2024 Adobe (http://www.adobe.com/)."
+}

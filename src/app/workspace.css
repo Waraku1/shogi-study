@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Shogi Study Mincho';
+  src: url('/fonts/shogi-study-mincho.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+.app-nav button[aria-current='page']:hover { background: #284f3e; color: white; }
+.shared-workspace.learning-open {
+  display: grid;
+  grid-template-columns: minmax(0,1.4fr) minmax(320px,1fr);
+  gap: 24px;
+  max-width: 1250px;
+  margin: auto;
+  padding: 24px;
+  align-items: start;
+}
+.learning-open .game-space { min-width: 0; position: sticky; top: 12px; }
+.learning-open .site-header, .learning-open .page-intro, .learning-open footer { display: none; }
+.learning-open .game-space main { padding: 0; max-width: none; }
+.learning-open .workspace { grid-template-columns: minmax(0,1fr); }
+.learning-open .sidebar { display: none; }
+.learning-open .review-page.has-record > section[aria-label='Saved games'],
+.learning-open .review-page.has-record > section[aria-label='Saved study variations'],
+.learning-open .review-page.has-record > section[aria-label='Import and export'] { display: none; }
+.learning-open .review-page.has-record > h1,
+.learning-open .review-page.has-record > p:not([role]) { display: none; }
+.learning-open .review-page section[aria-label='Game replay'] { margin: 0; }
+.workspace-learning { padding: 24px; min-width: 0; background: #fff; border: 1px solid #dce4d5; border-radius: 12px; }
+.workspace-learning > details { font-size: 14px; }
+.workspace-learning .quick-learn { margin: 16px 0 0; border: 0; padding: 0; }
+.workspace-learning > h1 { font-size: 28px; }
+[lang='ja'] { font-family: 'Shogi Study Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif CJK JP', serif; }
+.review-page .board-with-ranks, .review-page .files { max-width: 675px; }
+.files { color: #59664f; }
+.board-help { color: #52614b; }
+.review-page .hand { border: 0; border-radius: 0; padding: 12px 0; margin: 0; background: transparent; }
+.review-history { display: flex; flex-wrap: wrap; gap: 6px; max-height: 220px; overflow-y: auto; padding: 6px; }
+.review-history button { font-size: 14px; padding: 8px; }
+.review-history button[aria-current='step'] { background: #284f3e; color: white; }
+.move-list li > span[lang='ja'] { width: auto; color: #233d35; font-size: 14px; }
+.hand-pieces button:disabled { opacity: 1; }
+.pv[lang='ja'] { font-family: 'Shogi Study Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif; font-size: 14px; }
+.study-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+.study-banner { border-left: 4px solid #b97b2b; padding: 12px; background: #fff4de; }
+.study-list { display: grid; gap: 8px; }
+.study-list > div { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 700px) {
+  .shared-workspace.learning-open { display: block; padding: 12px; }
+  .learning-open .game-space { position: static; }
+  .workspace-learning { padding: 16px; margin: 16px 12px; }
+  .learning-open .workspace-learning { margin: 16px 0; }
+  .piece { font-size: clamp(20px,5vw,30px); }
+  .board-with-ranks { grid-template-columns: minmax(0,1fr) 16px; gap: 2px; }
+  .files { padding-right: 18px; }
+}

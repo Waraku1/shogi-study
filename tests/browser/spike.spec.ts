@@ -14,7 +14,7 @@ test('local board, keyboard, record, real AI reply and candidate preview', async
   await expect(page.locator('[data-square="7f"]')).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'White to move', exact: true })).toBeVisible();
-  await expect(page.locator('.move-list')).toContainText('7g7f');
+  await expect(page.locator('.move-list')).toContainText('▲７六歩');
   await page.getByRole('button', { name: 'Undo', exact: true }).click();
   await expect(page.locator('[data-square="7g"]')).toHaveAttribute('aria-label', '7g Black Pawn');
   await page.selectOption('#mode', 'ai');
@@ -49,15 +49,15 @@ test('interactive captures, promotion, hand drops, illegal selection and resigna
   await expect(page.getByRole('dialog', { name: 'Choose promotion' })).toBeVisible();
   await page.getByRole('button', { name: 'Promote', exact: true }).click();
   await expect(page.locator('[data-square="2b"]')).toHaveAttribute('aria-label', /Black Horse/);
-  await expect(page.getByLabel('Black captured pieces')).toContainText('B ×1');
+  await expect(page.getByLabel('Black captured pieces')).toContainText('角 ×1');
   await move('3a', '2b');
   await page.getByLabel('Black captured pieces').getByRole('button').click();
   await page.locator('[data-square="4e"]').click();
-  await expect(page.locator('.move-list')).toContainText('B*4e');
+  await expect(page.locator('.move-list')).toContainText('▲４五角打');
   await expect(page.getByLabel('Black captured pieces')).toContainText('No captured pieces');
   await page.getByLabel('White captured pieces').getByRole('button').click();
   await page.locator('[data-square="8h"]').click();
-  await expect(page.locator('.move-list')).toContainText('B*8h');
+  await expect(page.locator('.move-list')).toContainText('△８八角打');
   await page.getByRole('button', { name: 'Resign', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'White wins', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Undo', exact: true }).click();

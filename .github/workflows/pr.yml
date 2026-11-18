@@ -1,7 +1,7 @@
 name: PR checks
 on:
   pull_request:
-    branches: [main, feat/spike-01-shogi-wasm, feat/phase-2-auth-online, feat/phase-3-learning, feat/phase-4-mvp-integration, chore/mvp-release-validation]
+    branches: [main, feat/spike-01-shogi-wasm, feat/phase-2-auth-online, feat/phase-3-learning, feat/phase-4-mvp-integration, chore/mvp-release-validation, chore/rel-02-source-verification]
 permissions:
   contents: read
 concurrency:

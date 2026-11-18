@@ -20,6 +20,14 @@ upstream Rollup/esbuild MIT attributions are retained alongside it.
 These generated helpers are in the browser bundle; the build tools themselves
 are not distributed as executable dependencies of this browser candidate.
 
+Shogi Study Mincho font subset — derived from Noto Serif JP, Copyright 2012
+Google Inc. All Rights Reserved. Embedded original copyright: (c) 2017-2024
+Adobe (http://www.adobe.com/). SIL Open Font License 1.1. Renamed, static
+weight 600 shogi-glyph subset; the font remains under OFL, separately from
+the proposed application license. Full license: public/fonts/OFL.txt and
+docs/licenses/NotoSerifJP-OFL.txt. Pinned source/modifications/hashes:
+docs/font-provenance.json and scripts/subset-board-font.py.
+
 Emscripten 2.0.26 (5af6a110ee58ca4a6885fbcad830c92207fefea2):
 MIT / University of Illinois-NCSA; includes Node.js MIT portions. Linked-runtime
 scope includes musl libc, pthread/JS glue, allocator, compiler-rt and C++ runtime.

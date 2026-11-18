@@ -18,6 +18,12 @@ for (const [filename, expected] of Object.entries(provenance.files)) {
   await writeFile(new URL(filename, target), bytes);
 }
 const inputs = JSON.parse(await readFile(new URL('docs/release-inputs.json', root), 'utf8'));
+// The bundled OFL font is a separate asset; keep its reviewed bytes/license intact.
+const font = JSON.parse(await readFile(new URL('docs/font-provenance.json', root), 'utf8'));
+for (const [path, digest] of Object.entries(font.assets)) {
+  const bytes = await readFile(new URL(path, root));
+  if (createHash('sha256').update(bytes).digest('hex') !== digest) throw new Error('Font integrity check failed: ' + path);
+}
 const notices = await createNotices(fileURLToPath(root), provenance, inputs);
 await writeFile(new URL('public/THIRD_PARTY_NOTICES.txt', root), notices);
 console.log(`Prepared unmodified ${provenance.package}@${pkg.version} for local testing (GPLv3; see docs/LICENSE_INVENTORY.md).`);
