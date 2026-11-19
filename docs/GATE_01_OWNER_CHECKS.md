@@ -19,7 +19,7 @@ If credentials, test accounts or consent configuration are unavailable, mark the
 
 ## CPU / subrequests — real Workers Free compliance UNVERIFIED
 
-The strict design limits are **10 ms CPU / HTTP request** and **50 subrequests / request**. HTTP elapsed time is not CPU. Local aggregate workerd CPU includes D1, Durable Objects and development proxy overhead; it cannot certify the production billing boundary or CPU percentiles.
+The Workers Free entry-Worker limit is **10 ms CPU / HTTP request**; current subrequest categories are **50 external / 1,000 internal Cloudflare-service subrequests per invocation**, not 50 total ([official change](https://developers.cloudflare.com/changelog/post/2026-02-11-subrequests-limit/)). Durable Object invocations have a separate **30 s default CPU limit**, not the entry Worker's 10 ms ([DO limits](https://developers.cloudflare.com/durable-objects/platform/limits/)). Confirm the eventual account plan/configuration before sign-off. HTTP elapsed time is not CPU. Local aggregate workerd CPU includes D1, Durable Objects and development proxy overhead; it cannot certify either billing boundary or CPU percentiles.
 
 Credential-free repeatable measurement on Linux:
 
@@ -28,7 +28,7 @@ pnpm install --frozen-lockfile
 node scripts/profile-local.mjs
 ```
 
-This script starts **local-only** Wrangler on 8791 (inspector 9231), uses a separate gitignored `work/gate-profile/state`, applies migrations locally, and uses fake Alice/Bob identities. It records warmed 40-request batches (20 for WS/sign-in initiation), actual room/D1 statement counters, wall p50/p95, aggregate Linux workerd user+system CPU ticks (10 ms resolution on the tested host), and separate V8 CPU samples at requested 100 μs interval. `work/gate-profile/summary.json` and `.cpuprofile` files are local evidence; no uploads. Counters are fixture instrumentation, not production response headers. The real Google callback is deliberately not invoked.
+This script starts **local-only** Wrangler on 8791 (inspector 9231), uses a separate gitignored `work/gate-profile/state`, applies migrations locally, and uses fake Alice/Bob identities. REL-04 adds the first HTTP request after process startup (not an edge cold start), route-first observations, exact revision/runtime identity, internal room route names and warm wall maxima. It retains warmed 40-request batches (20 for WS/sign-in initiation), room/D1 statement counters, aggregate Linux workerd user+system CPU ticks (10 ms resolution on the tested host), and separate V8 CPU samples at requested 100 μs interval. `work/gate-profile/summary.json` and `.cpuprofile` files are local evidence; no uploads. `SHOGI_PROFILE_OUTPUT=work/rel-04/cpu` selects a fresh local-only state/output directory. Counters are fixture instrumentation, not production response headers. The real Google callback is deliberately not invoked; aggregate CPU means are not single-invocation CPU maxima.
 
 For interactive profiling, run `pnpm exec wrangler dev --local --config wrangler.profile.json --persist-to work/gate-profile/state --port 8791 --inspector-port 9231`, open DevTools with Wrangler's `d` command / its inspector link, select **Profiler**, start recording, issue one controlled route/batch, stop and save locally. Load the script's `.cpuprofile` files for comparison. Do not profile while the script owns that port/inspector.
 
@@ -51,3 +51,5 @@ Use current Safari on macOS with localhost; record OS/browser and commit. For de
 ## Licensing owner decision — pending, distribution blocked
 
 Owner must approve or reject **GPL-3.0-only** for the whole application and confirm ownership/integration scope. Do not replace the draft root LICENSE based on tests. Resolve the compact [REL-01 follow-up gaps](REL_01_RELEASE_READINESS.md#gate-01-follow-up-source-gaps) before any distribution decision. No fresh exhaustive audit or release archive generation was performed here.
+
+REL-04 supplies the current [concise device/OAuth handoff](REL_04_OWNER_CHECKS.md), [owner license decision packet](REL_04_LICENSING_DECISION.md) and [gate report](REL_04_RELEASE_GATE_REPORT.md). Historical measurements remain historical evidence.

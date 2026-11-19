@@ -1,3 +1,5 @@
+import { historyNotation, pvNotation, japaneseMove, terminalNotation, outcomeTerminal } from '../features/shogi/notation';
+import { SpecialMoveType } from 'tsshogi';
 import { Review } from '../features/review/Review';
 import { useAccess, refreshAccess, assertAnalysisAllowed, guestOnly } from '../features/review/access';
 import { saveGame } from '../features/review/store';
@@ -6,8 +8,8 @@ import { QuickLearn } from '../features/learning/QuickLearn';
 import { guestNamespace } from '../features/learning/types';
 import { Online } from '../features/shogi/Online';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Color, Square } from 'tsshogi';
-import type { Move, Position } from 'tsshogi';
+import { Color, Square, Move } from 'tsshogi';
+import type { Position } from 'tsshogi';
 import { Board, focusBoardSquare } from '../features/shogi/Board';
 import { LocalGame, isLegalUSI, legalMoves, sideName, validatePV } from '../features/shogi/game';
 import type { MoveSource } from '../features/shogi/game';
@@ -21,13 +23,27 @@ type Status = 'idle' | 'loading' | 'ready' | 'searching' | 'error';
 export function App() {
   const query = new URLSearchParams(location.search);
   const [view, setView] = useState<'play'|'learn'|'review'>(query.has('learn')?'learn':query.has('review')?'review':'play');
+  const [learnVisited,setLearnVisited]=useState(query.has('learn'));
+  const [reviewVisited,setReviewVisited]=useState(query.has('review'));
+  const [learningContext,setLearningContext]=useState<'play'|'review'>(query.has('review')?'review':'play');
   const [onlineOpen,setOnlineOpen]=useState(!guestOnly&&query.has('room'));
   const [onlineShown,setOnlineShown]=useState(!guestOnly&&query.has('room'));
   const [onlineKey,setOnlineKey]=useState(query.get('room')??'new');
+  const roomRef=useRef(query.get('room')??'');
   const access=useAccess();
-  function navigate(next:'play'|'learn'|'review') { setView(next);history.replaceState(null,'',next==='play'?(onlineShown?`?room=${onlineKey}`:'/'):next==='learn'?'?learn=1':'?review=1');void refreshAccess(); }
-  function online(id?:string){history.replaceState(null,'',id?`?room=${id}`:'?room=');setOnlineKey(id??onlineKey);setOnlineOpen(true);setOnlineShown(true);setView('play');void refreshAccess();}
-  useEffect(()=>{if(access.blocked)setOnlineShown(true);},[access.blocked]);
+  function navigate(next:'play'|'learn'|'review') {
+    const context=next==='learn'?(view==='learn'?learningContext:view==='review'?'review':'play'):next==='review'?'review':'play';
+    setLearningContext(context);setView(next); if(next==='learn')setLearnVisited(true);if(next==='review')setReviewVisited(true);
+    history.replaceState(null,'',next==='play'?(onlineShown?`?room=${encodeURIComponent(roomRef.current)}`:'/'):next==='learn'?(context==='review'?'?learn=1&review=1':onlineShown?'?room='+encodeURIComponent(roomRef.current)+'&learn=1':'?learn=1'):'?review=1');void refreshAccess();
+  }
+  function online(id?:string){
+    if(id){roomRef.current=id;setOnlineKey(id);}
+    history.replaceState(null,'',`?room=${encodeURIComponent(roomRef.current)}`);setOnlineOpen(true);setOnlineShown(true);setLearningContext('play');setView('play');void refreshAccess();
+  }
+  useEffect(()=>{if(access.blocked){setOnlineShown(true);setLearningContext('play');}},[access.blocked]);
+  const reviewVisible=view==='review'||(view==='learn'&&learningContext==='review');
+  const localVisible=!reviewVisible&&!onlineShown&&!access.blocked&&!access.checking;
+  const onlineVisible=!reviewVisible&&onlineShown;
   return <>
     <nav className="app-nav" aria-label="Main navigation">
       <button aria-current={view==='play'?'page':undefined} onClick={()=>navigate('play')}>Play</button>
@@ -38,10 +54,15 @@ export function App() {
     {access.reason&&<div className="access-notice" role="status">{access.reason}{access.activeRooms.map(id=><button key={id} onClick={()=>online(id)}>Resume online room</button>)}</div>}
     {access.checking&&<p role="status">Checking play status…</p>}
     {access.blocked&&<p className="access-notice">No Review or engine assistance while match status is active or unknown. This restriction cannot prevent use of external engines. <button onClick={()=>void refreshAccess()}>Retry online status</button></p>}
-    <div hidden={view!=='play'||onlineShown||access.blocked||access.checking}>{access.namespace&&<LocalApp key={access.namespace} namespace={access.namespace} analysisBlocked={access.blocked} visible={view==='play'&&!onlineShown&&!access.blocked&&!access.checking}/>}</div>
-    {onlineOpen&&<div hidden={view!=='play'||!onlineShown}><Online key={onlineKey} back={()=>{setOnlineShown(false);history.replaceState(null,'','/');void refreshAccess();}}/></div>}
-    {view==='learn'&&<main className="learn-page"><button onClick={()=>navigate('play')}>Back to practice</button><h1>Learn</h1><p>Original cards, short quizzes, and a simple review queue. No login needed.</p><QuickLearn key={guestNamespace} namespace={guestNamespace} standalone/></main>}
-    {view==='review'&&(access.checking||access.blocked||!access.namespace?<main><h1>Review paused</h1><p role="status">Finish or reconnect to your online match before using Review.</p></main>:<Review key={access.namespace} namespace={access.namespace} blocked={access.blocked}/>)}
+    <div className={`shared-workspace${view==='learn'&&(localVisible||reviewVisible)&&!access.blocked?' learning-open':''}`}>
+      <div className="game-space">{access.namespace&&<LocalApp key={'practice:'+access.namespace} namespace={access.namespace} analysisBlocked={access.blocked} visible={localVisible}/>}{reviewVisited&&access.namespace&&!access.blocked&&!access.checking&&<Review key={'review:'+access.namespace} namespace={access.namespace} blocked={access.blocked} visible={reviewVisible}/> }</div>
+      {onlineOpen&&<Online key={onlineKey} visible={onlineVisible} workspaceLearn={view==='learn'} onRoom={id=>{roomRef.current=id;}} back={()=>{setOnlineShown(false);history.replaceState(null,'','/');void refreshAccess();}}/>}
+      {learnVisited&&!(onlineOpen&&onlineShown&&!reviewVisible)&&<section hidden={view!=='learn'} className="learn-page workspace-learning" aria-label="Learning workspace">
+        <button onClick={()=>navigate('play')}>Back to practice</button><h1>Learn</h1><p>Keep the board in view while you study. No login needed.</p>
+        <details open><summary>Learning cards beside the board</summary><QuickLearn key={guestNamespace} namespace={guestNamespace} standalone/></details>
+      </section>}
+    </div>
+    {reviewVisible&&(access.checking||access.blocked||!access.namespace)&&<main><h1>Review paused</h1><p role="status">Finish or reconnect to your online match before using Review.</p></main>}
   </>;
 }
 
@@ -69,6 +90,7 @@ function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysis
   const running = useRef(false);
   const outcome = useMemo(() => game.outcome, [game, revision]);
   const position = game.position;
+  const displayMoves = useMemo(()=>historyNotation(game.moves),[game,revision]);
   const busy = status === 'loading' || status === 'searching';
   const candidate = analysis?.result.candidates[candidateIndex];
   const preview = useMemo(() => {
@@ -114,9 +136,10 @@ function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysis
     cancelWork(); setMode(nextMode); setGame(new LocalGame()); setRevision(0); setNotice('New game. Black moves first.');
   }
   function play(usi: string) {
+    const display = japaneseMove(game.position,usi,game.record.current.move instanceof Move ? game.record.current.move : undefined);
     if (!game.play(usi)) { setNotice(`Illegal move rejected: ${usi}`); return; }
     setSelected(null); setPromotion(null); clearAnalysis(); setError('');
-    setNotice(`${usi} played.`); setRevision(value => value + 1);
+    setNotice(`${display} played.`); setRevision(value => value + 1);
   }
   function selectSquare(square: Square) {
     if (selected) {
@@ -159,7 +182,7 @@ function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysis
       }
       setAnalysis({ result, base, ply });
       setStatus('ready');
-      setNotice(applyMove ? `AI played ${result.bestMoveUSI}. Your turn.` : 'Analysis complete. Select a candidate to explore its variation.');
+      setNotice(applyMove ? `AI played ${pvNotation(game.moves.slice(0,ply),[result.bestMoveUSI!])[0].japanese}. Your turn.` : 'Analysis complete. Select a candidate to explore its variation.');
     } catch (cause) {
       if (token !== generation.current) return;
       setError(cause instanceof Error ? cause.message : String(cause));
@@ -180,7 +203,7 @@ function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysis
   return <div className="app-shell">
     <header className="site-header">
       <a className="wordmark" href="/" aria-label="Shogi Study home"><span className="brand-mark">歩</span>SHOGI <b>STUDY</b></a>
-      <span className="prototype-badge">LOCAL PROTOTYPE · SPIKE 01</span>
+      <span className="prototype-badge">LOCAL STUDY WORKSPACE</span>
     </header>
     <main>
       <div className="page-intro"><div><p className="eyebrow">PLAY. EXPLORE. UNDERSTAND.</p><h1>Your next move starts here.</h1>
@@ -234,12 +257,12 @@ function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysis
               <p className="small">Scores are from the analyzed side’s perspective. Positive favors {sideName(analysis.base.color)}.</p>
               <div className="candidates">{analysis.result.candidates.map((line, index) => <button key={line.multiPv}
                 aria-pressed={index === candidateIndex && !!previewPly} onClick={() => { setCandidateIndex(index); setPreviewPly(1); setSelected(null); }}>
-                <span className="candidate-rank">{line.multiPv.toString().padStart(2, '0')}</span><strong>{line.firstMoveUSI}</strong>
+                <span className="candidate-rank">{line.multiPv.toString().padStart(2, '0')}</span><strong lang="ja">{pvNotation(game.moves.slice(0,analysis.ply),[line.firstMoveUSI])[0].japanese}</strong>
                 <span>{formatScore(line.score)}<small>Depth {line.depth}</small></span>
               </button>)}</div>
               {!analysis.result.candidates.length && <p>No candidate variations were reported by this search.</p>}
-              {candidate && <div className="variation"><p className="eyebrow">PRINCIPAL VARIATION · USI</p>
-                <p className="pv" data-testid="pv">{candidate.pvUSI.join(' → ')}</p>
+              {candidate && <div className="variation"><p className="eyebrow">PRINCIPAL VARIATION · JAPANESE</p>
+                <p className="pv" lang="ja" data-testid="pv">{pvNotation(game.moves.slice(0,analysis.ply),candidate.pvUSI).map(m=>`${m.ply}. ${m.japanese}`).join(' → ')}</p>
                 <div className="preview-controls"><button disabled={previewPly <= 0} onClick={() => setPreviewPly(p => p - 1)}>← Previous</button>
                   <button disabled={previewPly >= candidate.pvUSI.length} onClick={() => setPreviewPly(p => p + 1)}>Next →</button></div>
               </div>}
@@ -248,12 +271,13 @@ function LocalApp({namespace,analysisBlocked,visible}:{namespace:string;analysis
             {diagnostics && <details><summary>Engine details</summary><p>{diagnostics.name}</p><p>Startup {diagnostics.startupMs.toFixed(0)} ms · WASM memory {(diagnostics.wasmMemoryBytes / 1048576).toFixed(0)} MiB · 1 search thread · 16 MiB hash</p><p>Shared memory requires COOP/COEP headers. Memory shown excludes browser and worker overhead.</p></details>}
           </section>
           <section className="card record"><div className="card-title"><h2>Move record</h2><span className="muted">{game.moves.length} plies</span></div>
-            {game.moves.length ? <ol className="move-list">{game.moves.map((usi, index) => <li key={index}><span>{index + 1}.</span><code>{usi}</code></li>)}</ol> : <p className="muted">Your opening move goes here.</p>}
+            {game.moves.length ? <ol className="move-list">{displayMoves.map(move => <li key={move.ply}><span>{move.ply}.</span><span lang="ja" title={move.usi}>{move.japanese}</span></li>)}</ol> : <p className="muted">Your opening move goes here.</p>}
+            {outcome&&<p lang="ja">{game.moves.length+1}. {terminalNotation(game.record.current.move instanceof Move ? outcomeTerminal(outcome.reason) : game.record.current.move.type === 'any' ? SpecialMoveType.INTERRUPT : game.record.current.move.type)}</p>}
             <details><summary>Current SFEN</summary><code data-testid="sfen">{game.record.sfen}</code></details>
           </section>
         </aside>
       </div>
-      <footer>English piece initials · + means promoted · Black moves toward rank a · Local technical prototype
+      <footer>Japanese pieces · ▲ Black faces up · △ White faces down · Red lettering marks promotion
         <br /><a href="/THIRD_PARTY_NOTICES.txt">Third-party notices</a></footer>
     </main>
   </div>;

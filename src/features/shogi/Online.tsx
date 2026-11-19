@@ -2,12 +2,14 @@ import { observeOnline, refreshAccess } from '../review/access';
 import { saveGame } from '../review/store';
 import { QuickLearn } from '../learning/QuickLearn';
 import { accountNamespace } from '../learning/types';
-import { useEffect, useRef, useState } from "react";
-import { Square } from "tsshogi";
+import { useEffect, useRef, useState, useMemo } from "react";
+import { Square, SpecialMoveType } from "tsshogi";
 import type { Move } from "tsshogi";
 import { Board, focusBoardSquare } from "./Board";
 import { positionFromSFEN, legalMoves } from "./game";
 import type { MoveSource } from "./game";
+import { historyNotation, terminalNotation } from './notation';
+import { descriptionTerminal } from '../review/record-io';
 type Snapshot = {
   type: "snapshot";
   id: string;
@@ -31,7 +33,7 @@ async function api(path: string, method = "GET") {
   if (!r.ok) throw new Error(b.error);
   return b;
 }
-export function Online({ back }: { back: () => void }) {
+export function Online({ back, visible = true, workspaceLearn = false, onRoom }: { back: () => void; visible?:boolean; workspaceLearn?:boolean; onRoom?:(id:string)=>void }) {
   const [me, setMe] = useState<{ id: string; displayName: string } | null>(
       null,
     ),
@@ -48,6 +50,7 @@ export function Online({ back }: { back: () => void }) {
     [received, setReceived] = useState(Date.now()),
     [retry, setRetry] = useState(0);
   const promotionTarget=useRef<string|null>(null);
+  useEffect(()=>{if(state?.id)onRoom?.(state.id);},[state?.id]);
   useEffect(()=>{if(!promote&&promotionTarget.current){focusBoardSquare(promotionTarget.current);promotionTarget.current=null;}},[promote]);
   const [archiveNotice,setArchiveNotice]=useState('');
   useEffect(()=>{if(!me||!state)return;observeOnline(me.id,state.status,state.id);if(state.status==='finished'){
@@ -136,6 +139,8 @@ export function Online({ back }: { back: () => void }) {
     setPromote(null);
   };
   const pos = state ? positionFromSFEN(state.sfen) : null;
+  const displayMoves=useMemo(()=>historyNotation(state?.moves??[]),[state?.id,state?.seq]);
+  if(!visible)return null;
   return (
     <main className="online-room">
       <button disabled={state?.status === "active"} onClick={back}>
@@ -143,6 +148,7 @@ export function Online({ back }: { back: () => void }) {
       </button>
       <h1>Online Shogi</h1>
       <p>Invitation rooms · 10-minute sudden death · No engine assistance</p>
+      {workspaceLearn&&<><h1>Learn</h1><p>Board and clocks stay visible. Quick Learn remains optional and pauses on your turn.</p></>}
       {error && <p role="alert">{error}</p>}
       {!me ? (
         <button
@@ -288,10 +294,11 @@ export function Online({ back }: { back: () => void }) {
           </button>
           {archiveNotice&&<p role="status">{archiveNotice}</p>}
           <ol data-testid="online-record">
-            {state.moves.map((m, i) => (
-              <li key={i}>{m}</li>
+            {displayMoves.map(m => (
+              <li key={m.ply} lang="ja" title={m.usi}>{m.ply}. {m.japanese}</li>
             ))}
           </ol>
+          {state.result&&<p lang="ja">{state.moves.length+1}. {terminalNotation(descriptionTerminal(state.result)??SpecialMoveType.INTERRUPT)}</p>}
           <code data-testid="online-sfen">{state.sfen}</code>
         </>
       )}

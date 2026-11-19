@@ -1,0 +1,723 @@
+{
+  "baselineSHA": "8337b793bf0868b14890a2840142cdd322877575",
+  "baselineCI": {
+    "id": 44424498263,
+    "conclusion": "success"
+  },
+  "runtimeChanged": false,
+  "environment": {
+    "os": "Linux 6.18.57 x86_64",
+    "node": "24.22.1",
+    "pnpm": "11.25.0",
+    "chromium": "156.0.8078.79",
+    "safari": "NOT TESTED",
+    "voiceOver": "NOT TESTED",
+    "physicalIOS": "NOT TESTED",
+    "physicalAndroid": "NOT TESTED",
+    "realGoogleOAuth": "NOT TESTED; required environment bindings and local development credentials absent"
+  },
+  "lifecycle": {
+    "plannedCases": 16,
+    "passed": 15,
+    "failed": 1,
+    "assertionChanged": false,
+    "deadlineChanged": false,
+    "cause": "UNRESOLVED; first failure did not capture independent target liveness, follow-up captured only passing cases",
+    "cases": [
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 0,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 8909484,
+        "rendererJSHeapFinalBytes": 8909484,
+        "hostFreeBytesMin": 8428728320,
+        "hostLoad1Max": 1.33,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 0,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 4,
+        "closed": 4,
+        "rendererJSHeapPeakBytes": 12400436,
+        "rendererJSHeapFinalBytes": 12400436,
+        "hostFreeBytesMin": 8368164864,
+        "hostLoad1Max": 1.22,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 1,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 8944476,
+        "rendererJSHeapFinalBytes": 8944476,
+        "hostFreeBytesMin": 8378957824,
+        "hostLoad1Max": 1.28,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 1,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 4,
+        "closed": 4,
+        "rendererJSHeapPeakBytes": 12405480,
+        "rendererJSHeapFinalBytes": 12405480,
+        "hostFreeBytesMin": 8374751232,
+        "hostLoad1Max": 1.17,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 2,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 9218960,
+        "rendererJSHeapFinalBytes": 9218960,
+        "hostFreeBytesMin": 8411570176,
+        "hostLoad1Max": 1.08,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 2,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 4,
+        "closed": 4,
+        "rendererJSHeapPeakBytes": 12514996,
+        "rendererJSHeapFinalBytes": 12514996,
+        "hostFreeBytesMin": 8361328640,
+        "hostLoad1Max": 1.39,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 3,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 8871976,
+        "rendererJSHeapFinalBytes": 8871976,
+        "hostFreeBytesMin": 8428793856,
+        "hostLoad1Max": 1.28,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 3,
+        "status": "failed",
+        "remainingWorkers": [
+          "http://127.0.0.1:5173/engine-host.js"
+        ],
+        "peakWorkers": 5,
+        "created": 5,
+        "closed": 4,
+        "rendererJSHeapPeakBytes": 11718300,
+        "rendererJSHeapFinalBytes": 11718300,
+        "hostFreeBytesMin": 8344047616,
+        "hostLoad1Max": 1.25,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 4,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 9238604,
+        "rendererJSHeapFinalBytes": 9238604,
+        "hostFreeBytesMin": 8384507904,
+        "hostLoad1Max": 1.61,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+        "dirty": false,
+        "series": "lifecycle-first",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 4,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 5,
+        "closed": 5,
+        "rendererJSHeapPeakBytes": 11793908,
+        "rendererJSHeapFinalBytes": 11793908,
+        "hostFreeBytesMin": 8333508608,
+        "hostLoad1Max": 1.49,
+        "workerTargetsAtEnd": "NOT CAPTURED in first series",
+        "remainingReplies": "NOT CAPTURED in first series"
+      },
+      {
+        "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+        "dirty": true,
+        "series": "lifecycle",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 0,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 8963136,
+        "rendererJSHeapFinalBytes": 8963136,
+        "hostFreeBytesMin": 8535392256,
+        "hostLoad1Max": 0.14,
+        "workerTargetsAtEnd": [],
+        "remainingReplies": []
+      },
+      {
+        "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+        "dirty": true,
+        "series": "lifecycle",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 0,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 5,
+        "closed": 5,
+        "rendererJSHeapPeakBytes": 12440888,
+        "rendererJSHeapFinalBytes": 12440888,
+        "hostFreeBytesMin": 8473550848,
+        "hostLoad1Max": 0.12,
+        "workerTargetsAtEnd": [],
+        "remainingReplies": []
+      },
+      {
+        "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+        "dirty": true,
+        "series": "lifecycle",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 1,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 8685184,
+        "rendererJSHeapFinalBytes": 7835376,
+        "hostFreeBytesMin": 8554610688,
+        "hostLoad1Max": 0.18,
+        "workerTargetsAtEnd": [],
+        "remainingReplies": []
+      },
+      {
+        "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+        "dirty": true,
+        "series": "lifecycle",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 1,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 5,
+        "closed": 5,
+        "rendererJSHeapPeakBytes": 11786752,
+        "rendererJSHeapFinalBytes": 11786752,
+        "hostFreeBytesMin": 8491102208,
+        "hostLoad1Max": 0.16,
+        "workerTargetsAtEnd": [],
+        "remainingReplies": []
+      },
+      {
+        "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+        "dirty": true,
+        "series": "lifecycle",
+        "title": "real WASM handshake, opening and midgame, 10 searches, full legal PVs, stop and dispose",
+        "repeat": 2,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 3,
+        "closed": 3,
+        "rendererJSHeapPeakBytes": 9189944,
+        "rendererJSHeapFinalBytes": 9189944,
+        "hostFreeBytesMin": 8539176960,
+        "hostLoad1Max": 0.3,
+        "workerTargetsAtEnd": [],
+        "remainingReplies": []
+      },
+      {
+        "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+        "dirty": true,
+        "series": "lifecycle",
+        "title": "reset during analysis, stop during preparation, and disposal of an active search",
+        "repeat": 2,
+        "status": "passed",
+        "remainingWorkers": [],
+        "peakWorkers": 3,
+        "created": 4,
+        "closed": 4,
+        "rendererJSHeapPeakBytes": 12534476,
+        "rendererJSHeapFinalBytes": 12534476,
+        "hostFreeBytesMin": 8458506240,
+        "hostLoad1Max": 0.28,
+        "workerTargetsAtEnd": [],
+        "remainingReplies": []
+      }
+    ],
+    "memoryAndResponsiveness": [
+      {
+        "series": "lifecycle-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.5249999985098839,
+        "heartbeatMaxGapMs": 32.54500000178814
+      },
+      {
+        "series": "lifecycle-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.494999997317791,
+        "heartbeatMaxGapMs": 30.110000006854534
+      },
+      {
+        "series": "lifecycle-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.5099999979138374,
+        "heartbeatMaxGapMs": 33.060000002384186
+      },
+      {
+        "series": "lifecycle-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          134217728
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.5649999976158142,
+        "heartbeatMaxGapMs": 49.564999997615814
+      },
+      {
+        "series": "lifecycle-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.4299999997019768,
+        "heartbeatMaxGapMs": 27.394999995827675
+      },
+      {
+        "series": "lifecycle-followup-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.45000000298023224,
+        "heartbeatMaxGapMs": 37.44999999552965
+      },
+      {
+        "series": "lifecycle-followup-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.7749999985098839,
+        "heartbeatMaxGapMs": 40.564999997615814
+      },
+      {
+        "series": "lifecycle-followup-results",
+        "initialWasmBytes": 134217728,
+        "warmSearchWasmBytes": [
+          161087488
+        ],
+        "warmSearches": 10,
+        "stopMs": 0.8449999988079071,
+        "heartbeatMaxGapMs": 27.149999998509884
+      }
+    ]
+  },
+  "localCPU": {
+    "sourceSHA": "3e78bb8e14dd7b36049155456106739ecd48dc4a",
+    "dirty": true,
+    "os": "linux 6.18.57",
+    "wrangler": "4.162.0",
+    "workerd": "1.20261113.1",
+    "method": "One first HTTP request; route-first observations; warm sequential batches. Aggregate Linux workerd user+system CPU ticks measured without profiler, separate 100us V8 non-idle sample estimates. Includes local DO/D1/proxy overhead. Not Workers billed CPU or per-request CPU percentiles/maxima.",
+    "node": "v24.22.1",
+    "cpuTickMs": 10,
+    "coldFirstHttp": {
+      "scope": "First HTTP request in this local profile process, before fixture logins. Not an edge cold-start/billed CPU measurement.",
+      "path": "/api/me",
+      "status": 401,
+      "wallMs": 28.969417999999678,
+      "aggregateLocalWorkerdCpuMs": 10,
+      "rooms": 0,
+      "d1": 0
+    },
+    "realOAuthCallback": "NOT TESTED",
+    "workersFreeCompliance": "UNVERIFIED",
+    "results": [
+      {
+        "label": "me-unauthenticated",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 5.371457000000191,
+          "aggregateLocalWorkerdCpuMs": 0,
+          "rooms": 0,
+          "d1": 0
+        },
+        "repetitions": 40,
+        "httpStatus": 401,
+        "wallP50Ms": 3.235,
+        "wallP95Ms": 6.2,
+        "wallMaxMs": 7.038,
+        "aggregateLocalWorkerdCpuMs": 110,
+        "aggregateCpuMeanMs": 2.75,
+        "sampledNonIdleMeanMs": 2.993,
+        "v8Samples": 26,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 0,
+        "roomRoutes": []
+      },
+      {
+        "label": "me-fixture-session",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 12.980066999999508,
+          "aggregateLocalWorkerdCpuMs": 0,
+          "rooms": 0,
+          "d1": 1
+        },
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 3.793,
+        "wallP95Ms": 5.752,
+        "wallMaxMs": 9.411,
+        "aggregateLocalWorkerdCpuMs": 130,
+        "aggregateCpuMeanMs": 3.25,
+        "sampledNonIdleMeanMs": 4,
+        "v8Samples": 57,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 1,
+        "roomRoutes": []
+      },
+      {
+        "label": "status-0-waiting",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 10.130772999998953,
+          "aggregateLocalWorkerdCpuMs": 10,
+          "rooms": 0,
+          "d1": 2
+        },
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 4.538,
+        "wallP95Ms": 7.604,
+        "wallMaxMs": 11.173,
+        "aggregateLocalWorkerdCpuMs": 160,
+        "aggregateCpuMeanMs": 4,
+        "sampledNonIdleMeanMs": 4.316,
+        "v8Samples": 114,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 2,
+        "roomRoutes": []
+      },
+      {
+        "label": "status-1-waiting",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 11.803538000000117,
+          "aggregateLocalWorkerdCpuMs": 10,
+          "rooms": 1,
+          "d1": 2
+        },
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 5.442,
+        "wallP95Ms": 11.131,
+        "wallMaxMs": 15.27,
+        "aggregateLocalWorkerdCpuMs": 220,
+        "aggregateCpuMeanMs": 5.5,
+        "sampledNonIdleMeanMs": 6.263,
+        "v8Samples": 155,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 2,
+        "roomRoutes": [
+          "/status"
+        ]
+      },
+      {
+        "label": "status-10-waiting",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 14.196766000000935,
+          "aggregateLocalWorkerdCpuMs": 10,
+          "rooms": 10,
+          "d1": 2
+        },
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 10.49,
+        "wallP95Ms": 17.269,
+        "wallMaxMs": 18.099,
+        "aggregateLocalWorkerdCpuMs": 400,
+        "aggregateCpuMeanMs": 10,
+        "sampledNonIdleMeanMs": 9.644,
+        "v8Samples": 449,
+        "maxRoomRequests": 10,
+        "maxD1Statements": 2,
+        "roomRoutes": [
+          "/status"
+        ]
+      },
+      {
+        "label": "status-32-waiting",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 24.105595999999423,
+          "aggregateLocalWorkerdCpuMs": 20,
+          "rooms": 32,
+          "d1": 2
+        },
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 22.59,
+        "wallP95Ms": 28.358,
+        "wallMaxMs": 30.849,
+        "aggregateLocalWorkerdCpuMs": 810,
+        "aggregateCpuMeanMs": 20.25,
+        "sampledNonIdleMeanMs": 19.084,
+        "v8Samples": 1106,
+        "maxRoomRequests": 32,
+        "maxD1Statements": 2,
+        "roomRoutes": [
+          "/status"
+        ]
+      },
+      {
+        "label": "join-existing-participant",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 14.079119999998511,
+          "aggregateLocalWorkerdCpuMs": 10,
+          "rooms": 1,
+          "d1": 4
+        },
+        "repetitions": 40,
+        "httpStatus": 200,
+        "wallP50Ms": 6.467,
+        "wallP95Ms": 13.303,
+        "wallMaxMs": 15.245,
+        "aggregateLocalWorkerdCpuMs": 240,
+        "aggregateCpuMeanMs": 6,
+        "sampledNonIdleMeanMs": 8.021,
+        "v8Samples": 241,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 4,
+        "roomRoutes": [
+          "/join"
+        ]
+      },
+      {
+        "label": "websocket-upgrade",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 18.90650800000003,
+          "aggregateLocalWorkerdCpuMs": 20,
+          "rooms": 1,
+          "d1": 4
+        },
+        "repetitions": 20,
+        "httpStatus": 101,
+        "wallP50Ms": 6.461,
+        "wallP95Ms": 13.358,
+        "wallMaxMs": 13.358,
+        "aggregateLocalWorkerdCpuMs": 120,
+        "aggregateCpuMeanMs": 6,
+        "sampledNonIdleMeanMs": 8.099,
+        "v8Samples": 102,
+        "maxRoomRequests": 1,
+        "maxD1Statements": 4,
+        "roomRoutes": [
+          "/ws"
+        ]
+      },
+      {
+        "label": "signin-initiation-fake",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 26.268888000000516,
+          "aggregateLocalWorkerdCpuMs": 20,
+          "rooms": 0,
+          "d1": 1
+        },
+        "repetitions": 20,
+        "httpStatus": 200,
+        "wallP50Ms": 4.923,
+        "wallP95Ms": 14.46,
+        "wallMaxMs": 14.46,
+        "aggregateLocalWorkerdCpuMs": 100,
+        "aggregateCpuMeanMs": 5,
+        "sampledNonIdleMeanMs": 6.716,
+        "v8Samples": 199,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 1,
+        "roomRoutes": []
+      },
+      {
+        "label": "status-128-legacy-rejected",
+        "firstObserved": {
+          "scope": "First route observation after fixture setup in the same process; not a cold isolate.",
+          "wallMs": 12.654027000000497,
+          "aggregateLocalWorkerdCpuMs": 10,
+          "rooms": 0,
+          "d1": 2
+        },
+        "repetitions": 40,
+        "httpStatus": 400,
+        "wallP50Ms": 3.656,
+        "wallP95Ms": 7.573,
+        "wallMaxMs": 11.105,
+        "aggregateLocalWorkerdCpuMs": 130,
+        "aggregateCpuMeanMs": 3.25,
+        "sampledNonIdleMeanMs": 4.877,
+        "v8Samples": 110,
+        "maxRoomRequests": 0,
+        "maxD1Statements": 2,
+        "roomRoutes": []
+      }
+    ],
+    "observedApplicationHttpRequests": {
+      "GET /api/me": 169,
+      "POST /api/test/login": 2,
+      "GET /api/play-status": 420,
+      "POST /api/rooms": 32,
+      "POST /api/rooms/:id/join": 84,
+      "GET /api/rooms/:id/ws": 44,
+      "POST /api/test/oauth-probe": 44
+    },
+    "observedApplicationHttpRequestsTotal": 795
+  },
+  "profilingProgramHashes": {
+    "scripts/profile-local.mjs": "7529495184406e5676e2b00475f4896c4f367625904041c424e65af86fa3b81c",
+    "server/profile-worker.ts": "93d5d6ae1607341766c8b98612dca299168e2ad9c3096779077cb8396473396b"
+  },
+  "originalFailurePreservation": [
+    {
+      "path": "work/rel-03/browser-first-failure/browser-results.json",
+      "bytes": 38361,
+      "sha256": "20889bce26f928aff7b86c1d98c47cb10c611bf0d1cc20fe54ed407b6ebcd1b0"
+    },
+    {
+      "path": "work/rel-03/browser-first-failure/spike-real-WASM-handshake--a96e6--legal-PVs-stop-and-dispose/error-context.md",
+      "bytes": 25265,
+      "sha256": "bd73ab44397dc49dae5366c5e522f1a7b06222c6010bebfdc6c655ee2a9a55c7"
+    },
+    {
+      "path": "work/rel-03/browser-first-failure/spike-real-WASM-handshake--a96e6--legal-PVs-stop-and-dispose/test-failed-1.png",
+      "bytes": 141727,
+      "sha256": "d17e2c29487600f97b1705378f130fb3738b9c62eaed3206f2f4f2a3c80ef473"
+    },
+    {
+      "path": "work/rel-03/browser-first-failure/spike-real-WASM-handshake--a96e6--legal-PVs-stop-and-dispose/trace.zip",
+      "bytes": 813387,
+      "sha256": "96960e73bc0531221fa714930bda6dd3fdb949e71349c834fb36241a757f9adf"
+    },
+    {
+      "path": "work/rel-03/browser-first.log",
+      "bytes": 7351,
+      "sha256": "ac155a20e80bec3d166fdbafd69a4261d49f39302b81c870d7dfb7fdb8e24459"
+    }
+  ],
+  "releaseReadiness": {
+    "ownerApproval": "pending",
+    "publicDistribution": "blocked"
+  },
+  "ordinaryRegressions": {
+    "sourceSHA": "134393ea91a9564435ee73287d248b32d2630938",
+    "applicationRuntimeUnchangedFrom": "8337b793bf0868b14890a2840142cdd322877575",
+    "install": "PASS",
+    "typecheck": "PASS",
+    "unit": {
+      "passed": 133,
+      "failed": 0,
+      "seconds": 2.73
+    },
+    "build": "PASS",
+    "browser": {
+      "passed": 29,
+      "failed": 0,
+      "elapsedLog": "1.1m"
+    },
+    "online": {
+      "passed": 6,
+      "failed": 0,
+      "seconds": 39.1
+    },
+    "realOAuth": "NOT TESTED",
+    "actualPlatformCPU": "UNVERIFIED"
+  }
+}

@@ -1,5 +1,6 @@
 import { MAX_GAMES, validateArchive } from "./archive";
 import type { GameArchive } from "./archive";
+import { deleteStoredRecord } from "./delete-record";
 class ArchiveConflict extends Error {}
 const memoryOnly = new Set<string>();
 const memory = new Map<string, Map<string, GameArchive>>();
@@ -166,19 +167,24 @@ export class ArchiveStore {
     for (const item of kept) map.set(item.id, item);
   }
   async remove(id: string) {
-    this.mem().delete(id);
+    if (this.mode === "memory") {
+      this.mem().delete(id);
+      return "memory" as const;
+    }
     try {
       const db = await this.open();
-      await new Promise<void>((resolve, reject) => {
-        const t = db.transaction("games", "readwrite");
-        t.objectStore("games").delete([this.namespace, id]);
-        t.oncomplete = () => resolve();
-        t.onerror = () => reject(t.error);
-        t.onabort = () => reject(t.error);
-      });
-    } catch {
-      this.fallback();
+      await deleteStoredRecord(db, "games", [this.namespace, id]);
+    } catch (cause) {
+      // Preserve the cached record/mode; reopen on retry without hiding failure.
+      this.close();
+      this.connection = null;
+      throw new Error(
+        "Saved game could not be deleted from device storage. Retry deletion or reload to check the saved record.",
+        { cause },
+      );
     }
+    this.mem().delete(id);
+    return "indexeddb" as const;
   }
   close() {
     void this.connection?.then(

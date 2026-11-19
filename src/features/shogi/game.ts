@@ -11,9 +11,9 @@ export const pieceNames: Record<PieceType, string> = {
   horse: 'Horse (promoted bishop)', dragon: 'Dragon (promoted rook)',
 };
 export const pieceSymbols: Record<PieceType, string> = {
-  pawn: 'P', lance: 'L', knight: 'N', silver: 'S', gold: 'G', bishop: 'B', rook: 'R',
-  king: 'K', promPawn: '+P', promLance: '+L', promKnight: '+N', promSilver: '+S',
-  horse: '+B', dragon: '+R',
+  pawn: '歩', lance: '香', knight: '桂', silver: '銀', gold: '金', bishop: '角', rook: '飛',
+  king: '玉', promPawn: 'と', promLance: '杏', promKnight: '圭', promSilver: '全',
+  horse: '馬', dragon: '龍',
 };
 export const sideName = (color: Color) => color === Color.BLACK ? 'Black' : 'White';
 export type MoveSource = Square | PieceType;

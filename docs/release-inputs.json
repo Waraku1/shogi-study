@@ -182,6 +182,9 @@
       "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
       "upstreamSource": "rolldown",
       "upstreamPath": "rolldown-b9c75ddc8bd50f2c1a4c7be0b548bdab5cba85ab/THIRD-PARTY-LICENSE"
+    },
+    "docs/licenses/NotoSerifJP-OFL.txt": {
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
     }
   },
   "browserRuntime": {

@@ -46,15 +46,7 @@ export class WasmEngineAdapter implements EngineAdapter {
         this.worker?.terminate();
         this.worker = null;
       } else if (this.disposed) {
-        // Drain a running search (or factory startup) before terminating its
-        // pthread owners. Callers have already been rejected by dispose().
-        if (data.type === 'loaded' || data.type === 'error' ||
-            (data.type === 'line' && String(data.line).startsWith('bestmove '))) this.shutdown();
-        else if (data.type === 'line' && String(data.line).startsWith('info ')) {
-          // The upstream go handler may reset its stop flag while starting a
-          // search. Reassert stop on search output, after that reset has run.
-          this.worker?.postMessage({ type: 'command', command: 'stop' });
-        }
+        return;
       } else if (data.type === 'error') this.fail(new Error(data.error));
       else if (data.type === 'loaded') {
         this.diagnostics = { name: '', startupMs: 0, wasmMemoryBytes: data.wasmMemoryBytes, multiPvMax: 1, options: [] };
@@ -130,13 +122,16 @@ export class WasmEngineAdapter implements EngineAdapter {
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
-    const searching = !!this.active;
     this.rejectPending(new Error('Engine disposed'));
     const worker = this.worker;
     if (worker) {
       this.shutdownTimer = setTimeout(() => { worker.terminate(); if (this.worker === worker) this.worker = null; }, 2000);
-      if (searching) worker.postMessage({ type: 'command', command: 'stop' });
-      else this.shutdown();
+      // Disposal discards every owner of this heap. The bridge terminates its
+      // children directly without allocator teardown. Do not wait for a USI
+      // stop/bestmove race: an early stop can be reset by the starting search,
+      // and killing only the host at the deadline can orphan its pthread.
+      // stop() remains the separate, reusable graceful-search operation.
+      this.shutdown();
     }
   }
 

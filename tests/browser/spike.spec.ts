@@ -1,5 +1,13 @@
 import { expect, test } from '@playwright/test';
 import { writeFileSync, mkdirSync } from 'node:fs';
+import { observeLifecycle } from './lifecycle-observer';
+
+const observations = new WeakMap<import('@playwright/test').Page, () => Promise<void>>();
+test.beforeEach(async ({ page }, info) => {
+  if (process.env.SHOGI_OBSERVE_LIFECYCLE === '1' && /real WASM handshake|reset during analysis/.test(info.title))
+    observations.set(page, await observeLifecycle(page, info));
+});
+test.afterEach(async ({ page }) => { await observations.get(page)?.(); });
 
 test('local board, keyboard, record, real AI reply and candidate preview', async ({ page }) => {
   const failures: string[] = [];
@@ -14,7 +22,7 @@ test('local board, keyboard, record, real AI reply and candidate preview', async
   await expect(page.locator('[data-square="7f"]')).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'White to move', exact: true })).toBeVisible();
-  await expect(page.locator('.move-list')).toContainText('7g7f');
+  await expect(page.locator('.move-list')).toContainText('▲７六歩');
   await page.getByRole('button', { name: 'Undo', exact: true }).click();
   await expect(page.locator('[data-square="7g"]')).toHaveAttribute('aria-label', '7g Black Pawn');
   await page.selectOption('#mode', 'ai');
@@ -49,15 +57,15 @@ test('interactive captures, promotion, hand drops, illegal selection and resigna
   await expect(page.getByRole('dialog', { name: 'Choose promotion' })).toBeVisible();
   await page.getByRole('button', { name: 'Promote', exact: true }).click();
   await expect(page.locator('[data-square="2b"]')).toHaveAttribute('aria-label', /Black Horse/);
-  await expect(page.getByLabel('Black captured pieces')).toContainText('B ×1');
+  await expect(page.getByLabel('Black captured pieces')).toContainText('角 ×1');
   await move('3a', '2b');
   await page.getByLabel('Black captured pieces').getByRole('button').click();
   await page.locator('[data-square="4e"]').click();
-  await expect(page.locator('.move-list')).toContainText('B*4e');
+  await expect(page.locator('.move-list')).toContainText('▲４五角打');
   await expect(page.getByLabel('Black captured pieces')).toContainText('No captured pieces');
   await page.getByLabel('White captured pieces').getByRole('button').click();
   await page.locator('[data-square="8h"]').click();
-  await expect(page.locator('.move-list')).toContainText('B*8h');
+  await expect(page.locator('.move-list')).toContainText('△８八角打');
   await page.getByRole('button', { name: 'Resign', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'White wins', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Undo', exact: true }).click();
@@ -127,6 +135,7 @@ test('real WASM handshake, opening and midgame, 10 searches, full legal PVs, sto
       } : null };
   });
   expect(browserName).toBe('chromium');
+  if (process.env.SHOGI_OBSERVE_LIFECYCLE === '1') await test.info().attach('engine-measurements-before-assertions', { body: JSON.stringify(result), contentType: 'application/json' });
   expect(result.crossOriginIsolated).toBe(true);
   expect(result.transcript).toContain('usiok');
   expect(result.transcript).toContain('readyok');
@@ -181,6 +190,7 @@ test('reset during analysis, stop during preparation, and disposal of an active 
     return { preparationStopped, afterStop, activeRejected: await active };
   });
   expect(result.preparationStopped).toBe('AbortError');
+  if (process.env.SHOGI_OBSERVE_LIFECYCLE === '1') await test.info().attach('active-disposal-before-assertions', { body: JSON.stringify(result), contentType: 'application/json' });
   expect(result.afterStop.bestMoveUSI).toBeTruthy();
   expect(result.activeRejected).toBe(true);
   await expect.poll(() => page.workers().length).toBe(0);
