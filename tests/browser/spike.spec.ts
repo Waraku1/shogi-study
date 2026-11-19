@@ -1,5 +1,13 @@
 import { expect, test } from '@playwright/test';
 import { writeFileSync, mkdirSync } from 'node:fs';
+import { observeLifecycle } from './lifecycle-observer';
+
+const observations = new WeakMap<import('@playwright/test').Page, () => Promise<void>>();
+test.beforeEach(async ({ page }, info) => {
+  if (process.env.SHOGI_OBSERVE_LIFECYCLE === '1' && /real WASM handshake|reset during analysis/.test(info.title))
+    observations.set(page, await observeLifecycle(page, info));
+});
+test.afterEach(async ({ page }) => { await observations.get(page)?.(); });
 
 test('local board, keyboard, record, real AI reply and candidate preview', async ({ page }) => {
   const failures: string[] = [];
@@ -127,6 +135,7 @@ test('real WASM handshake, opening and midgame, 10 searches, full legal PVs, sto
       } : null };
   });
   expect(browserName).toBe('chromium');
+  if (process.env.SHOGI_OBSERVE_LIFECYCLE === '1') await test.info().attach('engine-measurements-before-assertions', { body: JSON.stringify(result), contentType: 'application/json' });
   expect(result.crossOriginIsolated).toBe(true);
   expect(result.transcript).toContain('usiok');
   expect(result.transcript).toContain('readyok');
@@ -181,6 +190,7 @@ test('reset during analysis, stop during preparation, and disposal of an active 
     return { preparationStopped, afterStop, activeRejected: await active };
   });
   expect(result.preparationStopped).toBe('AbortError');
+  if (process.env.SHOGI_OBSERVE_LIFECYCLE === '1') await test.info().attach('active-disposal-before-assertions', { body: JSON.stringify(result), contentType: 'application/json' });
   expect(result.afterStop.bestMoveUSI).toBeTruthy();
   expect(result.activeRejected).toBe(true);
   await expect.poll(() => page.workers().length).toBe(0);

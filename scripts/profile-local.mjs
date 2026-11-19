@@ -5,11 +5,12 @@ import { createWriteStream } from 'node:fs';
 import { once } from 'node:events';
 import { performance } from 'node:perf_hooks';
 import { createRequire } from 'node:module';
+import { platform, release } from 'node:os';
 const require = createRequire(import.meta.url);
 const { WebSocket: WS } = require(require.resolve('ws', {paths: [require.resolve('wrangler')]}));
 const root = new URL('../', import.meta.url).pathname;
 process.chdir(root);
-const output = 'work/gate-profile', state = output + '/state';
+const output = process.env.SHOGI_PROFILE_OUTPUT ?? 'work/gate-profile', state = output + '/state';
 await mkdir(output, { recursive: true });
 const env = { ...process.env, WRANGLER_SEND_METRICS: 'false' };
 const wrangler = ['exec', 'wrangler'];
@@ -28,7 +29,7 @@ let socket;
 try {
   let ready = false;
   for (let i = 0; i < 100; i++) {
-    try { if ((await fetch(origin + '/api/me')).status === 401) { ready = true; break; } } catch {}
+    if (/Ready on http:/.test(log)) { ready = true; break; }
     await pause(200);
   }
   if (!ready) throw new Error('Local profile Worker did not start');
@@ -70,21 +71,28 @@ try {
     if (!r.ok) throw new Error('Fixture login failed');
     return r.headers.get('set-cookie').split(';')[0];
   }
-  const alice = await login('alice'), bob = await login('bob');
   async function request(path, cookie=alice, method='GET') {
     const r = await fetch(origin+path, {method, headers:{Origin:appOrigin, Cookie:cookie}});
     const body = await r.text();
-    return {status:r.status, body, rooms:Number(r.headers.get('X-Local-Room-Requests')), d1:Number(r.headers.get('X-Local-D1-Statements'))};
+    return {status:r.status, body, rooms:Number(r.headers.get('X-Local-Room-Requests')), d1:Number(r.headers.get('X-Local-D1-Statements')), roomRoutes:(r.headers.get('X-Local-Room-Routes')??'').split(',').filter(Boolean)};
   }
+  const coldCpuBefore=await cpu(), coldStarted=performance.now();
+  const cold=await request('/api/me','');
+  const coldFirstHttp={scope:'First HTTP request in this local profile process, before fixture logins. Not an edge cold-start/billed CPU measurement.',path:'/api/me',status:cold.status,wallMs:performance.now()-coldStarted,aggregateLocalWorkerdCpuMs:await cpu()-coldCpuBefore,rooms:cold.rooms,d1:cold.d1};
+  if(cold.status!==401)throw new Error('Cold guest request failed');
+  const alice = await login('alice'), bob = await login('bob');
   const results = [];
   async function measure(label, run, expected=200, repetitions=40) {
+    const firstCpuBefore=await cpu(), firstStarted=performance.now(), first=await run();
+    if(first.status!==expected)throw new Error(label+' first request failed');
+    const firstObserved={scope:'First route observation after fixture setup in the same process; not a cold isolate.',wallMs:performance.now()-firstStarted,aggregateLocalWorkerdCpuMs:await cpu()-firstCpuBefore,rooms:first.rooms,d1:first.d1};
     for(let i=0;i<3;i++) if((await run()).status !== expected) throw new Error(label+' warmup failed');
     const times=[], counts=[];
     const before=await cpu();
     for(let i=0;i<repetitions;i++) {
       const t=performance.now(), r=await run(); times.push(performance.now()-t);
       if(r.status!==expected) throw new Error(label+' unexpected status '+r.status);
-      counts.push({rooms:r.rooms,d1:r.d1});
+      counts.push({rooms:r.rooms,d1:r.d1,roomRoutes:r.roomRoutes??[]});
     }
     const cpuMs=await cpu()-before;
     await cdp('Profiler.start');
@@ -99,7 +107,7 @@ try {
     }
     times.sort((a,b)=>a-b);
     const round=n=>Number(n.toFixed(3));
-    const result={label,repetitions,httpStatus:expected,wallP50Ms:round(times[Math.floor(times.length*.5)]),wallP95Ms:round(times[Math.floor(times.length*.95)]),aggregateLocalWorkerdCpuMs:round(cpuMs),aggregateCpuMeanMs:round(cpuMs/repetitions),sampledNonIdleMeanMs:round(activeUs/1000/repetitions),maxRoomRequests:Math.max(...counts.map(c=>c.rooms)),maxD1Statements:Math.max(...counts.map(c=>c.d1))};
+    const result={label,firstObserved,repetitions,httpStatus:expected,wallP50Ms:round(times[Math.floor(times.length*.5)]),wallP95Ms:round(times[Math.floor(times.length*.95)]),wallMaxMs:round(Math.max(...times)),aggregateLocalWorkerdCpuMs:round(cpuMs),aggregateCpuMeanMs:round(cpuMs/repetitions),sampledNonIdleMeanMs:round(activeUs/1000/repetitions),v8Samples:profile.samples?.length??0,maxRoomRequests:Math.max(...counts.map(c=>c.rooms)),maxD1Statements:Math.max(...counts.map(c=>c.d1)),roomRoutes:[...new Set(counts.flatMap(c=>c.roomRoutes))]};
     results.push(result); console.log(JSON.stringify(result));
   }
   await measure('me-unauthenticated',()=>request('/api/me',''),401);
@@ -116,7 +124,7 @@ try {
   await measure('websocket-upgrade',async()=>{
     return await new Promise((resolve,reject)=>{
       const ws=new WS(`ws://localhost:8791/api/rooms/${id}/ws`,{headers:{Origin:appOrigin,Cookie:alice}});
-      ws.once('upgrade',r=>{const v={status:r.statusCode,rooms:Number(r.headers['x-local-room-requests']),d1:Number(r.headers['x-local-d1-statements'])}; ws.once('open',()=>{ws.close();resolve(v);});});
+      ws.once('upgrade',r=>{const v={status:r.statusCode,rooms:Number(r.headers['x-local-room-requests']),d1:Number(r.headers['x-local-d1-statements']),roomRoutes:(r.headers['x-local-room-routes']??'').split(',').filter(Boolean)}; ws.once('open',()=>{ws.close();resolve(v);});});
       ws.once('error',reject);
     });
   },101,20);
@@ -125,7 +133,7 @@ try {
   sql("DELETE FROM player_rooms WHERE userId='alice'; INSERT INTO player_rooms(userId,roomId,pending) WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<128) SELECT 'alice',printf('legacy-%03d',x),0 FROM n;");
   await measure('status-128-legacy-rejected',()=>request('/api/play-status'),400);
   // Real Google callback requires credentials/network and is deliberately absent.
-  await writeFile(`${output}/summary.json`, JSON.stringify({method:'Warm sequential HTTP batches; aggregate Linux workerd user+system CPU ticks measured without profiler, separate 100us V8 non-idle sample estimates. Includes local DO/D1/proxy overhead. Not Workers billed CPU or per-request CPU percentiles.',node:process.version,cpuTickMs:1000/hz,realOAuthCallback:'NOT TESTED',workersFreeCompliance:'UNVERIFIED',results},null,2)+'\n');
+  await writeFile(`${output}/summary.json`, JSON.stringify({sourceSHA:execFileSync('git',['rev-parse','HEAD']).toString().trim(),dirty:!!execFileSync('git',['status','--porcelain']).toString().trim(),os:`${platform()} ${release()}`,wrangler:require(require.resolve('wrangler/package.json')).version,workerd:require(require.resolve('workerd/package.json',{paths:[require.resolve('wrangler')]})).version,method:'One first HTTP request; route-first observations; warm sequential batches. Aggregate Linux workerd user+system CPU ticks measured without profiler, separate 100us V8 non-idle sample estimates. Includes local DO/D1/proxy overhead. Not Workers billed CPU or per-request CPU percentiles/maxima.',node:process.version,cpuTickMs:1000/hz,coldFirstHttp,realOAuthCallback:'NOT TESTED',workersFreeCompliance:'UNVERIFIED',results},null,2)+'\n');
 } finally {
   socket?.close();
   process.kill(-server.pid,'SIGTERM');
