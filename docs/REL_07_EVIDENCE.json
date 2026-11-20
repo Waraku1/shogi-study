@@ -1,0 +1,1383 @@
+{
+  "baseline": "3040618b574c2d763ac093206be06cba42e91464",
+  "headAtRun": "3040618b574c2d763ac093206be06cba42e91464",
+  "node": "v24.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "bin": "/usr/bin/chromium",
+  "flags": [
+    "--headless=new",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-background-networking",
+    "--remote-debugging-pipe"
+  ],
+  "categories": [
+    "blink",
+    "blink.worker",
+    "blink.user_timing",
+    "devtools.timeline",
+    "renderer.scheduler",
+    "toplevel",
+    "v8"
+  ],
+  "cutoffMs": 5000,
+  "planned": 24,
+  "hashes": {
+    "stockfish.js": "9080a62e3133e50da0c47b88b186d9c29ed37cc5129401bdeed8bffb5b9a4ca9",
+    "stockfish.wasm": "7cea742b8ca1a324fbc500f89112f168134cf68eb49475df23be6c42336255c6",
+    "stockfish.worker.js": "067be484ac62f728b0dad28496997e5862f3c61f9091f59bb35d9d1b1ed14573",
+    "Copying.txt": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
+    "AUTHORS": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00"
+  },
+  "bridgeHash": "c2c9c502231b2991dbb2c0041a7ac12f7a59c8a5a6a0709ab1147db21c355633",
+  "engine": "1.1.12",
+  "validByArm": {
+    "A": {
+      "pass": 11,
+      "fail": 1,
+      "invalid": 0,
+      "cancelled": 0
+    },
+    "B": {
+      "pass": 11,
+      "fail": 1,
+      "invalid": 0,
+      "cancelled": 0
+    }
+  },
+  "trials": [
+    {
+      "id": "A01",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5000.473,
+      "driverMarksMs": {
+        "bestmove": -0.875,
+        "dispose": 0.0,
+        "disposed": 0.295,
+        "terminate-return": 0.355
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "D3994B0C62705662BA520A7777501B52",
+          "parent": "282DD99562EDD90986535794B177C42D",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2003.51
+        },
+        {
+          "id": "A1E21102C85B1DD084AF0C8BDAA12837",
+          "parent": "D3994B0C62705662BA520A7777501B52",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 4.284
+        },
+        {
+          "id": "623BB59BD232568B4B44F4A934328B54",
+          "parent": "D3994B0C62705662BA520A7777501B52",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2001.914
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A01.trace.json",
+        "sha256": "61e7b14dfa7ed2cf698e6ed0a36d1643ed27a69e72e5a9dba0084fbc6d131c3a",
+        "bytes": 9231889,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.765,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.294,
+        "rel07:terminate-return": 0.393
+      }
+    },
+    {
+      "id": "B01",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5003.058,
+      "driverMarksMs": {
+        "bestmove": -2.62,
+        "dispose": 0.0,
+        "disposed": 23.01,
+        "terminate-return": 23.09
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "C62C2549B0EC32B63BAEEB8AD01C87DB",
+          "parent": "C5074D9745AA92885193178C63E1EE25",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2027.279
+        },
+        {
+          "id": "998716B75D23AB3CEEE437E57CDD184B",
+          "parent": "C62C2549B0EC32B63BAEEB8AD01C87DB",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 24.211
+        },
+        {
+          "id": "D5747AA70A070D886E2B800B75836B47",
+          "parent": "C62C2549B0EC32B63BAEEB8AD01C87DB",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2025.043
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B01.trace.json",
+        "sha256": "5544ce87e7a4fcc91ac8cec99adcd66b29a633e573f84f4b80b6b1b05931a99f",
+        "bytes": 7413779,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -2.588,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 23.014,
+        "rel07:terminate-return": 23.09
+      }
+    },
+    {
+      "id": "A02",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5001.667,
+      "driverMarksMs": {
+        "bestmove": -0.19,
+        "dispose": 0.0,
+        "disposed": 0.33,
+        "terminate-return": 0.41
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "23C9588E3D16052CDC4D0CA2E60382D0",
+          "parent": "487BCC3D531370070FA3CAFD9BEA4EAB",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2004.961
+        },
+        {
+          "id": "2071ADD0E6E0FDAA856EE89CCBA7531D",
+          "parent": "23C9588E3D16052CDC4D0CA2E60382D0",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 29.767
+        },
+        {
+          "id": "F6C2077D5895694E1563DFA3A8F79289",
+          "parent": "23C9588E3D16052CDC4D0CA2E60382D0",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2003.461
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A02.trace.json",
+        "sha256": "380bba1cfd5d8d639d566d425cf3c6bb7c72cd430b477a44dc370593e4638215",
+        "bytes": 9006837,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.151,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.328,
+        "rel07:terminate-return": 0.405
+      }
+    },
+    {
+      "id": "B02",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b ponder 3a2b",
+      "cutoffSampleMs": 5003.524,
+      "driverMarksMs": {
+        "bestmove": -0.85,
+        "dispose": 0.0,
+        "disposed": 0.965,
+        "terminate-return": 1.05
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "5E4BFE599A7356B3B02DA5F7758ABD5A",
+          "parent": "92CDDB884731048C262B4AC217E6422C",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2008.056
+        },
+        {
+          "id": "8301EF11D628AEB157B3BD6B4A2C7FBE",
+          "parent": "5E4BFE599A7356B3B02DA5F7758ABD5A",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2.937
+        },
+        {
+          "id": "D038A31026297CAB1E154DFF9B259B38",
+          "parent": "5E4BFE599A7356B3B02DA5F7758ABD5A",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2002.941
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B02.trace.json",
+        "sha256": "429abbfad37f95c117f3a14c07e0fc5c7cbba0c3633abea1d9100aaa1308be8d",
+        "bytes": 8910609,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.719,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.964,
+        "rel07:terminate-return": 1.044
+      }
+    },
+    {
+      "id": "A03",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5000.535,
+      "driverMarksMs": {
+        "bestmove": -0.675,
+        "dispose": 0.0,
+        "disposed": 1.725,
+        "terminate-return": 4.505
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "21C6868012F6CBA28C4AA27DE0BF2CC4",
+          "parent": "0A5655357B20D0AB939D3EF57B5277C1",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2003.736
+        },
+        {
+          "id": "8A59251FAEDCFF5FC0148809F2DABDD2",
+          "parent": "21C6868012F6CBA28C4AA27DE0BF2CC4",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 3.816
+        },
+        {
+          "id": "B71A5BAB8DAD3EC6A9CE1E12AE97FE06",
+          "parent": "21C6868012F6CBA28C4AA27DE0BF2CC4",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2001.747
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A03.trace.json",
+        "sha256": "4b8bf6038bd0ff66b07d3e95970de44de80c40c2ed6f815233fda06678d78449",
+        "bytes": 9165978,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.638,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 1.726,
+        "rel07:terminate-return": 4.505
+      }
+    },
+    {
+      "id": "B03",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5002.969,
+      "driverMarksMs": {
+        "bestmove": -1.17,
+        "dispose": 0.0,
+        "disposed": 1.93,
+        "terminate-return": 4.815
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "8C66F6459F9E2FC50103E27254B3435C",
+          "parent": "EC972D77A5512A0A64236C4C897F7106",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2007.317
+        },
+        {
+          "id": "26871B1A79800C91BDDFCFE6C567F30E",
+          "parent": "8C66F6459F9E2FC50103E27254B3435C",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 3.022
+        },
+        {
+          "id": "E42691CDBDBF0D4E6A0542A1700A97F5",
+          "parent": "8C66F6459F9E2FC50103E27254B3435C",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2003.569
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B03.trace.json",
+        "sha256": "b2c260ec2333ff26c023af8197ee824ae955f84b3cbb66828df7af1e1b640d1a",
+        "bytes": 10138698,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -1.125,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 1.935,
+        "rel07:terminate-return": 4.817
+      }
+    },
+    {
+      "id": "A04",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5000.871,
+      "driverMarksMs": {
+        "bestmove": -2.68,
+        "dispose": 0.0,
+        "disposed": 57.16,
+        "terminate-return": 57.345
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "03DB4F00315AE453363F88445003CDE5",
+          "parent": "E6F79729117FE9C333DF0811CCF9BE1D",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2004.706
+        },
+        {
+          "id": "019AA2E9F8E11B8155386BD12C1D052A",
+          "parent": "03DB4F00315AE453363F88445003CDE5",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 54.338
+        },
+        {
+          "id": "7426EFE52C0DD5587137102166873783",
+          "parent": "03DB4F00315AE453363F88445003CDE5",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2002.2
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A04.trace.json",
+        "sha256": "4fde478561da2f1404cef99f66b688b684bfca84566b22e3a5ddecadd0932f92",
+        "bytes": 12937922,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -2.636,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 57.164,
+        "rel07:terminate-return": 57.339
+      }
+    },
+    {
+      "id": "B04",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5002.926,
+      "driverMarksMs": {
+        "bestmove": -0.78,
+        "dispose": 0.0,
+        "disposed": 2.44,
+        "terminate-return": 3.405
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "2B51E59CF79DEE2A8D5AC7F4FCA18CE8",
+          "parent": "63AE0397F41CD79CD04D6F1A246B17FC",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2003.666
+        },
+        {
+          "id": "2CA3613D1FDDEAD1DC3D90DD5CE48DA2",
+          "parent": "2B51E59CF79DEE2A8D5AC7F4FCA18CE8",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2.145
+        },
+        {
+          "id": "E67B134D889C313467C5051D3FA7AD43",
+          "parent": "2B51E59CF79DEE2A8D5AC7F4FCA18CE8",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2002.256
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B04.trace.json",
+        "sha256": "5a0caec0cfc97edfc6cbb292fd6a7778afadbe9e1566799864170f5d6b9a51c2",
+        "bytes": 10646055,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.729,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 2.444,
+        "rel07:terminate-return": 3.404
+      }
+    },
+    {
+      "id": "A05",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5001.491,
+      "driverMarksMs": {
+        "bestmove": -0.195,
+        "dispose": 0.0,
+        "disposed": 0.69,
+        "terminate-return": 0.79
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "74C0DF6ECA59A78F40D215BEDC055604",
+          "parent": "473B9471A2B6E9C0C421438FF711F252",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2008.098
+        },
+        {
+          "id": "C77156C7982B88EB4F82FFE4C6DACB70",
+          "parent": "74C0DF6ECA59A78F40D215BEDC055604",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2.536
+        },
+        {
+          "id": "C1895B44233719CF199616776B5B5DA7",
+          "parent": "74C0DF6ECA59A78F40D215BEDC055604",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2002.943
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A05.trace.json",
+        "sha256": "46469ed1b0783940311b43b512e73ac9d08a890f4b96b84894a6f45929b61360",
+        "bytes": 10500779,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.15,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.69,
+        "rel07:terminate-return": 0.784
+      }
+    },
+    {
+      "id": "B05",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5003.896,
+      "driverMarksMs": {
+        "bestmove": -3.235,
+        "dispose": 0.0,
+        "disposed": 1.02,
+        "terminate-return": 1.105
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "291E4D26277737A0336DB44BCF81B831",
+          "parent": "D35B783E92A5A15B875E0B5D0F2F8F34",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2005.08
+        },
+        {
+          "id": "23FC26364ABF9F8F4470FB9767679F3E",
+          "parent": "291E4D26277737A0336DB44BCF81B831",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 7.756
+        },
+        {
+          "id": "8D7E4443960B6EB8BC18A092DBBE6F48",
+          "parent": "291E4D26277737A0336DB44BCF81B831",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2002.42
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B05.trace.json",
+        "sha256": "6f2d4e55ec176b55caec63a49635ed9e10b5417c2db48c6c625171334dcb5322",
+        "bytes": 8821237,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -3.2,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 1.013,
+        "rel07:terminate-return": 1.096
+      }
+    },
+    {
+      "id": "A06",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5000.363,
+      "driverMarksMs": {
+        "bestmove": -4.685,
+        "dispose": 0.0,
+        "disposed": 0.925,
+        "terminate-return": 0.985
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "A4E6A2BEE62DA1CE554C2F7CD9224558",
+          "parent": "69B9B912121074486E346A6BA74CA988",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2010.201
+        },
+        {
+          "id": "120133B4065222DDC75EA79DE41B0A9C",
+          "parent": "A4E6A2BEE62DA1CE554C2F7CD9224558",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 3.792
+        },
+        {
+          "id": "983374AFF263A287606C4C92DE624F4D",
+          "parent": "A4E6A2BEE62DA1CE554C2F7CD9224558",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2004.155
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A06.trace.json",
+        "sha256": "2819c644a0ce7a461605d296dee53898d43bae507d8d277956e20eb36b72ebb8",
+        "bytes": 8482063,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -4.651,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.923,
+        "rel07:terminate-return": 0.981
+      }
+    },
+    {
+      "id": "B06",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b ponder 3a2b",
+      "cutoffSampleMs": 5002.731,
+      "driverMarksMs": {
+        "bestmove": -4.495,
+        "dispose": 0.0,
+        "disposed": 0.735,
+        "terminate-return": 0.82
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "99B7F422FEADD07C61EE072DB04FEC8A",
+          "parent": "57E8BB2C13ACFAD66DC76BC8A5F4AF58",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2004.468
+        },
+        {
+          "id": "62030A028721E56B060C802830604B82",
+          "parent": "99B7F422FEADD07C61EE072DB04FEC8A",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2.325
+        },
+        {
+          "id": "A12EE4E3A47D6430E455B8189C156711",
+          "parent": "99B7F422FEADD07C61EE072DB04FEC8A",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2001.908
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B06.trace.json",
+        "sha256": "842226fab733d8b7f5d91ff32f491b8fbaddfe26040495b7950436377178a884",
+        "bytes": 6601104,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -4.433,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.734,
+        "rel07:terminate-return": 0.818
+      }
+    },
+    {
+      "id": "A07",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5003.162,
+      "driverMarksMs": {
+        "bestmove": -3.285,
+        "dispose": 0.0,
+        "disposed": 7.94,
+        "terminate-return": 8.055
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "88BE022AF1AA1E310B9E64D3130EAFBE",
+          "parent": "75A4BA60958410E1D2278CD59A55E91E",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2011.483
+        },
+        {
+          "id": "AB55B8D6D0F0B12625E4DFFF45A5962A",
+          "parent": "88BE022AF1AA1E310B9E64D3130EAFBE",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 12.159
+        },
+        {
+          "id": "678651268E5FBE374A826D9CC6D6E6FC",
+          "parent": "88BE022AF1AA1E310B9E64D3130EAFBE",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2010.771
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A07.trace.json",
+        "sha256": "d2c1073891053338e1ca154e8ca2f3726a88c1ff0e6723006ed9f829d4dc2b26",
+        "bytes": 8890018,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -3.259,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 7.926,
+        "rel07:terminate-return": 8.033
+      }
+    },
+    {
+      "id": "B07",
+      "arm": "B",
+      "outcome": "FAIL",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5001.741,
+      "driverMarksMs": {
+        "bestmove": -0.39,
+        "dispose": 0.0,
+        "disposed": 0.38,
+        "terminate-return": 0.47
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "8ACF566804515857C7EE0981C802FA0E",
+          "parent": "4557ABECB769F3DA8F758287A12CFF4C",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": null
+        },
+        {
+          "id": "53DFD6446A48D643184A54DD7D54638F",
+          "parent": "8ACF566804515857C7EE0981C802FA0E",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 31.829
+        },
+        {
+          "id": "FB31273B4FE193B73E5502BA5C2B943F",
+          "parent": "8ACF566804515857C7EE0981C802FA0E",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2001.689
+        }
+      ],
+      "remainingWorkerTargets": [
+        {
+          "id": "8ACF566804515857C7EE0981C802FA0E",
+          "attached": false
+        }
+      ],
+      "trace": {
+        "path": "work/rel-07/verified/B07.trace.json",
+        "sha256": "5832926d4fff5f29041ca4ecf9c330d67a1cf3dc8e744ff66f033f8c03626695",
+        "bytes": 9331595,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.292,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.38,
+        "rel07:terminate-return": 0.47
+      },
+      "boundedProbes": [
+        {
+          "id": "8ACF566804515857C7EE0981C802FA0E",
+          "attachMs": 5003.752,
+          "detachMs": 5505.049,
+          "evaluation": "Error: Runtime.evaluate: deadline exceeded"
+        }
+      ],
+      "traceWorkers": [
+        {
+          "pid": 57465,
+          "tid": 57501,
+          "nestedWorkerStarts": 2,
+          "thread": "DedicatedWorker thread",
+          "lastObservedTask": {
+            "name": "ThreadControllerImpl::RunTask",
+            "endMs": 2003.126
+          }
+        },
+        {
+          "pid": 57465,
+          "tid": 57503,
+          "nestedWorkerStarts": 0,
+          "thread": "DedicatedWorker thread",
+          "lastObservedTask": {
+            "name": "ThreadControllerImpl::RunTask",
+            "endMs": 1.765
+          }
+        },
+        {
+          "pid": 57465,
+          "tid": 57504,
+          "nestedWorkerStarts": 0,
+          "thread": "DedicatedWorker thread",
+          "lastObservedTask": {
+            "name": "ThreadControllerImpl::RunTask",
+            "endMs": 2002.73
+          },
+          "longFunctionCall": {
+            "startMs": -146.937,
+            "endMs": 2000.475
+          }
+        }
+      ],
+      "rawProtocol": "work/rel-07/verified/B07.json"
+    },
+    {
+      "id": "A08",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5000.77,
+      "driverMarksMs": {
+        "bestmove": -6.165,
+        "dispose": 0.0,
+        "disposed": 0.715,
+        "terminate-return": 0.935
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "01B4436DF508A27528CB95FAC4F3E6FC",
+          "parent": "AC464014D6187D921B69B75D5B37D9D7",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2009.104
+        },
+        {
+          "id": "3EEF26714B3A5DE89C30BB5A91C3284C",
+          "parent": "01B4436DF508A27528CB95FAC4F3E6FC",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 35.303
+        },
+        {
+          "id": "E6E9756C076653E410249FEACCC26ECD",
+          "parent": "01B4436DF508A27528CB95FAC4F3E6FC",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2003.41
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A08.trace.json",
+        "sha256": "66337bdf545440a1a36c91ee77f51f911eff9fbe149a0839a65e0764eac4179b",
+        "bytes": 8911373,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -6.137,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.709,
+        "rel07:terminate-return": 0.927
+      }
+    },
+    {
+      "id": "B08",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b ponder 3a2b",
+      "cutoffSampleMs": 5000.089,
+      "driverMarksMs": {
+        "bestmove": -0.4,
+        "dispose": 0.0,
+        "disposed": 4.69,
+        "terminate-return": 4.815
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "FF0F66A174B9B732BEDBDCCF82A3C528",
+          "parent": "C50F872F5B6FB46DFCE35B721DB1F25E",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2007.003
+        },
+        {
+          "id": "A4285F39AFC3FB82DBCC17A44429C9D9",
+          "parent": "FF0F66A174B9B732BEDBDCCF82A3C528",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 9.385
+        },
+        {
+          "id": "8213409C19EEE0713D0859DECD8ECA69",
+          "parent": "FF0F66A174B9B732BEDBDCCF82A3C528",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2002.37
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B08.trace.json",
+        "sha256": "2f3dff90b4e131c78b2438ae3da4b93b442fb87d921ce5a1e3d28cd70bc36b96",
+        "bytes": 19678673,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.322,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 4.695,
+        "rel07:terminate-return": 4.813
+      }
+    },
+    {
+      "id": "A09",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5001.443,
+      "driverMarksMs": {
+        "bestmove": -4.5,
+        "dispose": 0.0,
+        "disposed": 1.51,
+        "terminate-return": 1.6
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "BD4C52361677184CE2B10C9539FEA63E",
+          "parent": "B01605AD143CB0EA16F5B6EC55AEF82B",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2005.005
+        },
+        {
+          "id": "A28A6FCE5F7580722AEF6A5E0376A381",
+          "parent": "BD4C52361677184CE2B10C9539FEA63E",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 6.518
+        },
+        {
+          "id": "A2488090BE823EB92BD65BF5E4423760",
+          "parent": "BD4C52361677184CE2B10C9539FEA63E",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2004.295
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A09.trace.json",
+        "sha256": "5fbf9926abf584fa0c790453597e0bf91b76d2c2514a649e6f501daf5e647522",
+        "bytes": 8915777,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -4.471,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 1.512,
+        "rel07:terminate-return": 1.597
+      }
+    },
+    {
+      "id": "B09",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b ponder 3a2b",
+      "cutoffSampleMs": 5001.335,
+      "driverMarksMs": {
+        "bestmove": -4.08,
+        "dispose": 0.0,
+        "disposed": 6.385,
+        "terminate-return": 6.565
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "8D86D25B65BD3A81ECFCA88BF25979E1",
+          "parent": "D7CBCFADF170ADAAE8543F08C9B5C300",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2006.662
+        },
+        {
+          "id": "46A2A530DD26DEAFC590962D171C61D9",
+          "parent": "8D86D25B65BD3A81ECFCA88BF25979E1",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 5.912
+        },
+        {
+          "id": "DBEC360CBF0EA02196708BFFFA74305B",
+          "parent": "8D86D25B65BD3A81ECFCA88BF25979E1",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2004.393
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B09.trace.json",
+        "sha256": "d1522ab0f785606c7e256e638869bfa29ae41e6d91584b8ee960ea044d8c548a",
+        "bytes": 10527172,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -4.046,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 6.39,
+        "rel07:terminate-return": 6.557
+      }
+    },
+    {
+      "id": "A10",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b ponder 3a2b",
+      "cutoffSampleMs": 5000.517,
+      "driverMarksMs": {
+        "bestmove": -2.06,
+        "dispose": 0.0,
+        "disposed": 0.53,
+        "terminate-return": 0.645
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "AE9311BDDA4BE3884B6A6D1B8BA3DCD3",
+          "parent": "CD7164D5BA878C418AA4A304F9E2338B",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2003.77
+        },
+        {
+          "id": "AC28CF6E16A31733F31026E999917A59",
+          "parent": "AE9311BDDA4BE3884B6A6D1B8BA3DCD3",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 1.694
+        },
+        {
+          "id": "D16C346B18D099C7ED9381B8013FA5C1",
+          "parent": "AE9311BDDA4BE3884B6A6D1B8BA3DCD3",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2003.093
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A10.trace.json",
+        "sha256": "2a508a3c54ab97c96b3361a3646d0a3626dbc1e270ecc3b35a0e48071cad55ef",
+        "bytes": 10300538,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -1.992,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.527,
+        "rel07:terminate-return": 0.637
+      }
+    },
+    {
+      "id": "B10",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5003.237,
+      "driverMarksMs": {
+        "bestmove": -4.295,
+        "dispose": 0.0,
+        "disposed": 1.305,
+        "terminate-return": 1.5
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "75E60500F5303BD51719F26ABC3120C7",
+          "parent": "403EE95C1DDBC53ABB2B64D33F693A47",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2004.482
+        },
+        {
+          "id": "57D9A04434BFE460BC030E2B4F6936B6",
+          "parent": "75E60500F5303BD51719F26ABC3120C7",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 3.649
+        },
+        {
+          "id": "F53A0B02BE6F98EF608042F1FBC811FC",
+          "parent": "75E60500F5303BD51719F26ABC3120C7",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2003.175
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B10.trace.json",
+        "sha256": "6506b1c797b47e5bf324378f7096a8294b0d2649c112670b3b2c3d442988292a",
+        "bytes": 10008498,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -4.173,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 1.309,
+        "rel07:terminate-return": 1.499
+      }
+    },
+    {
+      "id": "A11",
+      "arm": "A",
+      "outcome": "FAIL",
+      "bestmove": "bestmove 4i5h ponder 2b8h",
+      "cutoffSampleMs": 5001.948,
+      "driverMarksMs": {
+        "bestmove": -2.745,
+        "dispose": 0.0,
+        "disposed": 2.56,
+        "terminate-return": 2.635
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "D92BC8B41ADDBF874F1DE696081B54F3",
+          "parent": "461F3DD7F127940F5253F4C0BB1C5613",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": null
+        },
+        {
+          "id": "B180B01DD41A7BFDD68838975B7723FD",
+          "parent": "D92BC8B41ADDBF874F1DE696081B54F3",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 6.177
+        },
+        {
+          "id": "36A16A258877B2B4F39279FB5B91A590",
+          "parent": "D92BC8B41ADDBF874F1DE696081B54F3",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2004.728
+        }
+      ],
+      "remainingWorkerTargets": [
+        {
+          "id": "D92BC8B41ADDBF874F1DE696081B54F3",
+          "attached": true
+        }
+      ],
+      "trace": {
+        "path": "work/rel-07/verified/A11.trace.json",
+        "sha256": "66eafa7e5ba75a30516c61fba8bd451d5e9895392ae5e46ba3a06e9a63102313",
+        "bytes": 10449939,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -2.707,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 2.56,
+        "rel07:terminate-return": 2.631
+      },
+      "boundedProbes": [
+        {
+          "id": "D92BC8B41ADDBF874F1DE696081B54F3",
+          "attachMs": 5003.567,
+          "detachMs": 5508.755,
+          "evaluation": "Error: Runtime.evaluate: deadline exceeded"
+        }
+      ],
+      "traceWorkers": [
+        {
+          "pid": 58766,
+          "tid": 58805,
+          "nestedWorkerStarts": 2,
+          "thread": "DedicatedWorker thread",
+          "lastObservedTask": {
+            "name": "ThreadControllerImpl::RunTask",
+            "endMs": 2004.967
+          }
+        },
+        {
+          "pid": 58766,
+          "tid": 58808,
+          "nestedWorkerStarts": 0,
+          "thread": "DedicatedWorker thread",
+          "lastObservedTask": {
+            "name": "ThreadControllerImpl::RunTask",
+            "endMs": 2.247
+          }
+        },
+        {
+          "pid": 58766,
+          "tid": 58809,
+          "nestedWorkerStarts": 0,
+          "thread": "DedicatedWorker thread",
+          "lastObservedTask": {
+            "name": "ThreadControllerImpl::RunTask",
+            "endMs": 2004.609
+          },
+          "longFunctionCall": {
+            "startMs": -212.553,
+            "endMs": 2002.383
+          }
+        }
+      ],
+      "rawProtocol": "work/rel-07/verified/A11.json"
+    },
+    {
+      "id": "B11",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5002.916,
+      "driverMarksMs": {
+        "bestmove": -1.27,
+        "dispose": 0.0,
+        "disposed": 2.59,
+        "terminate-return": 2.715
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "D33370005661A99D1E7BDBD22010C09F",
+          "parent": "64B85020C3CD62B8E326D4232001CB2C",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2008.931
+        },
+        {
+          "id": "FB05C29DF0154814B28571277A6DD38D",
+          "parent": "D33370005661A99D1E7BDBD22010C09F",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2.905
+        },
+        {
+          "id": "DD6243E0E4C964B0B15AE073FD7D4C3D",
+          "parent": "D33370005661A99D1E7BDBD22010C09F",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2004.388
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B11.trace.json",
+        "sha256": "9ffeba8b03128ed121350a6625a5b230d387af9069103204c0e4638253f93dfb",
+        "bytes": 9527907,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -1.235,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 2.59,
+        "rel07:terminate-return": 2.707
+      }
+    },
+    {
+      "id": "A12",
+      "arm": "A",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b+ ponder 3a2b",
+      "cutoffSampleMs": 5001.877,
+      "driverMarksMs": {
+        "bestmove": -1.925,
+        "dispose": 0.0,
+        "disposed": 1.115,
+        "terminate-return": 1.195
+      },
+      "autoAttachCalls": 2,
+      "automaticWorkerAttachments": 3,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "0D16F9A70778A15364C8CEE2EB134337",
+          "parent": "C24C65B88EFFD576BD941FD5A13F8EA0",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2007.386
+        },
+        {
+          "id": "E7AA8B535C75022AF0EDEB25248E3EB7",
+          "parent": "0D16F9A70778A15364C8CEE2EB134337",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 8.38
+        },
+        {
+          "id": "F723DA200021FD5B26B20C637A5F3A9B",
+          "parent": "0D16F9A70778A15364C8CEE2EB134337",
+          "attachedBeforeCutoff": true,
+          "destroyedMs": 2007.372
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/A12.trace.json",
+        "sha256": "4e30448dc2414f9d49997b9db7bd75d022adfdaf701e41ede2acbe92f4b44f44",
+        "bytes": 9915937,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -1.894,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 1.115,
+        "rel07:terminate-return": 1.187
+      }
+    },
+    {
+      "id": "B12",
+      "arm": "B",
+      "outcome": "PASS",
+      "bestmove": "bestmove 8h2b ponder 3a2b",
+      "cutoffSampleMs": 5001.901,
+      "driverMarksMs": {
+        "bestmove": -0.235,
+        "dispose": 0.0,
+        "disposed": 0.385,
+        "terminate-return": 0.47
+      },
+      "autoAttachCalls": 0,
+      "automaticWorkerAttachments": 0,
+      "manualWorkerAttachBeforeCutoff": false,
+      "workers": [
+        {
+          "id": "8C7F482EBFAFD90077D1CFBB7822A46A",
+          "parent": "EC8FA652D48EF54A5F1FFDBF4AAADA78",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2003.608
+        },
+        {
+          "id": "38675AD802624F6E14B8510F9B770461",
+          "parent": "8C7F482EBFAFD90077D1CFBB7822A46A",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 1.782
+        },
+        {
+          "id": "4FB136AD31F8A28FC7828D7AFA59ECC6",
+          "parent": "8C7F482EBFAFD90077D1CFBB7822A46A",
+          "attachedBeforeCutoff": false,
+          "destroyedMs": 2001.791
+        }
+      ],
+      "remainingWorkerTargets": [],
+      "trace": {
+        "path": "work/rel-07/verified/B12.trace.json",
+        "sha256": "c84b2d833d253bca4c64a32a58d604cd3b0778300972c8e7b5faf94d45153041",
+        "bytes": 11047558,
+        "dataLoss": false
+      },
+      "traceMarkersMs": {
+        "rel07:bestmove": -0.178,
+        "rel07:dispose": 0.0,
+        "rel07:disposed": 0.393,
+        "rel07:terminate-return": 0.472
+      }
+    }
+  ],
+  "classification": "Retained, unresponsive host with and without auto-attach. Automatic Worker attachment is not necessary. No causal influence on frequency demonstrated.",
+  "preflight": {
+    "planned": 24,
+    "invalid": 2,
+    "cancelled": 22,
+    "valid": 0,
+    "attempts": [
+      {
+        "arm": "A",
+        "reason": "Trace flush exceeded the original transport bound; no trace file.",
+        "raw": "work/rel-07/comparison/A01.json"
+      },
+      {
+        "arm": "B",
+        "reason": "Unattached Worker URLs stayed blank and initial identity check required a URL.",
+        "raw": "work/rel-07/comparison/B01.json",
+        "trace": {
+          "path": "work/rel-07/comparison/B01.trace.json",
+          "sha256": "85f49ae37c53909af7fbb17a1ee3f9af7170a5858abeef03f83df1f4cc87dc4a",
+          "bytes": 10341122,
+          "dataLoss": false
+        }
+      }
+    ]
+  },
+  "validRunExitCode": 1,
+  "browserVersion": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.79",
+    "revision": "@a21ce95c24ce3964416f09ae1862f53f319eb4d0",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.27"
+  },
+  "localRegressions": {
+    "install": "PASS",
+    "typecheck": "PASS",
+    "unit": {
+      "pass": 133,
+      "fail": 0,
+      "durationMs": 2860
+    },
+    "build": "PASS",
+    "browser": {
+      "pass": 29,
+      "fail": 0,
+      "durationMs": 68113
+    },
+    "online": {
+      "pass": 6,
+      "fail": 0,
+      "durationMs": 39900
+    }
+  }
+}
