@@ -1,0 +1,1236 @@
+{
+  "baseSHA": "7e61b21e25c43b8e9a21e778a3ed866de91ad2e1",
+  "runtimeModified": false,
+  "classification": "CAUSE STILL UNRESOLVED",
+  "environment": {
+    "Node": "24.22.1",
+    "pnpm": "11.25.0",
+    "Chromium": "156.0.8078.79",
+    "OS": "Linux 6.18.57 x86_64",
+    "crossOriginIsolated": true,
+    "SharedArrayBuffer": "function",
+    "playwrightWorkers": 1
+  },
+  "engine": {
+    "version": "1.1.12",
+    "preparedHashesVerified": true,
+    "files": {
+      "stockfish.js": {
+        "bytes": 64273,
+        "sha256": "9080a62e3133e50da0c47b88b186d9c29ed37cc5129401bdeed8bffb5b9a4ca9"
+      },
+      "stockfish.wasm": {
+        "bytes": 1636293,
+        "sha256": "7cea742b8ca1a324fbc500f89112f168134cf68eb49475df23be6c42336255c6"
+      },
+      "stockfish.worker.js": {
+        "bytes": 3321,
+        "sha256": "067be484ac62f728b0dad28496997e5862f3c61f9091f59bb35d9d1b1ed14573"
+      },
+      "Copying.txt": {
+        "bytes": 35821,
+        "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b"
+      },
+      "AUTHORS": {
+        "bytes": 4950,
+        "sha256": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00"
+      }
+    }
+  },
+  "rel05TraceInspected": true,
+  "timingReference": "Relative to parent dispose send. Clocks sampled independently in Node and browser contexts.",
+  "deadlineMs": 5000,
+  "matrix": [
+    {
+      "cell": "active-drain-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "093517259F7D97D89250D2D66A8872FA",
+              "kind": "child",
+              "ms": 3.124
+            },
+            {
+              "targetId": "08FCE518E8C9EE98E2B1576F48570B0C",
+              "kind": "child",
+              "ms": 2001.967
+            },
+            {
+              "targetId": "FD0B5F36A361ECB5CD9050D44CCB6AA8",
+              "kind": "host",
+              "ms": 2003.179
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "D44E819CA295901517701A47FCCE7B81",
+              "kind": "child",
+              "ms": 9.9
+            },
+            {
+              "targetId": "808099C1782A7EF7049146E37EF2FA84",
+              "kind": "child",
+              "ms": 2002.89
+            },
+            {
+              "targetId": "3B067AF18AC97BC1EB5D5368CD2A1682",
+              "kind": "host",
+              "ms": 2005.318
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "D43EA3405B496C5FEE1FC8BA2C62A76C",
+              "kind": "child",
+              "ms": 7.915
+            },
+            {
+              "targetId": "B8E05F26212D182AE43331908CBACCE0",
+              "kind": "child",
+              "ms": 2005.587
+            },
+            {
+              "targetId": "B251B4584C5A938354C41B2A99FF46BF",
+              "kind": "host",
+              "ms": 2006.67
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    },
+    {
+      "cell": "active-host-close-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "91C38CA5FE441120E44E4E2BD885F988",
+              "kind": "child",
+              "ms": 26.583
+            },
+            {
+              "targetId": "1D4A7CAB1F5E128CEC1A8CAE053136E8",
+              "kind": "child",
+              "ms": 2002.328
+            },
+            {
+              "targetId": "2E36A414FABE25CE97CEAEE8EC4938E9",
+              "kind": "host",
+              "ms": 2004.858
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "FFD220B9282ECDCCD9E11A5866244988",
+              "kind": "child",
+              "ms": 7.687
+            },
+            {
+              "targetId": "4DB2FDDF6EC97599804D97AE3B7E91E9",
+              "kind": "child",
+              "ms": 2003.268
+            },
+            {
+              "targetId": "E4CF83B231788E4F14648D9E820BFEAD",
+              "kind": "host",
+              "ms": 2005.966
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "E1085BAB3F91C3CD84B8A6C4BAC954D4",
+              "kind": "child",
+              "ms": 11.295
+            },
+            {
+              "targetId": "284E85C9D9CCC076AE1DACAA726F280C",
+              "kind": "child",
+              "ms": 2005.166
+            },
+            {
+              "targetId": "F8F886B3AF2D60B26CBB2BE70916DC8F",
+              "kind": "host",
+              "ms": 2008.028
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    },
+    {
+      "cell": "active-immediate-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "A79839ACFA42FCC38A75804330F9B99A",
+              "kind": "child",
+              "ms": 4.397
+            },
+            {
+              "targetId": "416FECB6A6E20F71F7867E46CA634FE6",
+              "kind": "child",
+              "ms": 2012.175
+            },
+            {
+              "targetId": "EE8B7D5FE1A711EE04CE0979AF97343A",
+              "kind": "host",
+              "ms": 2014.212
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "D2F91789ACA8B176EB20DBB904CC1840",
+              "kind": "child",
+              "ms": 5.943
+            },
+            {
+              "targetId": "BE0516A2155EDFEEFF656B661FCC745D",
+              "kind": "child",
+              "ms": 2002.012
+            },
+            {
+              "targetId": "55BE431F20EE0A4A6C26D17345BE49E5",
+              "kind": "host",
+              "ms": 2005.82
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "AE7DCBEEAE68D8E9610CB7F04FD4FB5E",
+              "kind": "child",
+              "ms": 26.616
+            },
+            {
+              "targetId": "B3CCA0AC380522D33B769B0A531C6CCE",
+              "kind": "child",
+              "ms": 2004.468
+            },
+            {
+              "targetId": "C2C6EBA4A63EF0C760853086201A87F1",
+              "kind": "host",
+              "ms": 2004.791
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    },
+    {
+      "cell": "active-immediate-minimal",
+      "pass": 0,
+      "fail": 1,
+      "cancelled": 2,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "FAIL",
+          "destroyed": [
+            {
+              "targetId": "59FF92407686F189EC4D75F0C2BC4F43",
+              "kind": "child",
+              "ms": 4.027
+            },
+            {
+              "targetId": "E976DA483770F75132316180D7EBC633",
+              "kind": "child",
+              "ms": 2002.179
+            }
+          ],
+          "finalWorkerTargets": [
+            "C7FCFAACA0C9E6E7B76A376DBAF41904"
+          ],
+          "hostAndChildTargets": [
+            {
+              "targetId": "C7FCFAACA0C9E6E7B76A376DBAF41904",
+              "url": "http://127.0.0.1:5173/engine-host.js?rel06=active-immediate-minimal-1",
+              "parentId": "8774A9ADE0096EF5AA4FF4AC6BB64ED5",
+              "attached": true
+            },
+            {
+              "targetId": "59FF92407686F189EC4D75F0C2BC4F43",
+              "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+              "parentId": "C7FCFAACA0C9E6E7B76A376DBAF41904",
+              "attached": true
+            },
+            {
+              "targetId": "E976DA483770F75132316180D7EBC633",
+              "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+              "parentId": "C7FCFAACA0C9E6E7B76A376DBAF41904",
+              "attached": true
+            }
+          ],
+          "boundedProbe": [
+            {
+              "targetId": "C7FCFAACA0C9E6E7B76A376DBAF41904",
+              "response": {
+                "error": "Error: CDP deadline exceeded"
+              }
+            }
+          ],
+          "remainingPlaywrightHandles": [
+            "http://127.0.0.1:5173/engine-host.js?rel06=active-immediate-minimal-1"
+          ],
+          "timeline": [
+            {
+              "ms": -877.105,
+              "event": "host-create",
+              "url": "/engine-host.js?rel06=active-immediate-minimal-1"
+            },
+            {
+              "ms": -877.05,
+              "event": "parent-send",
+              "typeSent": "init"
+            },
+            {
+              "ms": -831.122,
+              "event": "target-attached",
+              "targetId": "C7FCFAACA0C9E6E7B76A376DBAF41904"
+            },
+            {
+              "ms": -770.52,
+              "event": "parent-loaded"
+            },
+            {
+              "ms": -770.47,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "usi"
+            },
+            {
+              "ms": -725.024,
+              "event": "target-attached",
+              "targetId": "59FF92407686F189EC4D75F0C2BC4F43"
+            },
+            {
+              "ms": -200.991,
+              "event": "target-attached",
+              "targetId": "E976DA483770F75132316180D7EBC633"
+            },
+            {
+              "ms": -113.86,
+              "event": "engine-line",
+              "line": "usiok"
+            },
+            {
+              "ms": -112.52,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name USI_Variant value shogi"
+            },
+            {
+              "ms": -112.49,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name Threads value 1"
+            },
+            {
+              "ms": -112.485,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name USI_Hash value 16"
+            },
+            {
+              "ms": -112.475,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name Use_NNUE value false"
+            },
+            {
+              "ms": -112.375,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "isready"
+            },
+            {
+              "ms": -25.58,
+              "event": "engine-line",
+              "line": "readyok"
+            },
+            {
+              "ms": -20.625,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "usinewgame"
+            },
+            {
+              "ms": -20.6,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "isready"
+            },
+            {
+              "ms": -18.235,
+              "event": "engine-line",
+              "line": "readyok"
+            },
+            {
+              "ms": -15.465,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "position startpos moves 7g7f 3c3d"
+            },
+            {
+              "ms": -15.42,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "go movetime 10000"
+            },
+            {
+              "ms": -0.005,
+              "event": "search-observed",
+              "line": "info depth 1 seldepth 1 multipv 1 score cp 38 nodes 51 nps 3923 tbhits 0 time 13 pv 8h2b 8b2b"
+            },
+            {
+              "ms": 0.02,
+              "event": "parent-send",
+              "typeSent": "dispose"
+            },
+            {
+              "ms": 2.35,
+              "event": "parent-ack"
+            },
+            {
+              "ms": 2.44,
+              "event": "host-terminate-call",
+              "reason": "ack"
+            },
+            {
+              "ms": 2.45,
+              "event": "host-terminate-return",
+              "reason": "ack"
+            },
+            {
+              "ms": 3.78,
+              "event": "target-detached",
+              "targetId": "59FF92407686F189EC4D75F0C2BC4F43"
+            },
+            {
+              "ms": 4.027,
+              "event": "target-destroyed",
+              "targetId": "59FF92407686F189EC4D75F0C2BC4F43"
+            },
+            {
+              "ms": 2002.115,
+              "event": "target-detached",
+              "targetId": "E976DA483770F75132316180D7EBC633"
+            },
+            {
+              "ms": 2002.179,
+              "event": "target-destroyed",
+              "targetId": "E976DA483770F75132316180D7EBC633"
+            },
+            {
+              "ms": 5007.994,
+              "event": "probe-attached",
+              "targetId": "C7FCFAACA0C9E6E7B76A376DBAF41904"
+            },
+            {
+              "ms": 5510.428,
+              "event": "probe-detached",
+              "targetId": "C7FCFAACA0C9E6E7B76A376DBAF41904"
+            }
+          ],
+          "rawTrace": {
+            "path": "work/rel-06/matrix-traces/rel-06-active-immediate-minimal-trial-1/trace.zip",
+            "sha256": "41825511bf2298f44cf0cb057589bea775c086fadd676c6146d5fdd9f39ab9ee"
+          }
+        }
+      ]
+    },
+    {
+      "cell": "completed-immediate-detailed",
+      "pass": 2,
+      "fail": 1,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "4464FB8B98B998AA2AE75D36E6418DAD",
+              "kind": "child",
+              "ms": 5.249
+            },
+            {
+              "targetId": "104F12260F41A4FAAAADD1FB4AD95F13",
+              "kind": "child",
+              "ms": 2002.515
+            },
+            {
+              "targetId": "E28C7741E2464C3EB5753650CC39D8CD",
+              "kind": "host",
+              "ms": 2003.435
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "36B2BA6BB8827EC3747E8EC428DD5D70",
+              "kind": "child",
+              "ms": 4.542
+            },
+            {
+              "targetId": "840212980B877AD1CCC43A4158CA0F8E",
+              "kind": "child",
+              "ms": 2003.606
+            },
+            {
+              "targetId": "3FF62AA7738873CB28561222F99927C0",
+              "kind": "host",
+              "ms": 2007.497
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "FAIL",
+          "destroyed": [
+            {
+              "targetId": "DC465DFD23D5465495C182731B82A0E0",
+              "kind": "child",
+              "ms": 10.453
+            },
+            {
+              "targetId": "47186584CF942626C427010B85142910",
+              "kind": "child",
+              "ms": 2005.223
+            }
+          ],
+          "finalWorkerTargets": [
+            "9AE81350459DD4B83E9AB5EAD0ADB97D"
+          ],
+          "hostAndChildTargets": [
+            {
+              "targetId": "9AE81350459DD4B83E9AB5EAD0ADB97D",
+              "url": "http://127.0.0.1:5173/engine-host.js?rel06=completed-immediate-detailed-3",
+              "parentId": "12E8C189E2EE3277C376D136DA5EC069",
+              "attached": true
+            },
+            {
+              "targetId": "DC465DFD23D5465495C182731B82A0E0",
+              "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+              "parentId": "9AE81350459DD4B83E9AB5EAD0ADB97D",
+              "attached": true
+            },
+            {
+              "targetId": "47186584CF942626C427010B85142910",
+              "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+              "parentId": "9AE81350459DD4B83E9AB5EAD0ADB97D",
+              "attached": true
+            }
+          ],
+          "boundedProbe": [
+            {
+              "targetId": "9AE81350459DD4B83E9AB5EAD0ADB97D",
+              "response": {
+                "error": "Error: CDP deadline exceeded"
+              }
+            }
+          ],
+          "remainingPlaywrightHandles": [
+            "http://127.0.0.1:5173/engine-host.js?rel06=completed-immediate-detailed-3"
+          ],
+          "timeline": [
+            {
+              "ms": -787.44,
+              "event": "host-create",
+              "url": "/engine-host.js?rel06=completed-immediate-detailed-3"
+            },
+            {
+              "ms": -787.4,
+              "event": "parent-send",
+              "typeSent": "init"
+            },
+            {
+              "ms": -746.373,
+              "event": "target-attached",
+              "targetId": "9AE81350459DD4B83E9AB5EAD0ADB97D"
+            },
+            {
+              "ms": -742.165,
+              "type": "rel06",
+              "event": "host-boot"
+            },
+            {
+              "ms": -741.68,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "init"
+            },
+            {
+              "ms": -701.18,
+              "type": "rel06",
+              "event": "child-create",
+              "childId": "completed-immediate-detailed-3/C1",
+              "url": "http://127.0.0.1:5173/engine/stockfish.worker.js"
+            },
+            {
+              "ms": -700.995,
+              "type": "rel06",
+              "event": "host-send",
+              "typeSent": "loaded"
+            },
+            {
+              "ms": -699.945,
+              "event": "parent-loaded"
+            },
+            {
+              "ms": -699.9,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "usi"
+            },
+            {
+              "ms": -699.66,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "usi"
+            },
+            {
+              "ms": -677.687,
+              "event": "target-attached",
+              "targetId": "DC465DFD23D5465495C182731B82A0E0"
+            },
+            {
+              "ms": -187.835,
+              "type": "rel06",
+              "event": "child-create",
+              "childId": "completed-immediate-detailed-3/C2",
+              "url": "http://127.0.0.1:5173/engine/stockfish.worker.js"
+            },
+            {
+              "ms": -179.419,
+              "event": "target-attached",
+              "targetId": "47186584CF942626C427010B85142910"
+            },
+            {
+              "ms": -134.65,
+              "type": "rel06",
+              "event": "host-send",
+              "typeSent": "line",
+              "line": "usiok"
+            },
+            {
+              "ms": -134.605,
+              "event": "engine-line",
+              "line": "usiok"
+            },
+            {
+              "ms": -133.665,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name USI_Variant value shogi"
+            },
+            {
+              "ms": -133.64,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name Threads value 1"
+            },
+            {
+              "ms": -133.635,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name USI_Hash value 16"
+            },
+            {
+              "ms": -133.63,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "setoption name Use_NNUE value false"
+            },
+            {
+              "ms": -133.585,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "setoption name USI_Variant value shogi"
+            },
+            {
+              "ms": -133.57,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "isready"
+            },
+            {
+              "ms": -133.56,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "setoption name Threads value 1"
+            },
+            {
+              "ms": -133.545,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "setoption name USI_Hash value 16"
+            },
+            {
+              "ms": -133.535,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "setoption name Use_NNUE value false"
+            },
+            {
+              "ms": -133.52,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "isready"
+            },
+            {
+              "ms": -116.03,
+              "type": "rel06",
+              "event": "host-send",
+              "typeSent": "line",
+              "line": "readyok"
+            },
+            {
+              "ms": -115.935,
+              "event": "engine-line",
+              "line": "readyok"
+            },
+            {
+              "ms": -113.04,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "usinewgame"
+            },
+            {
+              "ms": -113.01,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "isready"
+            },
+            {
+              "ms": -112.505,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "usinewgame"
+            },
+            {
+              "ms": -112.445,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "isready"
+            },
+            {
+              "ms": -110.58,
+              "type": "rel06",
+              "event": "host-send",
+              "typeSent": "line",
+              "line": "readyok"
+            },
+            {
+              "ms": -110.53,
+              "event": "engine-line",
+              "line": "readyok"
+            },
+            {
+              "ms": -107.895,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "position startpos moves 7g7f 3c3d"
+            },
+            {
+              "ms": -107.86,
+              "event": "parent-send",
+              "typeSent": "command",
+              "command": "go movetime 100"
+            },
+            {
+              "ms": -107.84,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "position startpos moves 7g7f 3c3d"
+            },
+            {
+              "ms": -107.805,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "command",
+              "command": "go movetime 100"
+            },
+            {
+              "ms": -2.865,
+              "type": "rel06",
+              "event": "host-send",
+              "typeSent": "line",
+              "line": "bestmove 8h2b ponder 3a2b"
+            },
+            {
+              "ms": -2.805,
+              "event": "engine-line",
+              "line": "bestmove 8h2b ponder 3a2b"
+            },
+            {
+              "ms": 0.02,
+              "event": "parent-send",
+              "typeSent": "dispose"
+            },
+            {
+              "ms": 0.065,
+              "type": "rel06",
+              "event": "host-receive",
+              "typeReceived": "dispose"
+            },
+            {
+              "ms": 0.2,
+              "type": "rel06",
+              "event": "child-terminate-call",
+              "childId": "completed-immediate-detailed-3/C1"
+            },
+            {
+              "ms": 1.575,
+              "type": "rel06",
+              "event": "child-terminate-return",
+              "childId": "completed-immediate-detailed-3/C1"
+            },
+            {
+              "ms": 1.59,
+              "type": "rel06",
+              "event": "child-terminate-call",
+              "childId": "completed-immediate-detailed-3/C2"
+            },
+            {
+              "ms": 1.595,
+              "type": "rel06",
+              "event": "child-terminate-return",
+              "childId": "completed-immediate-detailed-3/C2"
+            },
+            {
+              "ms": 1.61,
+              "type": "rel06",
+              "event": "host-send",
+              "typeSent": "disposed"
+            },
+            {
+              "ms": 1.675,
+              "event": "parent-ack"
+            },
+            {
+              "ms": 1.725,
+              "event": "host-terminate-call",
+              "reason": "ack"
+            },
+            {
+              "ms": 1.735,
+              "event": "host-terminate-return",
+              "reason": "ack"
+            },
+            {
+              "ms": 9.43,
+              "event": "target-detached",
+              "targetId": "DC465DFD23D5465495C182731B82A0E0"
+            },
+            {
+              "ms": 10.453,
+              "event": "target-destroyed",
+              "targetId": "DC465DFD23D5465495C182731B82A0E0"
+            },
+            {
+              "ms": 2003.992,
+              "event": "target-detached",
+              "targetId": "47186584CF942626C427010B85142910"
+            },
+            {
+              "ms": 2005.223,
+              "event": "target-destroyed",
+              "targetId": "47186584CF942626C427010B85142910"
+            },
+            {
+              "ms": 5013.693,
+              "event": "probe-attached",
+              "targetId": "9AE81350459DD4B83E9AB5EAD0ADB97D"
+            },
+            {
+              "ms": 5515.647,
+              "event": "probe-detached",
+              "targetId": "9AE81350459DD4B83E9AB5EAD0ADB97D"
+            }
+          ],
+          "rawTrace": {
+            "path": "work/rel-06/matrix-traces/rel-06-completed-immediate-detailed-trial-3/trace.zip",
+            "sha256": "2d125ff93f749e7c86a5099dc12fce52a8fa6ce79440e17c3712377c59454fbf"
+          }
+        }
+      ]
+    },
+    {
+      "cell": "control-host-close-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "5DC19FC049E24B86381837A1B1D27254",
+              "kind": "child",
+              "ms": 11.626
+            },
+            {
+              "targetId": "68B27CFBEDA8B615435A92B39BB42E6D",
+              "kind": "child",
+              "ms": 2002.498
+            },
+            {
+              "targetId": "FA95A40E9CCCD8A22DF8714DA8F59A9F",
+              "kind": "host",
+              "ms": 2004.822
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "50E002513AC1F0EFBF7E865D6937DC59",
+              "kind": "child",
+              "ms": 3.51
+            },
+            {
+              "targetId": "894FE7D3AEA317F5119FBC6BEB21DBF8",
+              "kind": "child",
+              "ms": 2002.647
+            },
+            {
+              "targetId": "EDB18648AB91FE723A5FCB30C35652F5",
+              "kind": "host",
+              "ms": 2005.392
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "69F9407A6506469CA8D519883CE2E454",
+              "kind": "child",
+              "ms": 25.53
+            },
+            {
+              "targetId": "69EA53985FC863F2ABD14DFD9A0896F5",
+              "kind": "child",
+              "ms": 2001.929
+            },
+            {
+              "targetId": "39D9ED88B09ACF2CE0A8A53D1C367F36",
+              "kind": "host",
+              "ms": 2003.914
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    },
+    {
+      "cell": "control-immediate-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "9D365A6EBA41A6B04823DAE3544F3773",
+              "kind": "child",
+              "ms": 2.087
+            },
+            {
+              "targetId": "711B39675ACDA3219655FE7FC2862D49",
+              "kind": "child",
+              "ms": 2001.575
+            },
+            {
+              "targetId": "6E5E5AE405925040E0D920848F04E763",
+              "kind": "host",
+              "ms": 2003.503
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "E4EFECAE35AC4CE55CF16C670E6B7566",
+              "kind": "child",
+              "ms": 4.106
+            },
+            {
+              "targetId": "3122904CC1BC5B15D3A5046F37D89E12",
+              "kind": "child",
+              "ms": 2005.548
+            },
+            {
+              "targetId": "6EE4F955959FA34117B93B135A3F24A9",
+              "kind": "host",
+              "ms": 2007.237
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "FFE70E1F541ED91FD14A92226A51B6DC",
+              "kind": "child",
+              "ms": 14.816
+            },
+            {
+              "targetId": "DF1251EDAB20E853322C55F68842511B",
+              "kind": "child",
+              "ms": 2003.184
+            },
+            {
+              "targetId": "1A208874406F0EA8A9C2A8C11B17DBAE",
+              "kind": "host",
+              "ms": 2003.977
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    },
+    {
+      "cell": "idle-immediate-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "93AF0503A6675EFC5350537102604C90",
+              "kind": "child",
+              "ms": 9.812
+            },
+            {
+              "targetId": "599037ADBA2C8792DCD9E113FA843E96",
+              "kind": "child",
+              "ms": 2001.931
+            },
+            {
+              "targetId": "C4F76D3906902122EEE1F9DC468409E6",
+              "kind": "host",
+              "ms": 2004.431
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "ECE028B481F1116FA980B2033581361C",
+              "kind": "child",
+              "ms": 9.18
+            },
+            {
+              "targetId": "C05DDB34E0F43BDDAEE493C2BDC30A58",
+              "kind": "child",
+              "ms": 2003.331
+            },
+            {
+              "targetId": "02BEBDB5945AFEABA5D23865C40B1B56",
+              "kind": "host",
+              "ms": 2003.366
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "FF2FAFD2E33267A276D24FBCCFE92655",
+              "kind": "child",
+              "ms": 4.261
+            },
+            {
+              "targetId": "1892C058E1B0E44EA2F141562F220562",
+              "kind": "child",
+              "ms": 2003.591
+            },
+            {
+              "targetId": "0741A07D6E9A9572DB1E9C5D9FDEAB6F",
+              "kind": "host",
+              "ms": 2004.45
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    },
+    {
+      "cell": "startup-immediate-detailed",
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "trials": [
+        {
+          "trial": 1,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "D2615F69AC450E3D2DC22EA896271205",
+              "kind": "host",
+              "ms": 96.693
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 2,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "DD7B15CBF2A8609E5333C9896BCDA05E",
+              "kind": "host",
+              "ms": 128.689
+            }
+          ],
+          "finalWorkerTargets": []
+        },
+        {
+          "trial": 3,
+          "outcome": "PASS",
+          "destroyed": [
+            {
+              "targetId": "5052181B338D862810C3B6AF7C825330",
+              "kind": "host",
+              "ms": 92.503
+            }
+          ],
+          "finalWorkerTargets": []
+        }
+      ]
+    }
+  ],
+  "validMatrix": {
+    "planned": 27,
+    "executed": 25,
+    "pass": 23,
+    "fail": 2,
+    "cancelled": 2
+  },
+  "separateInvalidControlSetup": {
+    "executed": 4,
+    "pass": 0,
+    "setupFailures": 4,
+    "cancelled": 8,
+    "notes": "First two lacked isolation response headers. Next two did not serve nested scripts from the real local server. Both corrected in the reported 6 valid trials."
+  },
+  "originalRegressionRepeat": {
+    "observerEnabled": false,
+    "executed": 10,
+    "pass": 9,
+    "fail": 1,
+    "cancelled": 0,
+    "durationMs": 72180,
+    "failingTrial": 3,
+    "observedHandlesAtDeadline": 1,
+    "deadlineMs": 5000,
+    "independentCDP": "Not captured in the original observer-disabled repeat",
+    "rawTrace": {
+      "path": "work/rel-06/original-repeat-results/spike-reset-during-analysi-28e06-isposal-of-an-active-search-repeat2/trace.zip",
+      "sha256": "2f1c452e48a0b34fe19b535231ee6dc4d5c4dfcb22085de195f86ca43758eed9"
+    }
+  },
+  "ordinaryRegressions": {
+    "install": "PASS",
+    "typecheck": "PASS",
+    "unit": {
+      "pass": 133,
+      "fail": 0,
+      "durationMs": 2890
+    },
+    "build": "PASS",
+    "browser": {
+      "pass": 29,
+      "fail": 0,
+      "durationMs": 66121
+    },
+    "online": {
+      "pass": 6,
+      "fail": 0,
+      "durationMs": 40500
+    }
+  }
+}
