@@ -1,0 +1,552 @@
+{
+  "sourceSHA": "9b7a6fb45f5c18c011c3d6a5e649f52b86b5aaad",
+  "dirty": true,
+  "title": "reset during analysis, stop during preparation, and disposal of an active search",
+  "repeat": 12,
+  "status": "failed",
+  "node": "v24.22.1",
+  "os": "linux 6.18.57",
+  "browser": "156.0.8078.79",
+  "capturedEpochMs": 1795148361307.5078,
+  "remainingWorkers": [
+    "http://127.0.0.1:5173/engine-host.js?rel05Host=H2"
+  ],
+  "workerTargets": [
+    {
+      "targetId": "E95ABA4C9AF4E2451E1913F9D30BB5B0",
+      "type": "worker",
+      "title": "shogi-wasm-host",
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+      "attached": true,
+      "parentId": "A481694B566B36A20647F21C09E3D582",
+      "canAccessOpener": false,
+      "parentFrameId": "A481694B566B36A20647F21C09E3D582",
+      "browserContextId": "51AF871518457373C42E00658BD02825"
+    }
+  ],
+  "remainingReplies": [
+    {
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+      "reply": {
+        "timedOut": true
+      }
+    }
+  ],
+  "targetEvents": [
+    {
+      "relativeMs": -0.204,
+      "event": "created",
+      "targetId": "EE54A35408FF46CDB889B535415E426F",
+      "type": "worker",
+      "url": "",
+      "attached": false,
+      "parentId": "A481694B566B36A20647F21C09E3D582"
+    },
+    {
+      "relativeMs": 23.598,
+      "event": "changed",
+      "targetId": "EE54A35408FF46CDB889B535415E426F",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H1",
+      "attached": true,
+      "parentId": "A481694B566B36A20647F21C09E3D582"
+    },
+    {
+      "relativeMs": 96.467,
+      "event": "created",
+      "targetId": "142110C9B0D5A95B95E2E6385B260113",
+      "type": "worker",
+      "url": "",
+      "attached": false,
+      "parentId": "EE54A35408FF46CDB889B535415E426F"
+    },
+    {
+      "relativeMs": 96.585,
+      "event": "destroyed",
+      "targetId": "142110C9B0D5A95B95E2E6385B260113"
+    },
+    {
+      "relativeMs": 98.627,
+      "event": "changed",
+      "targetId": "EE54A35408FF46CDB889B535415E426F",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H1",
+      "attached": false,
+      "parentId": "A481694B566B36A20647F21C09E3D582"
+    },
+    {
+      "relativeMs": 98.881,
+      "event": "destroyed",
+      "targetId": "EE54A35408FF46CDB889B535415E426F"
+    },
+    {
+      "relativeMs": 150.668,
+      "event": "created",
+      "targetId": "E95ABA4C9AF4E2451E1913F9D30BB5B0",
+      "type": "worker",
+      "url": "",
+      "attached": false,
+      "parentId": "A481694B566B36A20647F21C09E3D582"
+    },
+    {
+      "relativeMs": 167.424,
+      "event": "changed",
+      "targetId": "E95ABA4C9AF4E2451E1913F9D30BB5B0",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+      "attached": true,
+      "parentId": "A481694B566B36A20647F21C09E3D582"
+    },
+    {
+      "relativeMs": 272.723,
+      "event": "created",
+      "targetId": "B6B21ED26C54B6B20E85C27AE97FFEBB",
+      "type": "worker",
+      "url": "",
+      "attached": false,
+      "parentId": "E95ABA4C9AF4E2451E1913F9D30BB5B0"
+    },
+    {
+      "relativeMs": 276.125,
+      "event": "changed",
+      "targetId": "B6B21ED26C54B6B20E85C27AE97FFEBB",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "attached": true,
+      "parentId": "E95ABA4C9AF4E2451E1913F9D30BB5B0"
+    },
+    {
+      "relativeMs": 772.124,
+      "event": "created",
+      "targetId": "8F09FE8F254125AB7771722C7122C12C",
+      "type": "worker",
+      "url": "",
+      "attached": false,
+      "parentId": "E95ABA4C9AF4E2451E1913F9D30BB5B0"
+    },
+    {
+      "relativeMs": 773.915,
+      "event": "changed",
+      "targetId": "8F09FE8F254125AB7771722C7122C12C",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "attached": true,
+      "parentId": "E95ABA4C9AF4E2451E1913F9D30BB5B0"
+    },
+    {
+      "relativeMs": 1052.326,
+      "event": "changed",
+      "targetId": "B6B21ED26C54B6B20E85C27AE97FFEBB",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "attached": false,
+      "parentId": "E95ABA4C9AF4E2451E1913F9D30BB5B0"
+    },
+    {
+      "relativeMs": 1052.401,
+      "event": "destroyed",
+      "targetId": "B6B21ED26C54B6B20E85C27AE97FFEBB"
+    },
+    {
+      "relativeMs": 3051.087,
+      "event": "changed",
+      "targetId": "8F09FE8F254125AB7771722C7122C12C",
+      "type": "worker",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "attached": false,
+      "parentId": "E95ABA4C9AF4E2451E1913F9D30BB5B0"
+    },
+    {
+      "relativeMs": 3051.172,
+      "event": "destroyed",
+      "targetId": "8F09FE8F254125AB7771722C7122C12C"
+    }
+  ],
+  "limitations": "Opt-in bridge prefix and passive observers affect scheduling. Target enumeration/worker replies are independent of Playwright handle count. Renderer heap excludes shared WASM/total browser RSS.",
+  "samplesSummary": {
+    "count": 25,
+    "peakRendererHeapBytes": 12285636,
+    "minimumHostFreeBytes": 8408866816,
+    "peakHostLoad1": 0.51
+  },
+  "relativeTimeline": [
+    {
+      "id": "H1",
+      "event": "constructed",
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H1",
+      "relativeMs": 0.0
+    },
+    {
+      "id": "H1",
+      "event": "sent",
+      "relativeMs": 0.395
+    },
+    {
+      "id": "H1",
+      "event": "host-boot",
+      "relativeMs": 29.03
+    },
+    {
+      "id": "H1",
+      "event": "host-receive",
+      "messageType": "init",
+      "relativeMs": 29.445
+    },
+    {
+      "event": "adapter-deadline-scheduled",
+      "delay": 2000,
+      "relativeMs": 67.2
+    },
+    {
+      "id": "H1",
+      "event": "sent",
+      "relativeMs": 67.24
+    },
+    {
+      "id": "H1",
+      "event": "child-created",
+      "child": "C1",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "relativeMs": 91.905
+    },
+    {
+      "id": "H1",
+      "event": "host-post",
+      "messageType": "loaded",
+      "relativeMs": 92.1
+    },
+    {
+      "id": "H1",
+      "event": "received",
+      "relativeMs": 92.52
+    },
+    {
+      "id": "H1",
+      "event": "host-receive",
+      "messageType": "dispose",
+      "relativeMs": 92.17
+    },
+    {
+      "id": "H1",
+      "event": "child-terminate-called",
+      "child": "C1",
+      "relativeMs": 92.2
+    },
+    {
+      "id": "H1",
+      "event": "child-terminate-returned",
+      "child": "C1",
+      "relativeMs": 92.2
+    },
+    {
+      "id": "H1",
+      "event": "host-post",
+      "messageType": "disposed",
+      "relativeMs": 92.205
+    },
+    {
+      "id": "H1",
+      "event": "received",
+      "relativeMs": 92.67
+    },
+    {
+      "id": "H1",
+      "event": "terminate-called",
+      "relativeMs": 92.73
+    },
+    {
+      "id": "H1",
+      "event": "terminate-returned",
+      "relativeMs": 92.755
+    },
+    {
+      "id": "H2",
+      "event": "constructed",
+      "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+      "relativeMs": 149.645
+    },
+    {
+      "id": "H2",
+      "event": "sent",
+      "relativeMs": 149.695
+    },
+    {
+      "id": "H2",
+      "event": "host-boot",
+      "relativeMs": 173.105
+    },
+    {
+      "id": "H2",
+      "event": "host-receive",
+      "messageType": "init",
+      "relativeMs": 173.66
+    },
+    {
+      "id": "H2",
+      "event": "child-created",
+      "child": "C1",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "relativeMs": 267.255
+    },
+    {
+      "id": "H2",
+      "event": "host-post",
+      "messageType": "loaded",
+      "relativeMs": 268.52
+    },
+    {
+      "id": "H2",
+      "event": "received",
+      "relativeMs": 268.955
+    },
+    {
+      "id": "H2",
+      "event": "child-created",
+      "child": "C2",
+      "url": "http://127.0.0.1:5173/engine/stockfish.worker.js",
+      "relativeMs": 765.91
+    },
+    {
+      "event": "adapter-deadline-scheduled",
+      "delay": 2000,
+      "relativeMs": 1044.515
+    },
+    {
+      "id": "H2",
+      "event": "sent",
+      "relativeMs": 1044.525
+    },
+    {
+      "id": "H2",
+      "event": "host-receive",
+      "messageType": "dispose",
+      "relativeMs": 1045.09
+    },
+    {
+      "id": "H2",
+      "event": "child-terminate-called",
+      "child": "C1",
+      "relativeMs": 1046.925
+    },
+    {
+      "id": "H2",
+      "event": "child-terminate-returned",
+      "child": "C1",
+      "relativeMs": 1048.45
+    },
+    {
+      "id": "H2",
+      "event": "child-terminate-called",
+      "child": "C2",
+      "relativeMs": 1048.46
+    },
+    {
+      "id": "H2",
+      "event": "child-terminate-returned",
+      "child": "C2",
+      "relativeMs": 1048.465
+    },
+    {
+      "id": "H2",
+      "event": "host-post",
+      "messageType": "disposed",
+      "relativeMs": 1048.475
+    },
+    {
+      "id": "H2",
+      "event": "received",
+      "relativeMs": 1050.475
+    },
+    {
+      "id": "H2",
+      "event": "terminate-called",
+      "relativeMs": 1050.485
+    },
+    {
+      "id": "H2",
+      "event": "terminate-returned",
+      "relativeMs": 1050.505
+    }
+  ],
+  "series": [
+    {
+      "name": "pre-reset",
+      "executed": 13,
+      "passed": 12,
+      "failed": 1,
+      "remainingTargets": [
+        {
+          "repeat": 12,
+          "handles": [
+            "http://127.0.0.1:5173/engine-host.js?rel05Host=H2"
+          ],
+          "targetCount": 1,
+          "replies": [
+            {
+              "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+              "reply": {
+                "timedOut": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "probe-early",
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "remainingTargets": [
+        {
+          "repeat": 0,
+          "handles": [
+            "http://127.0.0.1:5173/engine-host.js?rel05Host=H2"
+          ],
+          "targetCount": 1,
+          "replies": [
+            {
+              "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+              "reply": {
+                "timedOut": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "probe-close",
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "remainingTargets": [
+        {
+          "repeat": 0,
+          "handles": [
+            "http://127.0.0.1:5173/engine-host.js?rel05Host=H2"
+          ],
+          "targetCount": 1,
+          "replies": [
+            {
+              "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+              "reply": {
+                "timedOut": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "probe-owned",
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "remainingTargets": [
+        {
+          "repeat": 0,
+          "handles": [
+            "http://127.0.0.1:5173/engine-host.js?rel05Host=H2"
+          ],
+          "targetCount": 1,
+          "replies": [
+            {
+              "url": "http://127.0.0.1:5173/engine-host.js?rel05Host=H2",
+              "reply": {
+                "timedOut": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "probe-drain",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "remainingTargets": []
+    }
+  ],
+  "classification": "CAUSE STILL UNRESOLVED; live CDP target retained, runtime evaluation timed out, OS leak/internal blocking mechanism not established",
+  "runtimeModified": false,
+  "preservedRawEvidence": [
+    {
+      "path": "work/rel-05/pre-reset-results/browser-results.json",
+      "bytes": 424455,
+      "sha256": "158da6095d1dd00ec53759cf8a2101862bbb33b9aa4014284537f79ddf1910a1"
+    },
+    {
+      "path": "work/rel-05/pre-reset-results/spike-reset-during-analysi-28e06-isposal-of-an-active-search-repeat12/trace.zip",
+      "bytes": 1657337,
+      "sha256": "8d1241d7e8a83516a978b4a13c01441278ae121b3dc3f028ef4e64a6c6654b22"
+    },
+    {
+      "path": "work/rel-05/probe-early-results/browser-results.json",
+      "bytes": 41535,
+      "sha256": "9b7c9f1253bea50cb993d4477ef55f8c200888b73e5195beb59fd4aedfdbdbd8"
+    },
+    {
+      "path": "work/rel-05/probe-early-results/spike-reset-during-analysi-28e06-isposal-of-an-active-search/trace.zip",
+      "bytes": 1516101,
+      "sha256": "e934e3e5113232b03a21fa06ba86d33d99be570591c261eebb1616b26fdce6be"
+    },
+    {
+      "path": "work/rel-05/probe-close-results/browser-results.json",
+      "bytes": 41867,
+      "sha256": "bf27b76754b2a73b5dc5dc27ce1c8f3d8aafd438ed84736deb904a17a0d2d3e5"
+    },
+    {
+      "path": "work/rel-05/probe-close-results/spike-reset-during-analysi-28e06-isposal-of-an-active-search/trace.zip",
+      "bytes": 1901516,
+      "sha256": "7b8533eff2e4c9f19ba7d692a5a498de0a16d4f926d2ed6f4745d0162c6e19ca"
+    },
+    {
+      "path": "work/rel-05/probe-owned-results/browser-results.json",
+      "bytes": 42283,
+      "sha256": "648a2275d77a66a7a8996976c29b8a7e84657eb7a85a75729126c9d952b04046"
+    },
+    {
+      "path": "work/rel-05/probe-owned-results/spike-reset-during-analysi-28e06-isposal-of-an-active-search/trace.zip",
+      "bytes": 1412059,
+      "sha256": "3bab13153dc08f2db21cc21f932fd90bad5d9666c2c41125e644b0c2df9ccbed"
+    },
+    {
+      "path": "work/rel-05/probe-drain-results/browser-results.json",
+      "bytes": 111710,
+      "sha256": "3d0ef5a80ab8d8cd94f1001257a63db0b9e1e89607996292e80bcfef9be89481"
+    }
+  ],
+  "regressions": {
+    "install": "PASS",
+    "typecheck": "PASS",
+    "unit": {
+      "passed": 133,
+      "failed": 0,
+      "durationSeconds": 2.5
+    },
+    "build": {
+      "status": "PASS",
+      "jsKB": 380.33,
+      "cssKB": 14.44
+    },
+    "browser": {
+      "passed": 29,
+      "failed": 0,
+      "durationSeconds": 63.364
+    },
+    "online": {
+      "passed": 6,
+      "failed": 0,
+      "durationSeconds": 37.8
+    }
+  },
+  "diagnosticTotals": {
+    "executed": 19,
+    "passed": 15,
+    "failed": 4,
+    "ordinaryRepeatsExecuted": 13,
+    "controlledProbeCases": 6
+  }
+}
