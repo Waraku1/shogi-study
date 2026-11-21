@@ -1,0 +1,395 @@
+{
+  "baselineSha": "1f92faefddf09f4684483e0952843f53a70b4094",
+  "harnessSha": "1f92faefddf09f4684483e0952843f53a70b4094",
+  "headBranch": "chore/rel-08-native-worker-shutdown",
+  "baseBranch": "chore/rel-07-worker-debugger-comparison",
+  "classification": "STOP — NATIVE TRACE NOT AVAILABLE",
+  "stopReason": "Direct CDP-to-OS task identity and syscall state were observable. Matching Chromium symbols and Worker shutdown and agent teardown evidence were unavailable.",
+  "environment": {
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "kernel": "Linux 6.18.57",
+    "architecture": "x86_64",
+    "node": "24.22.1",
+    "pnpm": "11.25.0",
+    "chromium": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/156.0.8078.79",
+      "revision": "@a21ce95c24ce3964416f09ae1862f53f319eb4d0",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "jsVersion": "15.6.75.27"
+    },
+    "chromiumPackage": "156.0.8078.79-1~deb13u1",
+    "chromiumExecutable": "/usr/lib/chromium/chromium",
+    "chromiumElfBuildId": "052c8f04af4a1e885c8bd7ec2b3ba8c33662622f",
+    "chromiumExecutableSha256": "ce1ff960ce428a4a88b1b1c38516bdf1954a57fc24036161b7a0d8d0f8aec511",
+    "chromiumElfStripped": true,
+    "matchingDebugFilePresent": false,
+    "operatingSystemPrivileges": "Nonprivileged user, CapEff zero, NoNewPrivs 1, seccomp filter active",
+    "unavailableTools": [
+      "gdb",
+      "lldb",
+      "perf",
+      "bpftrace",
+      "eu-stack",
+      "llvm-symbolizer",
+      "pstack"
+    ],
+    "availableTools": [
+      "strace 6.13 with libunwind",
+      "readelf",
+      "/proc task enumeration",
+      "Chromium tracing"
+    ],
+    "perfEventOpenOwnProcessTaskClock": "EPERM with kernel and hypervisor events excluded"
+  },
+  "feasibilityControls": [
+    {
+      "name": "capability",
+      "crossOriginIsolated": true,
+      "launchFlags": [
+        "--headless=new",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--remote-debugging-pipe"
+      ],
+      "traceCategories": [
+        "blink",
+        "blink.worker",
+        "blink.user_timing",
+        "devtools.timeline",
+        "renderer.scheduler",
+        "toplevel",
+        "disabled-by-default-devtools.timeline",
+        "mojom"
+      ],
+      "workerAutoAttachCommands": 0,
+      "workerAttachmentEvents": 0,
+      "workerMapping": [
+        {
+          "role": "host",
+          "targetId": "D26B767004871BB8515DF717FAFB6DB7",
+          "parentTargetId": "1F90CCBEF8CE4A47E4502EEEFC8474D3",
+          "targetAttached": false,
+          "rendererPid": 66722,
+          "workerTid": 66747,
+          "beforeDisposal": {
+            "comm": "DedicatedWorker",
+            "state": "S",
+            "wchan": "__futex_wait",
+            "syscallReadable": true,
+            "kernelStackError": "EACCES"
+          },
+          "targetDestroyedAfterTerminateReturnMs": 3.132,
+          "taskEntryAtLaterSnapshot": "ENOENT"
+        },
+        {
+          "role": "child",
+          "targetId": "A166F0262B98C1B9FC629D63FCC20F44",
+          "parentTargetId": "D26B767004871BB8515DF717FAFB6DB7",
+          "targetAttached": false,
+          "rendererPid": 66722,
+          "workerTid": 66748,
+          "beforeDisposal": {
+            "comm": "DedicatedWorker",
+            "state": "S",
+            "wchan": "__futex_wait",
+            "syscallReadable": true,
+            "kernelStackError": "EACCES"
+          },
+          "targetDestroyedAfterTerminateReturnMs": 2.291,
+          "taskEntryAtLaterSnapshot": "ENOENT"
+        }
+      ],
+      "snapshotAfterTerminateReturnMs": 302.692,
+      "remainingWorkerTargets": 0,
+      "strace": {
+        "boundMs": 1000,
+        "exitCode": 124,
+        "bothWorkerTasksAttachedAndDetached": true,
+        "sample": "Pending futex wait",
+        "symbolizedChromiumStack": false
+      },
+      "trace": {
+        "path": "work/rel-08/capability.trace.json",
+        "sha256": "7ea78e56dab2666245fc87c573f454065684982d33cc36f29f786f6bbdb4524c",
+        "bytes": 8859100,
+        "dataLoss": false
+      },
+      "rawProtocol": "work/rel-08/capability.json"
+    },
+    {
+      "name": "agent-probe",
+      "crossOriginIsolated": true,
+      "launchFlags": [
+        "--headless=new",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--remote-debugging-pipe",
+        "--enable-logging=stderr",
+        "--vmodule=worker_thread=2,dedicated_worker_host=2,dedicated_worker_devtools_agent_host=2,devtools_agent_host_impl=2,worker_devtools_agent_host=2,devtools_renderer_channel=2"
+      ],
+      "traceCategories": [
+        "blink",
+        "blink.worker",
+        "blink.user_timing",
+        "devtools.timeline",
+        "renderer.scheduler",
+        "toplevel",
+        "disabled-by-default-devtools.timeline",
+        "devtools",
+        "shutdown",
+        "disabled-by-default-devtools.target-rundown",
+        "disabled-by-default-worker.scheduler"
+      ],
+      "workerAutoAttachCommands": 0,
+      "workerAttachmentEvents": 0,
+      "workerMapping": [
+        {
+          "role": "host",
+          "targetId": "AEB06B63B43AA51904B467EDD20FD14E",
+          "parentTargetId": "A71294F576436721404EB737970340D8",
+          "targetAttached": false,
+          "rendererPid": 66929,
+          "workerTid": 66953,
+          "beforeDisposal": {
+            "comm": "DedicatedWorker",
+            "state": "S",
+            "wchan": "__futex_wait",
+            "syscallReadable": true,
+            "kernelStackError": "EACCES"
+          },
+          "targetDestroyedAfterTerminateReturnMs": 3.504,
+          "taskEntryAtLaterSnapshot": "ENOENT"
+        },
+        {
+          "role": "child",
+          "targetId": "E18964C1044185417AB7F464F3B1EFC8",
+          "parentTargetId": "AEB06B63B43AA51904B467EDD20FD14E",
+          "targetAttached": false,
+          "rendererPid": 66929,
+          "workerTid": 66954,
+          "beforeDisposal": {
+            "comm": "DedicatedWorker",
+            "state": "S",
+            "wchan": "__futex_wait",
+            "syscallReadable": true,
+            "kernelStackError": "EACCES"
+          },
+          "targetDestroyedAfterTerminateReturnMs": 1.561,
+          "taskEntryAtLaterSnapshot": "ENOENT"
+        }
+      ],
+      "snapshotAfterTerminateReturnMs": 302.217,
+      "remainingWorkerTargets": 0,
+      "strace": {
+        "boundMs": 1000,
+        "exitCode": 124,
+        "bothWorkerTasksAttachedAndDetached": true,
+        "sample": "Pending futex wait",
+        "symbolizedChromiumStack": false
+      },
+      "trace": {
+        "path": "work/rel-08/agent-probe.trace.json",
+        "sha256": "732b0cf177ede91fe20c0fc10a46f4c0309d7c038ad02ecad92a82102d2c93a7",
+        "bytes": 8327724,
+        "dataLoss": false
+      },
+      "rawProtocol": "work/rel-08/agent-probe.json",
+      "targetedNativeTrace": {
+        "shutdownEventsObserved": [
+          "RenderProcessHostImpl::AddRoute",
+          "RenderProcessHostImpl::RemoveRoute",
+          "RenderProcessHostImpl::Cleanup",
+          "~RenderProcessHostImpl"
+        ],
+        "devtoolsEventsObserved": [
+          "Agent::AttachDevToolsSession",
+          "Agent::AttachDevToolsSessionImpl",
+          "DevToolsSession::DispatchToAgent"
+        ],
+        "targetRundownEventsObserved": [
+          "ScriptCompiled",
+          "ModuleEvaluated"
+        ],
+        "workerThreadShutdownCaptured": false,
+        "workerDevToolsAgentDestructionCaptured": false,
+        "matchingWorkerStderrMessages": 0
+      }
+    }
+  ],
+  "realWasmTrials": {
+    "maximumValid": 12,
+    "started": 0,
+    "valid": 0,
+    "passed": 0,
+    "failed": 0,
+    "invalid": 0,
+    "unusedSlots": 12,
+    "cutoffMs": 5000
+  },
+  "priorRel07Evidence": {
+    "scope": "Historical real-WASM trials. Thread IDs were attributed by trace topology, with no Linux task snapshot in those trials.",
+    "engine": "Fairy-Stockfish 1.1.12",
+    "pinSha256": {
+      "stockfish.js": "9080a62e3133e50da0c47b88b186d9c29ed37cc5129401bdeed8bffb5b9a4ca9",
+      "stockfish.wasm": "7cea742b8ca1a324fbc500f89112f168134cf68eb49475df23be6c42336255c6",
+      "stockfish.worker.js": "067be484ac62f728b0dad28496997e5862f3c61f9091f59bb35d9d1b1ed14573",
+      "Copying.txt": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
+      "AUTHORS": "55a0a4599358308af8349344d79176469f04119558e85595efe0a39b583cdf00"
+    },
+    "productionHostSha256": "c2c9c502231b2991dbb2c0041a7ac12f7a59c8a5a6a0709ab1147db21c355633",
+    "launchFlags": [
+      "--headless=new",
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--remote-debugging-pipe"
+    ],
+    "validByArm": {
+      "A": {
+        "pass": 11,
+        "fail": 1,
+        "invalid": 0,
+        "cancelled": 0
+      },
+      "B": {
+        "pass": 11,
+        "fail": 1,
+        "invalid": 0,
+        "cancelled": 0
+      }
+    },
+    "failedTrials": [
+      {
+        "id": "B07",
+        "arm": "B",
+        "bestmove": "bestmove 4i5h ponder 2b8h",
+        "cutoffSampleMs": 5001.741,
+        "driverMarksMs": {
+          "bestmove": -0.39,
+          "dispose": 0.0,
+          "disposed": 0.38,
+          "terminate-return": 0.47
+        },
+        "autoAttachCalls": 0,
+        "automaticWorkerAttachments": 0,
+        "manualWorkerAttachBeforeCutoff": false,
+        "remainingWorkerTargets": [
+          {
+            "id": "8ACF566804515857C7EE0981C802FA0E",
+            "attached": false
+          }
+        ],
+        "trace": {
+          "path": "work/rel-07/verified/B07.trace.json",
+          "sha256": "5832926d4fff5f29041ca4ecf9c330d67a1cf3dc8e744ff66f033f8c03626695",
+          "bytes": 9331595,
+          "dataLoss": false
+        },
+        "hostTargetId": "8ACF566804515857C7EE0981C802FA0E",
+        "childTargetDestroyedMs": [
+          31.829,
+          2001.689
+        ],
+        "postCutoffEvaluation": "Error: Runtime.evaluate: deadline exceeded",
+        "hostRendererPidFromTrace": 57465,
+        "hostTidInferredFromTrace": 57501,
+        "hostLastObservedSchedulerTaskEndMs": 2003.126
+      },
+      {
+        "id": "A11",
+        "arm": "A",
+        "bestmove": "bestmove 4i5h ponder 2b8h",
+        "cutoffSampleMs": 5001.948,
+        "driverMarksMs": {
+          "bestmove": -2.745,
+          "dispose": 0.0,
+          "disposed": 2.56,
+          "terminate-return": 2.635
+        },
+        "autoAttachCalls": 2,
+        "automaticWorkerAttachments": 3,
+        "manualWorkerAttachBeforeCutoff": false,
+        "remainingWorkerTargets": [
+          {
+            "id": "D92BC8B41ADDBF874F1DE696081B54F3",
+            "attached": true
+          }
+        ],
+        "trace": {
+          "path": "work/rel-07/verified/A11.trace.json",
+          "sha256": "66eafa7e5ba75a30516c61fba8bd451d5e9895392ae5e46ba3a06e9a63102313",
+          "bytes": 10449939,
+          "dataLoss": false
+        },
+        "hostTargetId": "D92BC8B41ADDBF874F1DE696081B54F3",
+        "childTargetDestroyedMs": [
+          6.177,
+          2004.728
+        ],
+        "postCutoffEvaluation": "Error: Runtime.evaluate: deadline exceeded",
+        "hostRendererPidFromTrace": 58766,
+        "hostTidInferredFromTrace": 58805,
+        "hostLastObservedSchedulerTaskEndMs": 2004.967
+      }
+    ],
+    "baselineCi": "https://github.com/Waraku1/shogi-study/actions/runs/44694500073"
+  },
+  "priorRel06CiFailure": "https://github.com/Waraku1/shogi-study/actions/runs/44689090892",
+  "finalHeadCi": "Recorded in the stacked pull request",
+  "release": {
+    "recommendation": "NO-GO",
+    "ownerApproval": "pending",
+    "publicDistribution": "blocked"
+  },
+  "engineFilesMatchRel07": true,
+  "localRegressions": {
+    "frozenInstall": {
+      "exitCode": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "unit": {
+      "exitCode": 0,
+      "passed": 133,
+      "failed": 0,
+      "seconds": 2.94
+    },
+    "build": {
+      "exitCode": 0
+    },
+    "browser": {
+      "exitCode": 0,
+      "passed": 29,
+      "failed": 0
+    },
+    "onlineAttempts": [
+      {
+        "exitCode": 1,
+        "testsStarted": 0,
+        "result": "Wrangler failed before the Playwright suite started with ENOENT creating the default config directory.",
+        "log": "work/rel-08/online.log"
+      },
+      {
+        "exitCode": 0,
+        "passed": 6,
+        "failed": 0,
+        "seconds": 38.9,
+        "environmentChange": "Workspace-local XDG_CONFIG_HOME",
+        "log": "work/rel-08/online-recovery.log"
+      }
+    ]
+  }
+}
